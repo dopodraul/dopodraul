@@ -13,8 +13,8 @@ const CalculatorButton = ( props: CalculatorButtonProps ) => {
   };
 
   return (
-    <View style={[styles.button, styleBackground]}>
-      <TouchableOpacity onPress={props.onPress}>
+    <View>
+      <TouchableOpacity style={[styles.button, styleBackground]} onPress={props.onPress}>
         <Text style={styles.text}>{props.title}</Text>
       </TouchableOpacity>
     </View>
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: 'white'
+    color: 'white',
+    fontSize: 24
   }
 });
 
