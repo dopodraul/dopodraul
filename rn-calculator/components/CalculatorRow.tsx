@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { View, StyleSheet } from 'react-native';
-const CalculatorRowProps = PropsWithChildren<{}>;
+type CalculatorRowProps = PropsWithChildren<{}>;
 
 const CalculatorRow = ( props: CalculatorRowProps ) => {
   return (
