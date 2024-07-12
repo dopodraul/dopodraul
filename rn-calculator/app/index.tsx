@@ -70,6 +70,9 @@ export default function Index() {
     if (operatorAfter === 'root') {
       const numberResult = Math.sqrt(numberCal);
       setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
+    } else if (operatorAfter === 'percent') {
+      const numberResult = numberCal / 100;
+      setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
     } else {
       setCalList([isFinite(numberCal) ? String(numberCal) : errorResult]);
     }
@@ -77,6 +80,10 @@ export default function Index() {
 
   const pressRoot = () => {
     pressEqual('root');
+  }
+
+  const pressPercent = () => {
+    pressEqual('percent');
   }
 
   const pressClear = () => {
@@ -155,7 +162,7 @@ export default function Index() {
         <CalculatorButton title="√" color="black" onPress={pressRoot} />
       </CalculatorRow>
       <CalculatorRow>
-        <CalculatorButton title="%" color="black" onPress={()=>{}} />
+        <CalculatorButton title="%" color="black" onPress={pressPercent} />
         <CalculatorButton title="7" color="gray" onPress={() => { pressNumber('7') }} />
         <CalculatorButton title="8" color="gray" onPress={() => { pressNumber('8') }} />
         <CalculatorButton title="9" color="gray" onPress={() => { pressNumber('9') }} />
