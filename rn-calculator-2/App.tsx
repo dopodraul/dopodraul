@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
-    padding: 8,
+    margin: 16
   },
 
   numberRow: {
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
 
   numberText: {
     backgroundColor: 'white',
-    padding: 24,
-    margin: 24,
-    fontSize: 24
+    padding: 16,
+    margin: 16,
+    fontSize: 16
   }
 });

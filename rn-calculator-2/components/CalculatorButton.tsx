@@ -26,15 +26,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 24,
-    padding: 24,
-    margin: 24,
+    width: 48,
+    marginTop: 16,
+    marginBottom: 16,
+    marginLeft: 8,
+    marginRight: 8,
     backgroundColor: 'black'
   },
 
   text: {
-    color: 'white',
-    fontSize: 24
+    color: 'white'
   }
 });
 
