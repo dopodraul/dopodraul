@@ -5,7 +5,6 @@ import CalculatorButton from '../components/CalculatorButton';
 
 export default function Index() {
   const errorResult = 'ERROR';
-  const setNumberResult = useState(0)[1];
   const [calList, setCalList] = useState(['0']);
 
   const pressNumber = (input: string) => {
@@ -40,10 +39,9 @@ export default function Index() {
     }
   }
 
-  const pressEqual = () => {
+  const pressEqual = (operatorAfter: string) => {
     const numberLhs = Number(calList[0]);
-    let numberResult = isNaN(numberLhs) ? 0 : numberLhs;
-    setNumberResult(numberResult);
+    let numberCal = isNaN(numberLhs) ? 0 : numberLhs;
     const calListLength = calList.length;
 
     for (let index = 1; index < calListLength - 1; index += 2) {
@@ -52,27 +50,33 @@ export default function Index() {
 
       switch (operator) {
         case '+':
-          numberResult += numberRhs;
+          numberCal += numberRhs;
           break;
 
         case '-':
-          numberResult -= numberRhs;
+          numberCal -= numberRhs;
           break;
 
         case 'X':
-          numberResult *= numberRhs;
+          numberCal *= numberRhs;
           break;
 
         case '÷':
-          numberResult /= numberRhs;
+          numberCal /= numberRhs;
           break;
       }
-
-      setNumberResult(numberResult);
     }
 
-    setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
-    setNumberResult(0);
+    if (operatorAfter === 'root') {
+      const numberResult = Math.sqrt(numberCal);
+      setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
+    } else {
+      setCalList([isFinite(numberCal) ? String(numberCal) : errorResult]);
+    }
+  }
+
+  const pressRoot = () => {
+    pressEqual('root');
   }
 
   const pressClear = () => {
@@ -148,14 +152,14 @@ export default function Index() {
         <CalculatorButton title="MR" color="black" onPress={()=>{}} />
         <CalculatorButton title="M-" color="black" onPress={()=>{}} />
         <CalculatorButton title="M+" color="black" onPress={()=>{}} />
-        <CalculatorButton title="√" color="black" onPress={()=>{}} />
+        <CalculatorButton title="√" color="black" onPress={pressRoot} />
       </CalculatorRow>
       <CalculatorRow>
         <CalculatorButton title="%" color="black" onPress={()=>{}} />
         <CalculatorButton title="7" color="gray" onPress={() => { pressNumber('7') }} />
         <CalculatorButton title="8" color="gray" onPress={() => { pressNumber('8') }} />
         <CalculatorButton title="9" color="gray" onPress={() => { pressNumber('9') }} />
-        <CalculatorButton title="÷" color="black" onPress={ () => { pressOperator('÷') } } />
+        <CalculatorButton title="÷" color="black" onPress={() => { pressOperator('÷') }} />
       </CalculatorRow>
       <CalculatorRow>
         <CalculatorButton title="±" color="black" onPress={pressSign} />
@@ -165,7 +169,7 @@ export default function Index() {
         <CalculatorButton title="X" color="black" onPress={() => { pressOperator('X') }} />
       </CalculatorRow>
       <CalculatorRow>
-        <CalculatorButton title="C" color="red" onPress={ () => { pressClear() } } />
+        <CalculatorButton title="C" color="red" onPress={() => { pressClear() }} />
         <CalculatorButton title="1" color="gray" onPress={() => { pressNumber('1') }} />
         <CalculatorButton title="2" color="gray" onPress={() => { pressNumber('2') }} />
         <CalculatorButton title="3" color="gray" onPress={() => { pressNumber('3') }} />
@@ -175,7 +179,7 @@ export default function Index() {
         <CalculatorButton title="AC" color="red" onPress={pressAllClear} />
         <CalculatorButton title="0" color="gray" onPress={() => { pressNumber('0') }} />
         <CalculatorButton title="." color="gray" onPress={pressPoint} />
-        <CalculatorButton title="=" color="black" onPress={pressEqual} />
+        <CalculatorButton title="=" color="black" onPress={() => { pressEqual('') }} />
         <CalculatorButton title="+" color="black" onPress={() => { pressOperator('+') }} />
       </CalculatorRow>
     </View>
