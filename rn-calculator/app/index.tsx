@@ -5,6 +5,7 @@ import CalculatorButton from '../components/CalculatorButton';
 
 export default function Index() {
   const errorResult = 'ERROR';
+  const [numberMemory, setNumberMemory] = useState(0);
   const [calList, setCalList] = useState(['0']);
 
   const pressNumber = (input: string) => {
@@ -75,15 +76,13 @@ export default function Index() {
       setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
     } else {
       setCalList([isFinite(numberCal) ? String(numberCal) : errorResult]);
+
+      if (operatorAfter === 'memoryAdd') {
+        setNumberMemory(numberMemory + numberCal);
+      } else if (operatorAfter === 'memorySubtract') {
+        setNumberMemory(numberMemory - numberCal);
+      }
     }
-  }
-
-  const pressRoot = () => {
-    pressEqual('root');
-  }
-
-  const pressPercent = () => {
-    pressEqual('percent');
   }
 
   const pressClear = () => {
@@ -149,20 +148,28 @@ export default function Index() {
     setCalList(newCalList);
   }
 
+  const pressMemoryResult = () => {
+    setCalList([isFinite(numberMemory) ? String(numberMemory) : errorResult]);
+  }
+
+  const pressMemoryClear = () => {
+    setNumberMemory(0);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.numberRow}>
         <Text style={styles.numberText}>{calList}</Text>
       </View>
       <CalculatorRow>
-        <CalculatorButton title="MC" color="black" onPress={()=>{}} />
-        <CalculatorButton title="MR" color="black" onPress={()=>{}} />
-        <CalculatorButton title="M-" color="black" onPress={()=>{}} />
-        <CalculatorButton title="M+" color="black" onPress={()=>{}} />
-        <CalculatorButton title="√" color="black" onPress={pressRoot} />
+        <CalculatorButton title="MC" color="black" onPress={pressMemoryClear} />
+        <CalculatorButton title="MR" color="black" onPress={pressMemoryResult} />
+        <CalculatorButton title="M-" color="black" onPress={() => { pressEqual('memorySubtract') }} />
+        <CalculatorButton title="M+" color="black" onPress={() => { pressEqual('memoryAdd') }} />
+        <CalculatorButton title="√" color="black" onPress={() => { pressEqual('root') }} />
       </CalculatorRow>
       <CalculatorRow>
-        <CalculatorButton title="%" color="black" onPress={pressPercent} />
+        <CalculatorButton title="%" color="black" onPress={() => { pressEqual('percent') }} />
         <CalculatorButton title="7" color="gray" onPress={() => { pressNumber('7') }} />
         <CalculatorButton title="8" color="gray" onPress={() => { pressNumber('8') }} />
         <CalculatorButton title="9" color="gray" onPress={() => { pressNumber('9') }} />
