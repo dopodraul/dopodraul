@@ -105,7 +105,7 @@ export default function Index() {
 
     const newCalList = calList.map((text, index) => {
       if (index === indexTarget) {
-        if (index === 0 && text === errorResult) {
+        if (text === errorResult) {
           return '-0';
         }
 
@@ -114,6 +114,26 @@ export default function Index() {
 
       return text;
     });
+
+    setCalList(newCalList);
+  }
+
+  const pressPoint = () => {
+    const indexTarget = calList.length - 1;
+
+    const newCalList = calList.map((text, index) => {
+      if (index === indexTarget) {
+        if (text === errorResult) {
+          return '0.';
+        }
+
+        if (text.indexOf('.') === -1) {
+          return text + '.';
+        }
+      }
+
+      return text;
+    })
 
     setCalList(newCalList);
   }
@@ -154,7 +174,7 @@ export default function Index() {
       <CalculatorRow>
         <CalculatorButton title="AC" color="red" onPress={pressAllClear} />
         <CalculatorButton title="0" color="gray" onPress={() => { pressNumber('0') }} />
-        <CalculatorButton title="." color="gray" onPress={()=>{}} />
+        <CalculatorButton title="." color="gray" onPress={pressPoint} />
         <CalculatorButton title="=" color="black" onPress={pressEqual} />
         <CalculatorButton title="+" color="black" onPress={() => { pressOperator('+') }} />
       </CalculatorRow>
