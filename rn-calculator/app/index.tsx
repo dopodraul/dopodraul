@@ -13,7 +13,15 @@ export default function Index() {
 
     const newCalList = calList.map((text, index) => {
       if (index === indexTarget) {
-        return text === '0' || text === errorResult ? input : text + input;
+        if (text === '0' || text === errorResult) {
+          return input;
+        }
+
+        if (text === '-0') {
+          return '-' + input;
+        }
+
+        return text + input;
       }
 
       return text;
@@ -92,6 +100,24 @@ export default function Index() {
     setCalList(['0']);
   }
 
+  const pressSign = () => {
+    const indexTarget = calList.length - 1;
+
+    const newCalList = calList.map((text, index) => {
+      if (index === indexTarget) {
+        if (index === 0 && text === errorResult) {
+          return '-0';
+        }
+
+        return text[0] === '-' ? text.slice(1) : '-' + text;
+      }
+
+      return text;
+    });
+
+    setCalList(newCalList);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.numberRow}>
@@ -112,7 +138,7 @@ export default function Index() {
         <CalculatorButton title="÷" color="black" onPress={ () => { pressOperator('÷') } } />
       </CalculatorRow>
       <CalculatorRow>
-        <CalculatorButton title="±" color="black" onPress={()=>{}} />
+        <CalculatorButton title="±" color="black" onPress={pressSign} />
         <CalculatorButton title="4" color="gray" onPress={() => { pressNumber('4') }} />
         <CalculatorButton title="5" color="gray" onPress={() => { pressNumber('5') }} />
         <CalculatorButton title="6" color="gray" onPress={() => { pressNumber('6') }} />
