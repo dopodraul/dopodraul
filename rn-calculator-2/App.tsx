@@ -4,25 +4,156 @@ import CalculatorButton from './components/CalculatorButton';
 import CalculatorRow from './components/CalculatorRow';
 
 export default function App() {
-  const [calList] = useState(['0']);
+  const errorResult = 'ERROR';
+  const [calList, setCalList] = useState(['0']);
+  const [numberMemory, setNumberMemory] = useState(0);
 
-  const pressMemoryClear = () => {}
+  const pressMemoryClear = () => {
+    setNumberMemory(0);
+  }
 
-  const pressMemoryResult = () => {}
+  const pressMemoryResult = () => {
+    setCalList([isFinite(numberMemory) ? String(numberMemory) : errorResult]);
+  }
 
-  const pressEqual = (operatorAfter: string) => {}
+  const pressEqual = (operatorAfter: string) => {
+    let numberLhs = Number(calList[0]);
+    const calListLength = calList.length;
 
-  const pressNumber = (input: string) => {}
+    for (let index = 1; index < calListLength - 1; index += 2) {
+      const operator = calList[index];
+      const numberRhs = Number(calList[index + 1]);
 
-  const pressOperator = (input: string) => {}
+      switch (operator) {
+        case '+':
+          numberLhs += numberRhs;
+          break;
 
-  const pressSign = () => {}
+        case '-':
+          numberLhs -= numberRhs;
+          break;
 
-  const pressClear = () => {}
+        case 'X':
+          numberLhs *= numberRhs;
+          break;
 
-  const pressAllClear = () => {}
+        case '÷':
+          numberLhs /= numberRhs;
+          break;
+      }
+    }
 
-  const pressPoint = () => {}
+    if (operatorAfter === 'root') {
+      const numberResult = Math.sqrt(numberLhs);
+      setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
+    } else if (operatorAfter === 'percent') {
+      const numberResult = numberLhs / 100;
+      setCalList([isFinite(numberResult) ? String(numberResult) : errorResult]);
+    } else {
+      setCalList([isFinite(numberLhs) ? String(numberLhs) : errorResult]);
+
+      if (operatorAfter === 'memoryAdd') {
+        setNumberMemory(numberMemory + numberLhs);
+      } else if (operatorAfter === 'memorySubtract') {
+        setNumberMemory(numberMemory - numberLhs);
+      }
+    }
+  }
+
+  const pressNumber = (input: string) => {
+    const indexTarget = calList.length - 1;
+
+    const newCalList = calList.map((text, index) => {
+      if (index === indexTarget) {
+        if (text === '0' || text === errorResult) {
+          return input;
+        }
+
+        if (text === '-0') {
+          return '-' + input;
+        }
+
+        return text + input;
+      }
+
+      return text;
+    });
+
+    setCalList(newCalList);
+  }
+
+  const pressOperator = (input: string) => {
+    const calListLength = calList.length;
+
+    if (calListLength === 1) {
+      setCalList([calList[0] === errorResult ? '0' : calList[0], input, '0']);
+    } else if (calList[calListLength - 1] !== '0') {
+      setCalList([...calList, input, '0']);
+    }
+  }
+
+  const pressSign = () => {
+    const indexTarget = calList.length - 1;
+
+    const newCalList = calList.map((text, index) => {
+      if (index === indexTarget) {
+        if (text === errorResult) {
+          return '-0';
+        }
+
+        return text[0] === '-' ? text.slice(1) : '-' + text;
+      }
+
+      return text;
+    });
+
+    setCalList(newCalList);
+  }
+
+  const pressClear = () => {
+    const calListLength = calList.length;
+
+    if (calListLength === 1) {
+      setCalList(['0']);
+    } else {
+      const indexLast = calListLength - 1;
+
+      if (calList[indexLast] === '0') {
+        const newCalList = calList.slice(0, calListLength - 2);
+        setCalList(newCalList);
+      } else {
+        const newCalList = calList.map((text, index) => {
+          return index === indexLast ? '0' : text;
+        });
+
+        setCalList(newCalList);
+      }
+    }
+  }
+
+  const pressAllClear = () => {
+    setCalList(['0']);
+  }
+
+  const pressPoint = () => {
+    const indexTarget = calList.length - 1;
+
+    const newCalList = calList.map((text, index) => {
+      if (index === indexTarget) {
+        if (text === errorResult) {
+          return '0.';
+        }
+
+        if (text.indexOf('.') === -1) {
+          return text + '.';
+        }
+      }
+
+      return text;
+    })
+
+    setCalList(newCalList);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,7 +182,7 @@ export default function App() {
         <CalculatorButton title="X" color="black" onPress={() => { pressOperator('X') }} />
       </CalculatorRow>
       <CalculatorRow>
-        <CalculatorButton title="C" color="red" onPress={() => { pressClear() }} />
+        <CalculatorButton title="C" color="red" onPress={pressClear} />
         <CalculatorButton title="1" color="gray" onPress={() => { pressNumber('1') }} />
         <CalculatorButton title="2" color="gray" onPress={() => { pressNumber('2') }} />
         <CalculatorButton title="3" color="gray" onPress={() => { pressNumber('3') }} />
