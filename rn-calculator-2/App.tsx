@@ -73,7 +73,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
-    margin: 16
+    marginTop: 32,
+    marginBottom: 32,
+    marginLeft: 16,
+    marginRight: 16
   },
 
   numberRow: {
