@@ -1,15 +1,44 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
-import {useEffect, useState} from 'react';
+import { Text, SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { useEffect, useState } from 'react';
+import { LineChart } from 'react-native-chart-kit';
 
 // You can import supported modules from npm
 import { Card } from 'react-native-paper';
+const MARGIN_Y = 16;
 
-// or any files within the Snack
-import AssetExample from './components/AssetExample';
+const Chart = ({ data }) => {
+  const windowWidth = Dimensions.get('window').width;
+
+  const chartConfig = {
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientToOpacity: 0.5,
+    color: () => 'black'
+  };
+
+  return (
+    data ?
+    <ScrollView
+      horizontal={true}
+      maxWidth={windowWidth - MARGIN_Y * 2}>
+      <LineChart
+        data={data}
+        width={windowWidth * 2}
+        height={220}
+        chartConfig={chartConfig}></LineChart>
+    </ScrollView> :
+    ''
+  );
+}
 
 export default function App() {
+  const placeSize = 5;
+  const dateSize = 6;
+  const [dateStart, setDateStart] = useState('');
+  const [dateEnd, setDateEnd] = useState('');
+  const [placeList, setPlaceList] = useState([]);
   const [wifiDataSrc, setWifiDataSrc] = useState([]);
   const [wifiDataChart, setWifiDataChart] = useState({});
+  const [lineChartData, setLineChartData] = useState(null);
 
   const getWifiData = async () => {
     // https://data.gov.tw/dataset/67472
@@ -49,8 +78,10 @@ export default function App() {
     const dateList = Object.keys(wifiDataChart);
     dateList.sort();
     dateList.reverse();
+    setDateStart(dateList[dateSize - 1]);
+    setDateEnd(dateList[0]);
 
-    dateList.slice(0, 6).forEach((date) => {
+    dateList.slice(0, dateSize).forEach((date) => {
       for (const place in wifiDataChart[date]) {
         if (placeUser.index[place] === undefined) {
           placeUser.index[place] = placeUser.list.length;
@@ -66,15 +97,57 @@ export default function App() {
     });
 
     placeUser.list.sort((lhs, rhs) => { return rhs.user - lhs.user });
+    const newPlaceList = placeUser.list.slice(0, placeSize).map((hash) => hash.place);
+    setPlaceList(newPlaceList);
   }, [wifiDataChart]);
+
+  useEffect(() => {
+    const colorList = [
+      'black',
+      'blue',
+      'green',
+      'yellow',
+      'red'
+    ];
+
+    if (dateStart && dateEnd) {
+      const dateObjMax = new Date(dateEnd);
+
+      const newLineChartData = {
+        labels: [],
+        datasets: [],
+        legend: []
+      };
+
+      for (const dateObj = new Date(dateStart); dateObj <= dateObjMax; dateObj.setMonth(dateObj.getMonth() + 1)) {
+        newLineChartData.labels.push(dateObj.toJSON().substring(0, 10));
+      }
+
+      if (placeList) {
+        placeList.forEach((place, index) => {
+          newLineChartData.legend.push(place);
+
+          const dataset = {
+            color: () => colorList[index],
+            data: []
+          };
+
+          newLineChartData.datasets.push(dataset);
+
+          newLineChartData.labels.forEach((date) => {
+            dataset.data.push(wifiDataChart[date][place]);
+          });
+        });
+      }
+
+      setLineChartData(newLineChartData);
+    }
+  }, [dateStart, dateEnd, placeList, wifiDataChart]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
+      <Card style={styles.card}>
+        <Chart data={lineChartData}></Chart>
       </Card>
     </SafeAreaView>
   );
@@ -85,12 +158,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
-    padding: 8,
+    padding: 8
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+  card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 32,
+    marginBottom: 32,
+    marginLeft: MARGIN_Y,
+    marginRight: MARGIN_Y
+  }
 });
