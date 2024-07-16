@@ -7,13 +7,19 @@ import { Card } from 'react-native-paper';
 const MARGIN_Y = 16;
 
 const Chart = ({ data }) => {
-  const windowWidth = Dimensions.get('window').width;
+  const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width);
 
   const chartConfig = {
     backgroundGradientFromOpacity: 0,
     backgroundGradientToOpacity: 0.5,
     color: () => 'black'
   };
+
+  useEffect(() => {
+    Dimensions.addEventListener('change', ({ window: {width} }) => {
+      setWindowWidth(width);
+    });
+  }, []);
 
   return (
     data ?
