@@ -1,12 +1,23 @@
 import { Text, SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, PropsWithChildren } from 'react';
 import { LineChart } from 'react-native-chart-kit';
 
 // You can import supported modules from npm
 import { Card } from 'react-native-paper';
 const MARGIN_Y = 16;
 
-const Chart = ({ data }) => {
+type datasetType = {
+  color: () => string,
+  data: number[]
+}
+
+type chartProps = PropsWithChildren<{
+  labels: string[],
+  datasets: datasetType[],
+  legend: string[]
+}>;
+
+const Chart = (props: chartProps) => {
   const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width);
 
   const chartConfig = {
@@ -22,15 +33,16 @@ const Chart = ({ data }) => {
   }, []);
 
   return (
-    data ?
+    props.data ?
     <ScrollView
       horizontal={true}
       maxWidth={windowWidth - MARGIN_Y * 2}>
       <LineChart
-        data={data}
+        data={props.data}
         width={windowWidth * 2}
         height={220}
-        chartConfig={chartConfig}></LineChart>
+        chartConfig={chartConfig}>
+      </LineChart>
     </ScrollView> :
     ''
   );
@@ -53,7 +65,7 @@ export default function App() {
       const response = await fetch('https://odws.hccg.gov.tw/001/Upload/25/opendataback/9059/9/e2e2a99e-0bd3-42a7-8263-8f09afb5b4c4.json');
       const json = await response.json();
       setWifiDataSrc(json);
-    } catch(_e) {
+    } catch(e) {
     }
   }
 
@@ -64,7 +76,7 @@ export default function App() {
   useEffect(() => {
     const newWifiDataChart = {};
 
-    wifiDataSrc.forEach((data) => {
+    wifiDataSrc.forEach((data: {}) => {
       const year = Number(data['年月'].substr(0, 3)) + 1911;
       const month = data['年月'].substr(3);
       const date = `${year}-${month}-01`;
@@ -80,7 +92,18 @@ export default function App() {
   }, [wifiDataSrc]);
 
   useEffect(() => {
-    const placeUser = { list: [], index: {} };
+    const placeUser: {
+      index: object,
+
+      list: {
+        place: string,
+        user: number
+      }[]
+    } = {
+      index: {},
+      list: []
+    };
+
     const dateList = Object.keys(wifiDataChart);
     dateList.sort();
     dateList.reverse();
@@ -119,7 +142,7 @@ export default function App() {
     if (dateStart && dateEnd) {
       const dateObjMax = new Date(dateEnd);
 
-      const newLineChartData = {
+      const newLineChartData: chartProps = {
         labels: [],
         datasets: [],
         legend: []
@@ -133,7 +156,7 @@ export default function App() {
         placeList.forEach((place, index) => {
           newLineChartData.legend.push(place);
 
-          const dataset = {
+          const dataset: datasetType = {
             color: () => colorList[index],
             data: []
           };
