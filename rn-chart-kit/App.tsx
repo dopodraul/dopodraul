@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Dimensions, ScrollView, View } from 'react-native';
 import React, { useEffect, useState, PropsWithChildren } from 'react';
 
 // You can import supported modules from npm
@@ -53,12 +53,13 @@ const Chart = (props: chartProps) => {
 export default function App() {
   const placeSize = 5;
   const dateSize = 6;
-  const [dateStart, setDateStart] = useState('');
-  const [dateEnd, setDateEnd] = useState('');
-  const [placeList, setPlaceList] = useState([]);
+  const [dateStart, setDateStart] = useState(undefined);
+  const [dateEnd, setDateEnd] = useState(undefined);
+  const [placeChart, setPlaceChart] = useState([]);
   const [wifiDataSrc, setWifiDataSrc] = useState([]);
   const [wifiDataChart, setWifiDataChart] = useState({});
   const [lineChartData, setLineChartData] = useState(null);
+  const [dateItem, setDateItem] = useState(undefined);
 
   const getWifiData = async () => {
     // https://data.gov.tw/dataset/67472
@@ -109,8 +110,19 @@ export default function App() {
     const dateList = Object.keys(wifiDataChart);
     dateList.sort();
     dateList.reverse();
-    setDateStart(dateList[dateSize - 1]);
-    setDateEnd(dateList[0]);
+    const newDateStart = dateList[dateSize - 1];
+    setDateStart(newDateStart);
+    const newDateEnd = dateList[0];
+    setDateEnd(newDateEnd);
+
+    setDateItem(dateList.map((date => {
+      const list = date.split('-');
+
+      return {
+        label: `${list[0]}/${list[1]}`,
+        value: date
+      };
+    })));
 
     dateList.slice(0, dateSize).forEach((date) => {
       for (const place in wifiDataChart[date]) {
@@ -128,8 +140,8 @@ export default function App() {
     });
 
     placeUser.list.sort((lhs, rhs) => { return rhs.user - lhs.user });
-    const newPlaceList = placeUser.list.slice(0, placeSize).map((hash) => hash.place);
-    setPlaceList(newPlaceList);
+    const newPlaceChart = placeUser.list.slice(0, placeSize).map((hash) => hash.place);
+    setPlaceChart(newPlaceChart);
   }, [wifiDataChart]);
 
   useEffect(() => {
@@ -154,8 +166,8 @@ export default function App() {
         newLineChartData.labels.push(dateObj.toJSON().substring(0, 10));
       }
 
-      if (placeList) {
-        placeList.forEach((place, index) => {
+      if (placeChart) {
+        placeChart.forEach((place, index) => {
           newLineChartData.legend.push(place);
 
           const dataset: datasetType = {
@@ -173,12 +185,35 @@ export default function App() {
 
       setLineChartData(newLineChartData);
     }
-  }, [dateStart, dateEnd, placeList, wifiDataChart]);
+  }, [dateStart, dateEnd, placeChart, wifiDataChart]);
 
   return (
     <SafeAreaView style={styles.container}>
       <Card style={styles.card}>
-        <Chart data={lineChartData}></Chart>
+        <ScrollView>
+          <View style={styles.flex}>
+            <View style={styles.flex}>
+              <Text>日期</Text>
+            </View>
+            <View style={styles.flex}>
+              <DropdownComponent
+                items={dateItem}
+                value={dateStart}
+                onClose={setDateStart}
+              />
+            </View>
+            <View style={styles.flex}>
+            <DropdownComponent
+                items={dateItem}
+                value={dateEnd}
+                onClose={setDateEnd}
+              />
+            </View>
+          </View>
+          <View style={styles.flex}>
+            <Chart data={lineChartData}></Chart>
+          </View>
+        </ScrollView>
       </Card>
     </SafeAreaView>
   );
@@ -199,5 +234,12 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     marginLeft: MARGIN_Y,
     marginRight: MARGIN_Y
+  },
+  flex: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    margin: 8
   }
 });

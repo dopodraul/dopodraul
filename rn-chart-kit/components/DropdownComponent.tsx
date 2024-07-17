@@ -14,6 +14,17 @@ type DropdownProps = PropsWithChildren<{
 export default function DropdownComponent( props: DropdownProps ) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(props.value);
+  const [items, setItems] = useState(props.items);
+
+  useEffect(() => {
+    if (props.items !== undefined) {
+      setItems(props.items);
+    }
+
+    if (props.value !== undefined) {
+      setValue(props.value);
+    }
+  }, [props]);
 
   useEffect(() => {
     if (open === false) {
@@ -24,8 +35,8 @@ export default function DropdownComponent( props: DropdownProps ) {
   return (
     <DropDownPicker
       open={open}
+      items={items}
       value={value}
-      items={props.items}
       setOpen={setOpen}
       setValue={setValue}
     />
