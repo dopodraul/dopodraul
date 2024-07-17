@@ -1,20 +1,22 @@
 import { Text, SafeAreaView, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import React, { useEffect, useState, PropsWithChildren } from 'react';
-import { LineChart } from 'react-native-chart-kit';
 
 // You can import supported modules from npm
 import { Card } from 'react-native-paper';
+import { LineChart } from 'react-native-chart-kit';
+import DropdownComponent from './components/DropdownComponent';
+
 const MARGIN_Y = 16;
 
 type datasetType = {
-  color: () => string,
-  data: number[]
-}
+  color: () => string;
+  data: number[];
+};
 
 type chartProps = PropsWithChildren<{
-  labels: string[],
-  datasets: datasetType[],
-  legend: string[]
+  labels: string[];
+  datasets: datasetType[];
+  legend: string[];
 }>;
 
 const Chart = (props: chartProps) => {
