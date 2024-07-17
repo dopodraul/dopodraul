@@ -13,10 +13,14 @@ type datasetType = {
   data: number[];
 };
 
-type chartProps = PropsWithChildren<{
+type chartDataType = {
   labels: string[];
   datasets: datasetType[];
   legend: string[];
+};
+
+type chartProps = PropsWithChildren<{
+  data: chartDataType;
 }>;
 
 const Chart = (props: chartProps) => {
@@ -156,7 +160,7 @@ export default function App() {
     if (dateStart && dateEnd) {
       const dateObjMax = new Date(dateEnd);
 
-      const newLineChartData: chartProps = {
+      const newLineChartData: chartDataType = {
         labels: [],
         datasets: [],
         legend: []
