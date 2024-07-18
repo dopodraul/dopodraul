@@ -2,7 +2,11 @@ import {PropsWithChildren, useState, useEffect } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 type DropdownProps = PropsWithChildren<{
+  open: boolean;
   value: any;
+  onOpen: () => void;
+  setOpen: (boolean) => void;
+  setValue: (any) => void;
   onClose: (any) => void;
 
   items: {
@@ -12,9 +16,19 @@ type DropdownProps = PropsWithChildren<{
 }>;
 
 export default function DropdownComponent( props: DropdownProps ) {
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(props.value);
+  const [result, setResult] = useState(props.value);
   const [items, setItems] = useState(props.items);
+
+  const setValue = (_setValue) => {
+    const newValue = _setValue();
+    setResult(newValue);
+    props.setValue(newValue);
+    props.setOpen(false);
+  }
+
+  const onPress = () => {
+    props.setOpen(!props.open);
+  }
 
   useEffect(() => {
     if (props.items !== undefined) {
@@ -22,23 +36,18 @@ export default function DropdownComponent( props: DropdownProps ) {
     }
 
     if (props.value !== undefined) {
-      setValue(props.value);
+      setResult(props.value);
     }
   }, [props]);
 
-  useEffect(() => {
-    if (open === false) {
-      props.onClose(value);
-    }
-  }, [open, props, value]);
-
   return (
     <DropDownPicker
-      open={open}
+      open={props.open}
       items={items}
-      value={value}
-      setOpen={setOpen}
+      value={result}
       setValue={setValue}
+      onOpen={props.onOpen}
+      onPress={onPress}
     />
   );
 }

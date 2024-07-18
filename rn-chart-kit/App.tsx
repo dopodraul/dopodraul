@@ -64,6 +64,8 @@ export default function App() {
   const [wifiDataChart, setWifiDataChart] = useState({});
   const [lineChartData, setLineChartData] = useState(null);
   const [dateItem, setDateItem] = useState(undefined);
+  const [isOpenDateStart, setIsOpenDateStart] = useState(false);
+  const [isOpenDateEnd, setIsOpenDateEnd] = useState(false);
 
   const getWifiData = async () => {
     // https://data.gov.tw/dataset/67472
@@ -73,6 +75,16 @@ export default function App() {
       const json = await response.json();
       setWifiDataSrc(json);
     } catch(e) {
+    }
+  }
+
+  const closeAllDropdown = ( type: string ) => {
+    if (type !== 'dateStart') {
+      setIsOpenDateStart(false);
+    }
+
+    if (type !== 'dateEnd') {
+      setIsOpenDateEnd(false);
     }
   }
 
@@ -199,18 +211,26 @@ export default function App() {
             <View style={styles.flex}>
               <Text>日期</Text>
             </View>
-            <View style={styles.flex}>
+            <View style={[styles.flex, styles.flexDate]}>
               <DropdownComponent
                 items={dateItem}
                 value={dateStart}
+                setValue={setDateStart}
+                open={isOpenDateStart}
+                setOpen={setIsOpenDateStart}
                 onClose={setDateStart}
+                onOpen={() => { closeAllDropdown('dateStart') }}
               />
             </View>
-            <View style={styles.flex}>
+            <View style={[styles.flex, styles.flexDate]}>
             <DropdownComponent
                 items={dateItem}
                 value={dateEnd}
+                setValue={setDateEnd}
+                open={isOpenDateEnd}
+                setOpen={setIsOpenDateEnd}
                 onClose={setDateEnd}
+                onOpen={() => { closeAllDropdown('dateEnd') }}
               />
             </View>
           </View>
@@ -245,5 +265,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     margin: 8
+  },
+  flexDate: {
+    flex: 5
   }
 });
