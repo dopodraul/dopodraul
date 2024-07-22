@@ -64,8 +64,10 @@ export default function App() {
   const [wifiDataChart, setWifiDataChart] = useState({});
   const [lineChartData, setLineChartData] = useState(null);
   const [dateItem, setDateItem] = useState(undefined);
+  const [placeItem, setPlaceItem] = useState(undefined);
   const [isOpenDateStart, setIsOpenDateStart] = useState(false);
   const [isOpenDateEnd, setIsOpenDateEnd] = useState(false);
+  const [isOpenPlace, setIsOpenPlace] = useState(false);
 
   const getWifiData = async () => {
     // https://data.gov.tw/dataset/67472
@@ -85,6 +87,10 @@ export default function App() {
 
     if (type !== 'dateEnd') {
       setIsOpenDateEnd(false);
+    }
+
+    if (type !== 'place') {
+      setIsOpenPlace(false);
     }
   }
 
@@ -156,6 +162,12 @@ export default function App() {
     });
 
     placeUser.list.sort((lhs, rhs) => { return rhs.user - lhs.user });
+
+    const newPlaceItem = placeUser.list.map((hash) => {
+      return { label: hash.place, value: hash.place }
+    });
+
+    setPlaceItem(newPlaceItem);
     const newPlaceChart = placeUser.list.slice(0, placeSize).map((hash) => hash.place);
     setPlaceChart(newPlaceChart);
   }, [wifiDataChart]);
@@ -211,26 +223,48 @@ export default function App() {
             <View style={styles.flex}>
               <Text>日期</Text>
             </View>
-            <View style={[styles.flex, styles.flexDate]}>
+            <View style={[styles.flex, styles.flexDropdown]}>
               <DropdownComponent
+                zIndex={2000}
+                zIndexInverse={2000}
                 items={dateItem}
                 value={dateStart}
-                setValue={setDateStart}
+                onSelectItem={setDateStart}
                 open={isOpenDateStart}
                 setOpen={setIsOpenDateStart}
-                onClose={setDateStart}
-                onOpen={() => { closeAllDropdown('dateStart') }}
+                onOpen={() => { closeAllDropdown('dateStart'); }}
               />
             </View>
-            <View style={[styles.flex, styles.flexDate]}>
-            <DropdownComponent
+            <View style={[styles.flex, styles.flexDropdown]}>
+              <DropdownComponent
+                zIndex={2000}
+                zIndexInverse={2000}
                 items={dateItem}
                 value={dateEnd}
-                setValue={setDateEnd}
+                onSelectItem={setDateEnd}
                 open={isOpenDateEnd}
                 setOpen={setIsOpenDateEnd}
-                onClose={setDateEnd}
-                onOpen={() => { closeAllDropdown('dateEnd') }}
+                onOpen={() => { closeAllDropdown('dateEnd'); }}
+              />
+            </View>
+          </View>
+          <View style={styles.flex}>
+            <View style={styles.flex}>
+              <Text>熱點</Text>
+            </View>
+            <View style={styles.flexDropdown}>
+              <DropdownComponent
+                zIndex={1000}
+                zIndexInverse={1000}
+                items={placeItem}
+                value={placeChart}
+                onSelectItem={setPlaceChart}
+                open={isOpenPlace}
+                setOpen={setIsOpenPlace}
+                onOpen={() => { closeAllDropdown('place'); }}
+                multiple={true}
+                max={placeSize}
+                min={0}
               />
             </View>
           </View>
@@ -266,7 +300,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 8
   },
-  flexDate: {
+  flexDropdown: {
     flex: 5
   }
 });

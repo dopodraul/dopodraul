@@ -2,12 +2,16 @@ import {PropsWithChildren, useState, useEffect } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 type DropdownProps = PropsWithChildren<{
+  zIndex: number,
+  zIndexInverse: number,
   open: boolean;
+  multiple: boolean;
+  min: number;
+  max: number;
   value: any;
   onOpen: () => void;
-  setOpen: (boolean) => void;
-  setValue: (any) => void;
-  onClose: (any) => void;
+  setOpen: (isOpen: boolean) => void;
+  onSelectItem: (value: any) => void;
 
   items: {
     label: string;
@@ -16,18 +20,22 @@ type DropdownProps = PropsWithChildren<{
 }>;
 
 export default function DropdownComponent( props: DropdownProps ) {
-  const [result, setResult] = useState(props.value);
+  const [value, setValue] = useState(props.value);
   const [items, setItems] = useState(props.items);
-
-  const setValue = (_setValue) => {
-    const newValue = _setValue();
-    setResult(newValue);
-    props.setValue(newValue);
-    props.setOpen(false);
-  }
 
   const onPress = () => {
     props.setOpen(!props.open);
+  }
+
+  const onSelectItem = (item) => {
+    if (props.multiple) {
+      if (item.length <= props.max) {
+        props.onSelectItem(item.map(hash => hash.value));
+      }
+    } else {
+      props.onSelectItem(item.value);
+      props.setOpen(false);
+    }
   }
 
   useEffect(() => {
@@ -36,18 +44,23 @@ export default function DropdownComponent( props: DropdownProps ) {
     }
 
     if (props.value !== undefined) {
-      setResult(props.value);
+      setValue(props.value);
     }
   }, [props]);
 
   return (
     <DropDownPicker
+      multiple={props.multiple}
+      max={props.max}
+      min={props.min}
       open={props.open}
+      zIndex={props.zIndex}
+      zIndexInverse={props.zIndexInverse}
       items={items}
-      value={result}
-      setValue={setValue}
+      value={value}
       onOpen={props.onOpen}
       onPress={onPress}
+      onSelectItem={onSelectItem}
     />
   );
 }
