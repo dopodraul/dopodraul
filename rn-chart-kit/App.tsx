@@ -194,7 +194,7 @@ export default function App() {
         newLineChartData.labels.push(dateObj.toJSON().substring(0, 10));
       }
 
-      if (placeChart) {
+      if (placeChart && placeChart[0]) {
         placeChart.forEach((place, index) => {
           newLineChartData.legend.push(place);
 
@@ -208,6 +208,11 @@ export default function App() {
           newLineChartData.labels.forEach((date) => {
             dataset.data.push(wifiDataChart[date][place]);
           });
+        });
+      } else {
+        newLineChartData.datasets.push({
+          color: () => colorList[0],
+          data: []
         });
       }
 
