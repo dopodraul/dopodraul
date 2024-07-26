@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, SafeAreaView, TextInput, ScrollView, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 
 // You can import supported modules from npm
 import { Card } from 'react-native-paper';
@@ -10,6 +10,8 @@ import TodolistComponent from './components/TodolistComponent';
 
 const TodolistCard = (props: {
   todoList: { id: number, isDone: boolean; text: string; }[],
+  setIsDone: (id: number, isDone: boolean) => void;
+  setText: (id: number, text: string) => void;
   remove: (id: number) => void
 }) => {
   const [todoList, setTodoList] = useState(props.todoList);
@@ -26,6 +28,8 @@ const TodolistCard = (props: {
             id={hash.id}
             isDone={hash.isDone}
             text={hash.text}
+            setIsDone={props.setIsDone}
+            setText={props.setText}
             remove={props.remove} />
         ))
       }</View>
@@ -37,27 +41,44 @@ const TodolistCard = (props: {
 
 export default function App() {
   const [id, setId] = useState(1);
-  const [text, setText] = useState('');
+  const [textAdd, setTextAdd] = useState('');
   const [todoList, setTodoList] = useState<any[]>([]);
   const [addColor, setAddColor] = useState('');
 
   const addTodo = () => {
-    if (text) {
-      setTodoList([...todoList, { id, text, isDone: false }]);
+    if (textAdd) {
+      setTodoList([...todoList, {
+        id,
+        text: textAdd,
+        isDone: false
+      }]);
+
       setId(id + 1);
-      setText('');
+      setTextAdd('');
     }
   }
 
+  const setIsDone = (id: number, isDone: boolean) => {
+    setTodoList(todoList.map(hash => {
+      return id === hash.id ? Object.assign(hash, {isDone}) : hash;
+    }));
+  }
+
+  const setText = (id: number, text: string) => {
+    setTodoList(todoList.map(hash => {
+      return id === hash.id ? Object.assign(hash, {text}) : hash;
+    }));
+  }
+
   const removeTodo = (id: number) => {
-    setTodoList( todoList.filter(hash => {
+    setTodoList(todoList.filter(hash => {
       return id !== hash.id;
     }));
   }
 
   useEffect(() => {
-    setAddColor(text ? 'black' : '#fffaf0');
-  }, [text]);
+    setAddColor(textAdd ? 'black' : '#fffaf0');
+  }, [textAdd]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -65,8 +86,8 @@ export default function App() {
         <View style={styles.menu}>
           <View style={styles.menuInput}>
             <TextInput
-              value={text}
-              onChangeText={setText}
+              value={textAdd}
+              onChangeText={setTextAdd}
               placeholder="請輸入待辦項目" />
           </View>
           <TouchableOpacity style={styles.menuAdd} onPress={addTodo}>
@@ -77,7 +98,13 @@ export default function App() {
         </View>
       </Card>
       <Card style={styles.card}>
-        <TodolistCard todoList={todoList} remove={removeTodo} />
+        <ScrollView style={{maxHeight: Dimensions.get('window').height - 224}}>
+          <TodolistCard
+            todoList={todoList}
+            setIsDone={setIsDone}
+            setText={setText}
+            remove={removeTodo} />
+        </ScrollView>
       </Card>
     </SafeAreaView>
   );

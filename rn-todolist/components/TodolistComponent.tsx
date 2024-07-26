@@ -6,15 +6,19 @@ export default function TodolistComponent( props: {
   id: number;
   isDone: boolean;
   text: string;
+  setIsDone: (id: number, isDone: boolean) => void;
+  setText: (id:number, text: string) => void;
   remove: (id: number) => void
 }) {
-  const [isDone, setIsDone] = useState(props.isDone);
+  const [isDone, setIsDone] = useState(false);
   const [doneIcon, setDoneIcon] = useState('');
   const [textShow, setTextShow] = useState('');
   const [textSave, setTextSave] = useState('');
 
   const checkDone = () => {
-    setIsDone(!isDone);
+    const newValue = !isDone;
+    setIsDone(newValue);
+    props.setIsDone(props.id, newValue);
   }
 
   const onChangeText = (value: string) => {
@@ -24,6 +28,7 @@ export default function TodolistComponent( props: {
   const onBlur = () => {
     if (textShow) {
       setTextSave(textShow);
+      props.setText(props.id, textShow);
     } else {
       setTextShow(textSave);
     }
@@ -38,6 +43,7 @@ export default function TodolistComponent( props: {
   }, [isDone]);
 
   useEffect(() => {
+    setIsDone(props.isDone);
     setTextShow(props.text);
     setTextSave(props.text);
   }, [props]);
