@@ -4,16 +4,16 @@ import { Text, SafeAreaView, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
 // or any files within the Snack
-import AssetExample from './components/AssetExample';
+import TodolistComponent from './components/TodolistComponent';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
+      <Card style={styles.card}>
+        <Text></Text>
+      </Card>
+      <Card style={styles.card}>
+        <TodolistComponent isDone={true} text="Content" />
       </Card>
     </SafeAreaView>
   );
@@ -25,11 +25,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
     padding: 8,
+    marginTop: 32,
+    marginBottom: 32,
+    marginLeft: 16,
+    marginRight: 16
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+  card: {
+    padding: 8,
+    marginBottom: 8
+  }
 });
