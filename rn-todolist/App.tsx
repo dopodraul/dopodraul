@@ -8,22 +8,24 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 // or any files within the Snack
 import TodolistComponent from './components/TodolistComponent';
 
+const windowHeight = Dimensions.get('window').height;
+
 const TodolistCard = (props: {
-  todoList: { id: number, isDone: boolean; text: string; }[],
+  todolist: { id: number, isDone: boolean; text: string; }[];
   setIsDone: (id: number, isDone: boolean) => void;
   setText: (id: number, text: string) => void;
-  remove: (id: number) => void
+  remove: (id: number) => void;
 }) => {
-  const [todoList, setTodoList] = useState(props.todoList);
+  const [todolist, setTodolist] = useState(props.todolist);
 
   useEffect(() => {
-    setTodoList(props.todoList);
+    setTodolist(props.todolist);
   }, [props]);
 
-  if (todoList[0]) {
+  if (todolist[0]) {
     return (
       <View>{
-        todoList.map((hash) => (
+        todolist.map((hash) => (
           <TodolistComponent
             id={hash.id}
             isDone={hash.isDone}
@@ -39,15 +41,77 @@ const TodolistCard = (props: {
   return (<View><Text>尚無待辦項目，請由上列選單添加</Text></View>);
 }
 
+type MessageBarPropsTodoType = {
+  id: number;
+  isDone: boolean;
+  text: string;
+  index: number;
+};
+
+const MessageBar = (props: {
+  message: string;
+  todoUndo: MessageBarPropsTodoType;
+  undoRemove: (hash: MessageBarPropsTodoType) => void;
+}) => {
+  const [message, setMessage] = useState('');
+
+  const [todoUndo, setTodoUndo] = useState({
+    id: 0,
+    text: '',
+    isDone: false,
+    index: 0
+  });
+
+  const undoRemove = () => {
+    props.undoRemove(todoUndo);
+  }
+
+  useEffect(() => {
+    setMessage(props.message);
+    setTodoUndo(props.todoUndo);
+  }, [props]);
+
+  if (message) {
+    return (
+      <View
+        style={[
+          styles.message,
+          {
+            top: windowHeight - 96,
+            width: Dimensions.get('window').width - 32
+          }
+        ]}>
+        <View>
+          <Text>{message}</Text>
+        </View>
+        <TouchableOpacity onPress={undoRemove}>
+          <Text style={styles.messageUndo}>復原</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  return (<View></View>);
+}
+
 export default function App() {
   const [id, setId] = useState(1);
   const [textAdd, setTextAdd] = useState('');
-  const [todoList, setTodoList] = useState<any[]>([]);
+  const [todolist, setTodolist] = useState<any[]>([]);
   const [addColor, setAddColor] = useState('');
+  const [message, setMessage] = useState('');
+  const [timeoutId, setTimeoutId] = useState(setTimeout(() => {}));
+
+  const [todoUndo, setTodoUndo] = useState({
+    id: 0,
+    text: '',
+    isDone: false,
+    index: 0
+  });
 
   const addTodo = () => {
     if (textAdd) {
-      setTodoList([...todoList, {
+      setTodolist([...todolist, {
         id,
         text: textAdd,
         isDone: false
@@ -59,21 +123,45 @@ export default function App() {
   }
 
   const setIsDone = (id: number, isDone: boolean) => {
-    setTodoList(todoList.map(hash => {
-      return id === hash.id ? Object.assign(hash, {isDone}) : hash;
+    setTodolist(todolist.map(hash => {
+      return id === hash.id ? {...hash, ...{isDone}} : hash;
     }));
   }
 
   const setText = (id: number, text: string) => {
-    setTodoList(todoList.map(hash => {
-      return id === hash.id ? Object.assign(hash, {text}) : hash;
+    setTodolist(todolist.map(hash => {
+      return id === hash.id ? {...hash, ...{text}} : hash;
     }));
   }
 
   const removeTodo = (id: number) => {
-    setTodoList(todoList.filter(hash => {
-      return id !== hash.id;
-    }));
+    clearTimeout(timeoutId);
+    const newTodoList : any[] = [];
+
+    todolist.forEach((hash, index) => {
+      if (id === hash.id) {
+        setMessage('已移除 ' + hash.text);
+        setTodoUndo({...hash, ...{index}});
+
+        setTimeoutId(setTimeout(() => {
+          setMessage('');
+        }, 8000));
+      } else {
+        newTodoList.push(hash);
+      }
+    });
+
+    setTodolist(newTodoList);
+  }
+
+  const undoRemove = (hash: MessageBarPropsTodoType) => {
+    setMessage('');
+
+    setTodolist(
+      todolist.slice(0, hash.index)
+        .concat([hash])
+        .concat(todolist.slice(hash.index))
+      );
   }
 
   useEffect(() => {
@@ -98,14 +186,18 @@ export default function App() {
         </View>
       </Card>
       <Card style={styles.card}>
-        <ScrollView style={{maxHeight: Dimensions.get('window').height - 224}}>
+        <ScrollView style={{maxHeight: windowHeight - 224}}>
           <TodolistCard
-            todoList={todoList}
+            todolist={todolist}
             setIsDone={setIsDone}
             setText={setText}
             remove={removeTodo} />
         </ScrollView>
       </Card>
+      <MessageBar
+        message={message}
+        todoUndo={todoUndo}
+        undoRemove={undoRemove} />
     </SafeAreaView>
   );
 }
@@ -136,6 +228,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-end',
-    marginRight: 24
+    paddingRight: 24
+  },
+  message: {
+    position: 'absolute',
+    zIndex: 100,
+    flexDirection: 'row',
+    backgroundColor: '#a9a9a9',
+    padding: 16
+  },
+  messageUndo: {
+    marginLeft: 8,
+    color: 'blue'
   }
 });

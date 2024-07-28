@@ -8,7 +8,7 @@ export default function TodolistComponent( props: {
   text: string;
   setIsDone: (id: number, isDone: boolean) => void;
   setText: (id:number, text: string) => void;
-  remove: (id: number) => void
+  remove: (id: number) => void;
 }) {
   const [isDone, setIsDone] = useState(false);
   const [doneIcon, setDoneIcon] = useState('');
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   check: {
     flex: 1,
     justifyContent: 'center',
-    marginLeft: 16
+    paddingLeft: 16
   },
   text: {
     flex: 10
@@ -96,6 +96,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-end',
-    marginRight: 16
+    paddingRight: 16
   }
 });
