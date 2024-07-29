@@ -49,28 +49,26 @@ export default function TodolistComponent( props: {
   }, [props]);
 
   return (
-    <TouchableOpacity>
-      <View style={styles.item}>
-        <TouchableOpacity style={styles.check} onPress={checkDone}>
-          <View>
-            <Icon name={doneIcon} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.text}>
-          <View>
-            <TextInput
-              value={textShow}
-              onChangeText={onChangeText}
-              onBlur={onBlur} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.remove} onPress={removeTodo}>
-          <View>
-            <Icon name="remove" />
-          </View>
-        </TouchableOpacity>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.item}>
+      <TouchableOpacity style={styles.check} onPress={checkDone}>
+        <View>
+          <Icon name={doneIcon} />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.text}>
+        <View>
+          <TextInput
+            value={textShow}
+            onChangeText={onChangeText}
+            onBlur={onBlur} />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.remove} onPress={removeTodo}>
+        <View>
+          <Icon name="remove" />
+        </View>
+      </TouchableOpacity>
+    </View>
   )
 }
 

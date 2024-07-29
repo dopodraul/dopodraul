@@ -4,19 +4,56 @@ import { Text, View, SafeAreaView, TextInput, ScrollView, TouchableOpacity, Styl
 import { Card } from 'react-native-paper';
 import { useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DragList, {DragListRenderItemInfo} from 'react-native-draglist';
 
 // or any files within the Snack
 import TodolistComponent from './components/TodolistComponent';
 
 const windowHeight = Dimensions.get('window').height;
 
+type itemType = {
+  id: number;
+  isDone: boolean;
+  text: string;
+};
+
 const TodolistCard = (props: {
-  todolist: { id: number, isDone: boolean; text: string; }[];
+  todolist: itemType[];
   setIsDone: (id: number, isDone: boolean) => void;
   setText: (id: number, text: string) => void;
   remove: (id: number) => void;
+  setTodolist: (todolist: itemType[]) => void;
 }) => {
   const [todolist, setTodolist] = useState(props.todolist);
+
+  const keyExtractor = (item: itemType) => {
+    return item.id.toString();
+  }
+
+  const renderItem = (info: DragListRenderItemInfo<itemType>) => {
+    const {item, onDragStart, onDragEnd} = info;
+
+    return (
+      <TouchableOpacity
+        onPressIn={onDragStart}
+        onPressOut={onDragEnd}>
+        <TodolistComponent
+          id={item.id}
+          isDone={item.isDone}
+          text={item.text}
+          setIsDone={props.setIsDone}
+          setText={props.setText}
+          remove={props.remove} />
+      </TouchableOpacity>
+    );
+  }
+
+  const onReordered = (fromIndex: number, toIndex: number) => {
+    const newTodolist = [...todolist];
+    const todolistDrag = newTodolist.splice(fromIndex, 1);
+    newTodolist.splice(toIndex, 0, todolistDrag[0]);
+    props.setTodolist(newTodolist);
+  }
 
   useEffect(() => {
     setTodolist(props.todolist);
@@ -24,17 +61,13 @@ const TodolistCard = (props: {
 
   if (todolist[0]) {
     return (
-      <View>{
-        todolist.map((hash) => (
-          <TodolistComponent
-            id={hash.id}
-            isDone={hash.isDone}
-            text={hash.text}
-            setIsDone={props.setIsDone}
-            setText={props.setText}
-            remove={props.remove} />
-        ))
-      }</View>
+      <View>
+        <DragList
+          data={todolist}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          onReordered={onReordered} />
+      </View>
     );
   }
 
@@ -191,7 +224,8 @@ export default function App() {
             todolist={todolist}
             setIsDone={setIsDone}
             setText={setText}
-            remove={removeTodo} />
+            remove={removeTodo}
+            setTodolist={setTodolist} />
         </ScrollView>
       </Card>
       <MessageBar
