@@ -5,11 +5,13 @@ import { Card } from 'react-native-paper';
 import { useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DragList, {DragListRenderItemInfo} from 'react-native-draglist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // or any files within the Snack
 import TodolistComponent from './components/TodolistComponent';
 
 const windowHeight = Dimensions.get('window').height;
+const storageKey = 'todolist-todolist';
 
 type itemType = {
   id: number;
@@ -128,7 +130,6 @@ const MessageBar = (props: {
 }
 
 export default function App() {
-  const [id, setId] = useState(1);
   const [textAdd, setTextAdd] = useState('');
   const [todolist, setTodolist] = useState<any[]>([]);
   const [addColor, setAddColor] = useState('');
@@ -145,12 +146,11 @@ export default function App() {
   const addTodo = () => {
     if (textAdd) {
       setTodolist([...todolist, {
-        id,
+        id: new Date().valueOf(),
         text: textAdd,
         isDone: false
       }]);
 
-      setId(id + 1);
       setTextAdd('');
     }
   }
@@ -198,8 +198,34 @@ export default function App() {
   }
 
   useEffect(() => {
+    (async () => {
+      try {
+        const todolistString = await AsyncStorage.getItem(storageKey);
+
+        if (todolistString !== null) {
+          try {
+            const todolistStorage = JSON.parse(todolistString);
+            setTodolist(todolistStorage);
+          } catch (e) {
+          }
+        }
+      } catch(e) {
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
     setAddColor(textAdd ? 'black' : '#fffaf0');
   }, [textAdd]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await AsyncStorage.setItem(storageKey, JSON.stringify(todolist));
+      } catch(e) {
+      }
+    })();
+  }, [todolist]);
 
   return (
     <SafeAreaView style={styles.container}>
