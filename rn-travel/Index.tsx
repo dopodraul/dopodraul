@@ -9,7 +9,11 @@ import ConfigurationOption from './screens/ConfigurationOption';
 
 const Tab = createBottomTabNavigator();
 
-export default function Index() {
+export default function Index({ i18n }: any) {
+  const t = (key: string) => {
+    return i18n.t('index:' + key);
+  }
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -35,10 +39,26 @@ export default function Index() {
           },
         })}
       >
-        <Tab.Screen name="RecentPlace" component={RecentPlace} options={{ title: '' }} />
-        <Tab.Screen name="SearchPlace" component={SearchPlace} options={{ title: '' }} />
-        <Tab.Screen name="CommonApp" component={CommonApp} options={{ title: '' }} />
-        <Tab.Screen name="ConfigurationOption" component={ConfigurationOption} options={{ title: '' }} />
+        <Tab.Screen
+          name="RecentPlace"
+          options={{ title: t('recentPlace') }}
+          component={RecentPlace}
+          initialParams={{ i18n }} />
+        <Tab.Screen
+          name="SearchPlace"
+          options={{ title: t('searchPlace') }}
+          component={SearchPlace}
+          initialParams={{ i18n }} />
+        <Tab.Screen
+          name="CommonApp"
+          options={{ title: t('commonApp') }}
+          component={CommonApp}
+          initialParams={{ i18n }} />
+        <Tab.Screen
+          name="ConfigurationOption"
+          options={{ title: t('configurationOption') }}
+          component={ConfigurationOption}
+          initialParams={{ i18n }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

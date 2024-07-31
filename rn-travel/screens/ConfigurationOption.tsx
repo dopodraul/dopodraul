@@ -1,12 +1,5 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-const listData = [
-  { title: 'Language', value: 'English' },
-  { title: 'Color', value: 'Light' },
-  { title: 'App Version', value: '1.0.0' },
-  { title: 'Last Updated', value: 'July 14, 2024' },
-];
-
 const renderItem = ({ item }: any) => (
   <View style={styles.item}>
     <Text style={styles.itemName}>{item.title}</Text>
@@ -14,7 +7,32 @@ const renderItem = ({ item }: any) => (
   </View>
 );
 
-const ConfigurationOption = () => {
+const ConfigurationOption = ({ route }: any) => {
+  const { i18n } = route.params;
+
+  const t = (key: string) => {
+    return i18n.t('configurationOption:' + key);
+  }
+
+  const listData = [
+    {
+      title: t('language'),
+      value: t('languageEn')
+    },
+    {
+      title: t('color'),
+      value: t('colorLight')
+    },
+    {
+      title: t('appVersion'),
+      value: '1.0.0'
+    },
+    {
+      title: t('updateDate'),
+      value: 'July 14, 2024'
+    }
+  ];
+
   return (
     <View style={styles.container}>
       <FlatList
