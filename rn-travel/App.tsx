@@ -1,13 +1,15 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Index from './Index';
-import i18n from './utils/i18n';
+import { AppProvider } from './utils/context';
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Index i18n={i18n} />
-    </SafeAreaView>
+    <AppProvider>
+      <SafeAreaView style={styles.container}>
+        <Index />
+      </SafeAreaView>
+    </AppProvider>
   );
 }
 

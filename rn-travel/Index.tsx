@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,10 +7,13 @@ import RecentPlace from './screens/RecentPlace';
 import SearchPlace from './screens/SearchPlace';
 import CommonApp from './screens/CommonApp';
 import ConfigurationOption from './screens/ConfigurationOption';
+import { AppContext } from './utils/context';
 
 const Tab = createBottomTabNavigator();
 
-export default function Index({ i18n }: any) {
+export default function Index() {
+  const { i18n } = useContext(AppContext);
+
   const t = (key: string) => {
     return i18n.t('index:' + key);
   }
@@ -42,23 +46,19 @@ export default function Index({ i18n }: any) {
         <Tab.Screen
           name="RecentPlace"
           options={{ title: t('recentPlace') }}
-          component={RecentPlace}
-          initialParams={{ i18n }} />
+          component={RecentPlace} />
         <Tab.Screen
           name="SearchPlace"
           options={{ title: t('searchPlace') }}
-          component={SearchPlace}
-          initialParams={{ i18n }} />
+          component={SearchPlace} />
         <Tab.Screen
           name="CommonApp"
           options={{ title: t('commonApp') }}
-          component={CommonApp}
-          initialParams={{ i18n }} />
+          component={CommonApp} />
         <Tab.Screen
           name="ConfigurationOption"
           options={{ title: t('configurationOption') }}
-          component={ConfigurationOption}
-          initialParams={{ i18n }} />
+          component={ConfigurationOption} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -1,4 +1,7 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { useContext } from 'react';
+
+import { AppContext } from  '../utils/context';
 
 const renderItem = ({ item }: any) => (
   <View style={styles.item}>
@@ -7,8 +10,8 @@ const renderItem = ({ item }: any) => (
   </View>
 );
 
-const ConfigurationOption = ({ route }: any) => {
-  const { i18n } = route.params;
+const ConfigurationOption = () => {
+  const { i18n } = useContext(AppContext);
 
   const t = (key: string) => {
     return i18n.t('configurationOption:' + key);
