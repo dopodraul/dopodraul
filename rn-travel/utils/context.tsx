@@ -1,20 +1,24 @@
-import { createContext } from 'react';
+import { createContext, useState, ReactNode } from 'react';
 
 import i18n from './i18n';
 
 const defaultLanguage = 'en';
 
 const AppContext = createContext({
+  i18n,
   language: defaultLanguage,
-  i18n
+  setLanguage: (language: string) => {}
 });
 
-const AppProvider = ({ children }: any) => {
+const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [language, setLanguage] = useState(defaultLanguage);
+
   return (
     <AppContext.Provider
       value={{
-        language: defaultLanguage,
-        i18n
+        i18n,
+        language,
+        setLanguage
       }}
     >
       {children}

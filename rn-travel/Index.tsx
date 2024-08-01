@@ -1,18 +1,17 @@
-import { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
 
 import RecentPlace from './screens/RecentPlace';
 import SearchPlace from './screens/SearchPlace';
 import CommonApp from './screens/CommonApp';
 import ConfigurationOption from './screens/ConfigurationOption';
-import { AppContext } from './utils/context';
 
 const Tab = createBottomTabNavigator();
 
 export default function Index() {
-  const { i18n } = useContext(AppContext);
+  const { i18n } = useTranslation();
 
   const t = (key: string) => {
     return i18n.t('index:' + key);
