@@ -39,8 +39,7 @@ const ConfigurationOption = () => {
           <PickerComponent
             selectedValue={language}
             itemList={languageList}
-            onValueChange={changeLanguage}
-            itemStyle={styles.columnValueText} />
+            onValueChange={changeLanguage} />
         </View>
       </View>
       <View style={styles.row}>

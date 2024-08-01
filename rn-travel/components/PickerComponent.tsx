@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 type valueType = string;
@@ -6,14 +6,10 @@ type valueType = string;
 export default function PickerComponent({
   itemList,
   selectedValue,
-  onValueChange,
-  style,
-  itemStyle
+  onValueChange
 }: {
   selectedValue: valueType;
   onValueChange: (value: valueType) => void;
-  style?: StyleProp<ViewStyle>;
-  itemStyle?: StyleProp<TextStyle>;
 
   itemList: {
     label: string;
@@ -24,8 +20,8 @@ export default function PickerComponent({
     <Picker
       selectedValue={selectedValue}
       onValueChange={onValueChange}
-      style={style}
-      itemStyle={itemStyle}
+      style={styles.container}
+      itemStyle={styles.item}
     >
       {
         itemList.map((item) => (
@@ -37,3 +33,19 @@ export default function PickerComponent({
     </Picker>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  item: {
+    height: 40,
+    width: 144,
+    backgroundColor: '#f0f0f0',
+    borderColor: '#cccccc',
+    borderWidth: 1,
+    borderRadius: 8
+  }
+});
