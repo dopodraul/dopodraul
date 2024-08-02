@@ -7,7 +7,8 @@ import { AppContext } from '../utils/context';
 
 const ConfigurationOption = () => {
   const { i18n } = useTranslation();
-  const { language, setLanguage } = useContext(AppContext);
+  const { language, setLanguage, color, setColor, getStyle } = useContext(AppContext);
+  const stylesColor = getStyle();
 
   const t = (key: string) => {
     return i18n.t('configurationOption:' + key);
@@ -24,16 +25,24 @@ const ConfigurationOption = () => {
     value: 'ja'
   }];
 
+  const colorList = [{
+    label: t('colorLight'),
+    value: 'light'
+  }, {
+    label: t('colorDark'),
+    value: 'dark'
+  }];
+
   const changeLanguage = (newLanguage: string) => {
     setLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, stylesColor]}>
       <View style={styles.row}>
         <View style={styles.columnName}>
-          <Text style={styles.columnNameText}>{t('language')}</Text>
+          <Text style={[styles.columnNameText, stylesColor]}>{t('language')}</Text>
         </View>
         <View style={styles.columnValue}>
           <PickerComponent
@@ -44,18 +53,21 @@ const ConfigurationOption = () => {
       </View>
       <View style={styles.row}>
         <View style={styles.columnName}>
-          <Text style={styles.columnNameText}>{t('color')}</Text>
+          <Text style={[styles.columnNameText, stylesColor]}>{t('color')}</Text>
         </View>
         <View style={styles.columnValue}>
-          <Text style={styles.columnValueText}>{t('colorLight')}</Text>
+          <PickerComponent
+            selectedValue={color}
+            itemList={colorList}
+            onValueChange={setColor} />
         </View>
       </View>
       <View style={styles.row}>
         <View style={styles.columnName}>
-          <Text style={styles.columnNameText}>{t('appVersion')}</Text>
+          <Text style={[styles.columnNameText, stylesColor]}>{t('appVersion')}</Text>
         </View>
         <View style={styles.columnValue}>
-          <Text style={styles.columnValueText}>1.0.0</Text>
+          <Text style={[styles.columnValueText, stylesColor]}>1.0.0</Text>
         </View>
       </View>
     </View>
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
   },
   columnValueText: {
     fontSize: 16
-  },
+  }
 });
 
 export default ConfigurationOption;

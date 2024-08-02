@@ -1,4 +1,5 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
@@ -7,18 +8,24 @@ import RecentPlace from './screens/RecentPlace';
 import SearchPlace from './screens/SearchPlace';
 import CommonApp from './screens/CommonApp';
 import ConfigurationOption from './screens/ConfigurationOption';
+import { AppContext } from './utils/context';
 
 const Tab = createBottomTabNavigator();
 
 export default function Index() {
   const { i18n } = useTranslation();
+  const { getStyle } = useContext(AppContext);
+  const stylesColor = getStyle();
+  const theme = {...{}, ...DefaultTheme};
+  theme.colors.text = stylesColor.color;
+  theme.colors.card = stylesColor.card;
 
   const t = (key: string) => {
     return i18n.t('index:' + key);
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size, focused }) => {
