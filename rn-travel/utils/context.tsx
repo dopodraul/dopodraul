@@ -1,6 +1,12 @@
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import i18n from './i18n';
+
+const storageKey = {
+  language: 'travel-language',
+  color: 'travel-color'
+};
 
 const AppContext = createContext({
   i18n,
@@ -21,6 +27,51 @@ const AppContext = createContext({
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [color, setColor] = useState('light');
+
+  useEffect(() => {
+    try {
+      (async () => {
+        let valueList;
+
+        valueList = await AsyncStorage.multiGet([
+          storageKey.language,
+          storageKey.color
+        ]);
+
+        if (valueList) {
+          valueList.forEach(([key, value]) => {
+            if (value) {
+              if (key === storageKey.language) {
+                setLanguage(value);
+                i18n.changeLanguage(value);
+              } else if (key === storageKey.color) {
+                setColor(value);
+              }
+            }
+          });
+        }
+      })();
+    } catch {
+    }
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await AsyncStorage.setItem(storageKey.language, language);
+      } catch {
+      }
+    })();
+  }, [language]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await AsyncStorage.setItem(storageKey.color, color);
+      } catch {
+      }
+    })();
+  }, [color]);
 
   const getStyle = () => {
     return color === 'dark' ? {
