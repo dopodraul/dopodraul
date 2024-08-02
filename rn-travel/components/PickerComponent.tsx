@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
+import { useContext } from 'react';
 import { Picker } from '@react-native-picker/picker';
+
+import { AppContext } from '../utils/context';
 
 type valueType = string;
 
@@ -16,12 +19,15 @@ export default function PickerComponent({
     value: valueType;
   }[];
 }) {
+  const { getStyle } = useContext(AppContext);
+  const stylesColor = getStyle();
+
   return (
     <Picker
       selectedValue={selectedValue}
       onValueChange={onValueChange}
-      style={styles.container}
-      itemStyle={styles.item}
+      style={[styles.container, stylesColor]}
+      itemStyle={[styles.item, stylesColor]}
     >
       {
         itemList.map((item) => (
