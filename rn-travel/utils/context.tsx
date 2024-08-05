@@ -9,6 +9,8 @@ const storageKey = {
 };
 
 const AppContext = createContext({
+  searchType: '',
+  setSearchType: (type: string) => {},
   i18n,
   language: '',
   setLanguage: (language: string) => {},
@@ -27,6 +29,7 @@ const AppContext = createContext({
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [color, setColor] = useState('light');
+  const [searchType, setSearchType] = useState('');
 
   useEffect(() => {
     try {
@@ -88,6 +91,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AppContext.Provider
       value={{
+        searchType,
+        setSearchType,
         i18n,
         language,
         setLanguage,
