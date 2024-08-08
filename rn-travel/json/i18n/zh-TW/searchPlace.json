@@ -1,5 +1,10 @@
 {
   "travelSearch": "從旅程搜尋",
   "mapSearch": "從地圖搜尋",
-  "keywordSearch": "關鍵字搜尋"
+  "keywordSearch": "關鍵字搜尋",
+  "airport": "機場",
+  "hotel": "飯店",
+  "transportation": "交通工具",
+  "morning": "上午",
+  "afternoon": "下午"
 }

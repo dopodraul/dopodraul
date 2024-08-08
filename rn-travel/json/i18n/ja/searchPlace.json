@@ -1,5 +1,10 @@
 {
   "travelSearch": "旅行プランから検索",
   "mapSearch": "地図から検索",
-  "keywordSearch": "キーワード検索"
+  "keywordSearch": "キーワード検索",
+  "airport": "空港",
+  "hotel": "ホテル",
+  "transportation": "交通機関",
+  "morning": "午前",
+  "afternoon": "午後"
 }

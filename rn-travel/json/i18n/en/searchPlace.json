@@ -1,5 +1,10 @@
 {
   "travelSearch": "Travel Search",
   "mapSearch": "Map Search",
-  "keywordSearch": "Keyword Search"
+  "keywordSearch": "Keyword Search",
+  "airport": "Airports",
+  "hotel": "Hotels",
+  "transportation": "Transportations",
+  "morning": "Morning",
+  "afternoon": "Afternoon"
 }
