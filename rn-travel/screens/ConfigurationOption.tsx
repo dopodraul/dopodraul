@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 
 import PickerComponent from '../components/PickerComponent';
 import { AppContext } from '../utils/context';
@@ -19,7 +20,7 @@ const ConfigurationOption = () => {
     value: 'en'
   }, {
     label: t('languageZhTw'),
-    value: 'zh-TW'
+    value: 'zh-tw'
   }, {
     label: t('languageJa'),
     value: 'ja'
@@ -36,6 +37,7 @@ const ConfigurationOption = () => {
   const changeLanguage = (newLanguage: string) => {
     setLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
+    moment.locale(newLanguage);
   }
 
   return (

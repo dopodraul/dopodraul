@@ -21,11 +21,11 @@ export default function SearchPlace() {
   let content = <SearchPlaceMain t={t} />;
 
   if (searchType === 'travel') {
-    content = <SearchPlaceTravel />;
+    content = <SearchPlaceTravel t={t} />;
   } else if (searchType === 'map') {
-    content = <SearchPlaceMap />;
+    content = <SearchPlaceMap t={t} />;
   } else if (searchType === 'keyword') {
-    content = <SearchPlaceKeyword />
+    content = <SearchPlaceKeyword t={t} />
   }
 
   return (

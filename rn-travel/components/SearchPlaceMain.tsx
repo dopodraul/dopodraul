@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import { AppContext } from '../utils/context';
 
-export default function SearchPlaceMain({ t }: { t: (key: string) => string }) {
+export default function SearchPlaceMain({ t }: { t: (key: string) => string; }) {
   const { setSearchType, getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
   const stylesBorder = { borderColor: stylesColor.color };
@@ -22,7 +22,8 @@ export default function SearchPlaceMain({ t }: { t: (key: string) => string }) {
   const styles = StyleSheet.create({
     item: {
       padding: 16,
-      marginBottom: 16,
+      marginTop: 16,
+      marginBottom: 32,
       alignItems: 'center',
       borderWidth: 1,
       borderRadius: 16

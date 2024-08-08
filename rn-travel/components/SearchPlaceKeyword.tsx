@@ -1,12 +1,20 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { useContext } from 'react';
 
-import SearchPlaceBack from '../components/SearchPlaceBack';
+import { AppContext } from '../utils/context';
+import BackComponent from './BackComponent';
 
-export default function SearchPlaceKeyword () {
+export default function SearchPlaceKeyword ({ t }: { t: (key: string) => string; }) {
+  const { setSearchType } = useContext(AppContext);
+  const title = t('keywordSearch');
+
+  const pressBack = () => {
+    setSearchType('');
+  }
+
   return (
     <View>
-      <SearchPlaceBack />
-      <Text>關鍵字搜尋</Text>
+      <BackComponent title={title} pressBack={pressBack} />
     </View>
   );
 }

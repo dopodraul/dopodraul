@@ -1,5 +1,8 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import moment from 'moment';
+import 'moment/locale/zh-tw';
+import 'moment/locale/ja';
 
 import i18n from './i18n';
 
@@ -11,6 +14,8 @@ const storageKey = {
 const AppContext = createContext({
   searchType: '',
   setSearchType: (type: string) => {},
+  searchTravel: '',
+  setSearchTravel: (travel: string) => {},
   i18n,
   language: '',
   setLanguage: (language: string) => {},
@@ -30,6 +35,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [color, setColor] = useState('light');
   const [searchType, setSearchType] = useState('');
+  const [searchTravel, setSearchTravel] = useState('');
 
   useEffect(() => {
     try {
@@ -47,6 +53,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
               if (key === storageKey.language) {
                 setLanguage(value);
                 i18n.changeLanguage(value);
+                moment.locale(value);
               } else if (key === storageKey.color) {
                 setColor(value);
               }
@@ -93,6 +100,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       value={{
         searchType,
         setSearchType,
+        searchTravel,
+        setSearchTravel,
         i18n,
         language,
         setLanguage,

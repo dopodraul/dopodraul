@@ -1,12 +1,20 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { useContext } from 'react';
 
-import SearchPlaceBack from '../components/SearchPlaceBack';
+import { AppContext } from '../utils/context';
+import BackComponent from './BackComponent';
 
-export default function SearchPlaceMap () {
+export default function SearchPlaceKeyword ({ t }: { t: (key: string) => string; }) {
+  const { setSearchType } = useContext(AppContext);
+  const title = t('mapSearch');
+
+  const pressBack = () => {
+    setSearchType('');
+  }
+
   return (
     <View>
-      <SearchPlaceBack />
-      <Text>從地圖搜尋</Text>
+      <BackComponent title={title} pressBack={pressBack} />
     </View>
   );
 }
