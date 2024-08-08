@@ -20,7 +20,7 @@ const ConfigurationOption = () => {
     value: 'en'
   }, {
     label: t('languageZhTw'),
-    value: 'zh-tw'
+    value: 'zh-TW'
   }, {
     label: t('languageJa'),
     value: 'ja'
