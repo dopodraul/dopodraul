@@ -31,12 +31,10 @@ export default function BackComponent ({ title, pressBack }: {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 16
   },
 
   backContent: {
-    flex: 1,
     flexDirection: 'row'
   },
 

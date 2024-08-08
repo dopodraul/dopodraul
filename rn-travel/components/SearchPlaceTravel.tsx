@@ -11,8 +11,11 @@ const travelToMoment = (travel: string) => {
   return moment('20' + travel, 'YYYYMMDD');
 }
 
-const SearchPlaceTravelList = ({ setTravel }: { setTravel: (travel: string) => void; }) => {
-  const { getStyle } = useContext(AppContext);
+const SearchPlaceTravelList = ({ t, setTravel }: {
+  t: (key: string) => string;
+  setTravel: (travel: string) => void;
+}) => {
+  const { setSearchType, getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
   const stylesBorder = { borderColor: stylesColor.color };
 
@@ -20,6 +23,10 @@ const SearchPlaceTravelList = ({ setTravel }: { setTravel: (travel: string) => v
     .sort((lhs, rhs) => {
     return lhs > rhs ? -1 : 1;
   });
+
+  const pressBack = () => {
+    setSearchType('');
+  }
 
   const renderItem = ({ item }: { item: string }) => {
     const text = travelToMoment(item).format('LL');
@@ -49,9 +56,14 @@ const SearchPlaceTravelList = ({ setTravel }: { setTravel: (travel: string) => v
 
   return (
     <View>
-      <FlatList
-        data={data}
-        renderItem={renderItem} />
+      <View>
+        <BackComponent title={t('travelSearch')} pressBack={pressBack} />
+      </View>
+      <View>
+        <FlatList
+          data={data}
+          renderItem={renderItem} />
+      </View>
     </View>
   );
 }
@@ -68,7 +80,7 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
   const title = travelMoment.format('LL');
   const { getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
-  const flexArr = [1, 11];
+  const flexArr = [1, 3];
 
   const pressBack = () => {
     setTravel('');
@@ -156,21 +168,19 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
 }
 
 export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; }) {
-  const { setSearchType } = useContext(AppContext);
   const [travel, setTravel] = useState('');
-
-  const pressBack = () => {
-    setSearchType('');
-  }
 
   return travel ? (
     <View>
-      <SearchPlaceTravelDetail t={t} travel={travel} setTravel={setTravel} />
+      <SearchPlaceTravelDetail
+        t={t}
+        travel={travel}
+        setTravel={setTravel}
+      />
     </View>
   ) : (
     <View>
-      <BackComponent title={t('travelSearch')} pressBack={pressBack} />
-      <SearchPlaceTravelList setTravel={setTravel} />
+      <SearchPlaceTravelList t={t} setTravel={setTravel} />
     </View>
   );
 }
