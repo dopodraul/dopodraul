@@ -4,8 +4,10 @@ import { Table, Rows } from 'react-native-table-component';
 import moment from 'moment';
 
 import travelJson from '../json/travel.json';
+import spotKyoto from '../json/spotKyoto.json';
 import BackComponent from './BackComponent';
 import { AppContext } from '../utils/context';
+const spotJson = spotKyoto;
 
 const travelToMoment = (travel: string) => {
   return moment('20' + travel, 'YYYYMMDD');
@@ -78,7 +80,7 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
   type keyType = keyof typeof travelData;
   const travelMoment = travelToMoment(travel);
   const title = travelMoment.format('LL');
-  const { getStyle } = useContext(AppContext);
+  const { getStyle, i18n } = useContext(AppContext);
   const stylesColor = getStyle();
   const flexArr = [1, 3];
 
@@ -93,17 +95,33 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
     },
     text: {
       margin: 8
+    },
+    spot: {
+      marginRight: 8
+    },
+    underline: {
+      textDecorationLine: 'underline'
     }
   });
 
   const data = [];
+
+  const convertSpotToButton = (spot: string) => {
+    const name = i18n.t(`spot:${spot}:name`);
+
+    return spotJson.hasOwnProperty(spot) ?
+      <TouchableOpacity style={styles.spot}>
+        <Text style={styles.underline}>{name}</Text>
+      </TouchableOpacity> :
+      <Text style={styles.spot}>{name}</Text>;
+  }
 
   if (travelData.hasOwnProperty('airport')) {
     const airportList = travelData['airport' as keyType] as string[];
 
     data.push([
       t('airport'),
-      airportList.join(' ')
+      airportList.map(convertSpotToButton)
     ]);
   }
 
@@ -112,7 +130,7 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
 
     data.push([
       t('hotel'),
-      hotelList.join(' ')
+      hotelList.map(convertSpotToButton)
     ]);
   }
 
@@ -121,7 +139,7 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
 
     data.push([
       t('transportation'),
-      transportationList.join(' ')
+      transportationList.map(convertSpotToButton)
     ]);
   }
 
@@ -129,25 +147,25 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
     const spotList = travelData['spot' as keyType] as string[][][];
 
     spotList.forEach(([morningList, afternoonList]) => {
+      const travelString = travelMoment.format('MMM D');
+
       if (morningList && morningList[0]) {
         data.push([
-          travelMoment.format('MMM D') + ' ' + t('morning'),
-          morningList.join(' ')
+          travelString + ' ' + t('morning'),
+          morningList.map(convertSpotToButton)
         ]);
       }
 
       if (afternoonList && afternoonList[0]) {
         data.push([
-          travelMoment.format('MMM D') + ' ' + t('afternoon'),
-          afternoonList.join(' ')
+          travelString + ' ' + t('afternoon'),
+          afternoonList.map(convertSpotToButton)
         ]);
       }
 
       travelMoment.add(1, 'days');
     });
   }
-
-  setTimeout(() => { console.log(travelData) }, 2000) // TODO
 
   return (
     <View>
