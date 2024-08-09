@@ -82,23 +82,30 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
   const title = travelMoment.format('LL');
   const { getStyle, i18n } = useContext(AppContext);
   const stylesColor = getStyle();
-  const flexArr = [1, 3];
+  const flexArr = [1, 5];
 
   const pressBack = () => {
     setTravel('');
   }
 
   const styles = StyleSheet.create({
+    table: {
+      marginBottom: 160
+    },
+
     border: {
       borderWidth: 1,
       borderColor: stylesColor.color
     },
+
     text: {
       margin: 8
     },
+
     spot: {
-      marginRight: 8
+      paddingRight: 8
     },
+
     underline: {
       textDecorationLine: 'underline'
     }
@@ -111,9 +118,11 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
 
     return spotJson.hasOwnProperty(spot) ?
       <TouchableOpacity style={styles.spot}>
-        <Text style={styles.underline}>{name}</Text>
+        <Text style={[styles.underline, stylesColor]}>{name}</Text>
       </TouchableOpacity> :
-      <Text style={styles.spot}>{name}</Text>;
+      <View style={styles.spot}>
+        <Text style={stylesColor}>{name}</Text>
+      </View>;
   }
 
   if (travelData.hasOwnProperty('airport')) {
@@ -173,7 +182,7 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
         <BackComponent title={title} pressBack={pressBack} />
       </View>
       <ScrollView>
-        <Table borderStyle={styles.border}>
+        <Table style={styles.table} borderStyle={styles.border}>
           <Rows
             textStyle={[styles.text, stylesColor]}
             data={data}
