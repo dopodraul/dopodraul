@@ -5,11 +5,146 @@
   "kyotoAnimationCoLtd": {},
   "kyotoAquarium": {},
   "kyotoByodoin": {},
-  "KyotoFushimiinaritaisha": {},
+  "kyotoFushimiinaritaisha": {},
+
+  "kyotoGojozakaKiyomizuderaBusStation": {
+    "lastUpdate": 240714,
+    "type": "bus",
+
+    "location": [{
+      "loc": [34.99647, 135.77682],
+      "direction": ["spot:kyotoTrainStation"]
+    }],
+
+    "access": [{
+      "transportation": "transportation:kyotoKyotoKotsuBus",
+      "from": ["spot:kyotoTrainStation"],
+      "line": [206],
+      "direction": ["東山通北大路バスターミナル"]
+    }, {
+      "transportation": "transportation:kyotoKyotoKotsuBus",
+      "from": ["spot:kyotoTrainStation"],
+      "line": [100],
+      "direction": ["清水寺祇園 銀閣寺"]
+    }, {
+      "transportation": "transportation:kyotoKyotoBus",
+      "from": ["spot:kyotoTrainStation"],
+      "line": [18],
+      "direction": ["大原"],
+
+      "open": [
+        "土",
+        "休日"
+      ]
+    }, {
+      "transportation": "transportation:kyotoKeihanBus",
+
+      "from": [
+        "京阪電鉄 祇園四条駅",
+        "阪急電鉄 京都河原町駅"
+      ],
+
+      "line": [
+        83,
+        85,
+        87,
+        88
+      ]
+    }, {
+      "transportation": "transportation:kyotoKotsuBus",
+      "from": ["京阪電鉄 七条駅"],
+      "line": [206],
+      "direction": ["東山通北大路バスターミナル"]
+    }, {
+      "transportation": "transportation:kyotoKotsuBus",
+      "from": ["京阪電鉄 七条駅"],
+      "line": [100],
+      "direction": ["清水寺祇園 銀閣寺"]
+    }]
+  },
+
   "kyotoHanamikojidori": {},
   "kyotoHigashihonganji": {},
   "kyotoHiranojinja": {},
-  "kyotoKiyomizudera": {},
+
+  "kyotoKiyomizudera": {
+    "lastUpdate": 240714,
+    "stay": 120,
+    "type": "temple",
+
+    "location": [{
+      "loc": [34.9946662, 135.784661]
+    }],
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0600", 1800]
+    }, {
+      "name": "amuletPlace",
+      "range": ["0800"]
+    }],
+
+    "access": [{
+      "from": ["kyotoGojozakaKiyomizuderaBusStation"]
+    }, {
+      "from": ["kyotoKiyomizudoBusStation"]
+    }, {
+      "from": ["kyotoKiyomizuGojoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:officialWebsite",
+      "url": "https://www.kiyomizudera.or.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://www.kiyomizudera.or.jp/news/open-hour.php"
+    }, {
+      "name": "spotDetail:access",
+      "url": "https://www.kiyomizudera.or.jp/access.php"
+    }, {
+      "name": "spotDetail:map",
+      "url": "https://www.kiyomizudera.or.jp/map.php"
+    }]
+  },
+
+  "kyotoKiyomizudoBusStation": {
+    "lastUpdate": 240714,
+    "type": "bus",
+
+    "location": [{
+      "loc": [34.9980569, 135.77718],
+      "direction": ["spot:kyotoTrainStation"]
+    }, {
+      "loc": [34.9980929, 135.7770049],
+
+      "direction": [
+        "京阪電鉄 祇園四条駅",
+        "阪急電鉄 京都河原町駅"
+      ]
+    }],
+
+    "access": [{
+      "transportation": "transportation:kyotoKyotoKotsuBus",
+      "line": [207],
+      "direction": ["東福寺・九条車庫"],
+
+      "from": [
+        "京阪電鉄 祇園四条駅",
+        "阪急電鉄 京都河原町駅"
+      ]
+    }]
+  },
+
+  "kyotoKiyomizuGojoTrainStation": {
+    "lastUpdate": 240714,
+    "type": "train",
+    "company": ["keihan"],
+
+    "location": [{
+      "loc": [34.9959035, 135.7685681]
+    }]
+  },
+
   "kyotoKenninji": {},
   "kyotoKitanotenmangu": {},
   "kyotoKodaiji": {},

@@ -1,23 +1,21 @@
 import { View, Text, FlatList, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Table, Rows } from 'react-native-table-component';
 import moment from 'moment';
 
 import travelJson from '../json/travel.json';
-import spotKyoto from '../json/spotKyoto.json';
 import BackComponent from './BackComponent';
+import spotJson from '../utils/spot';
+import { getObjectValue } from '../utils/common';
 import { AppContext } from '../utils/context';
-const spotJson = spotKyoto;
 
 const travelToMoment = (travel: string) => {
   return moment('20' + travel, 'YYYYMMDD');
 }
 
-const SearchPlaceTravelList = ({ t, setTravel }: {
-  t: (key: string) => string;
-  setTravel: (travel: string) => void;
-}) => {
-  const { setSearchType, getStyle } = useContext(AppContext);
+const SearchPlaceTravelList = ({ t }: { t: (key: string) => string; }) => {
+  const { setSearchType, setSearchTravel, getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
   const stylesBorder = { borderColor: stylesColor.color };
 
@@ -34,7 +32,7 @@ const SearchPlaceTravelList = ({ t, setTravel }: {
     const text = travelToMoment(item).format('LL');
 
     const onPress = () => {
-      setTravel(item);
+      setSearchTravel(item);
     }
 
     const styles = StyleSheet.create({
@@ -70,22 +68,17 @@ const SearchPlaceTravelList = ({ t, setTravel }: {
   );
 }
 
-const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
-  travel: string;
-  t: (key: string) => string;
-  setTravel: (travel: string) => void;
-}) => {
-  type travelType = keyof typeof travelJson;
-  const travelData = travelJson[travel as travelType];
-  type keyType = keyof typeof travelData;
-  const travelMoment = travelToMoment(travel);
+const SearchPlaceTravelDetail = ({ t }: {  t: (key: string) => string; }) => {
+  const i18n = useTranslation();
+  const { searchTravel, setSearchTravel, setSpot, getStyle } = useContext(AppContext);
+  const travelData = getObjectValue(travelJson, searchTravel);
+  const travelMoment = travelToMoment(searchTravel);
   const title = travelMoment.format('LL');
-  const { getStyle, i18n } = useContext(AppContext);
   const stylesColor = getStyle();
   const flexArr = [1, 5];
 
   const pressBack = () => {
-    setTravel('');
+    setSearchTravel('');
   }
 
   const styles = StyleSheet.create({
@@ -116,8 +109,12 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
   const convertSpotToButton = (spot: string) => {
     const name = i18n.t(`spot:${spot}:name`);
 
+    const onPress = () => {
+      setSpot(spot);
+    }
+
     return spotJson.hasOwnProperty(spot) ?
-      <TouchableOpacity style={styles.spot}>
+      <TouchableOpacity style={styles.spot} onPress={onPress}>
         <Text style={[styles.underline, stylesColor]}>{name}</Text>
       </TouchableOpacity> :
       <View style={styles.spot}>
@@ -125,8 +122,8 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
       </View>;
   }
 
-  if (travelData.hasOwnProperty('airport')) {
-    const airportList = travelData['airport' as keyType] as string[];
+  if (travelData.airport) {
+    const airportList = travelData.airport;
 
     data.push([
       t('airport'),
@@ -134,8 +131,8 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
     ]);
   }
 
-  if (travelData.hasOwnProperty('hotel')) {
-    const hotelList = travelData['hotel' as keyType] as string[];
+  if (travelData.hotel) {
+    const hotelList = travelData.hotel;
 
     data.push([
       t('hotel'),
@@ -143,8 +140,8 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
     ]);
   }
 
-  if (travelData.hasOwnProperty('transportation')) {
-    const transportationList = travelData['transportation' as keyType] as string[];
+  if (travelData.transportation) {
+    const transportationList = travelData.transportation;
 
     data.push([
       t('transportation'),
@@ -152,8 +149,8 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
     ]);
   }
 
-  if (travelData.hasOwnProperty('spot')) {
-    const spotList = travelData['spot' as keyType] as string[][][];
+  if (travelData.spot) {
+    const spotList = travelData.spot as string[][][];
 
     spotList.forEach(([morningList, afternoonList]) => {
       const travelString = travelMoment.format('MMM D');
@@ -195,19 +192,15 @@ const SearchPlaceTravelDetail = ({ travel, t, setTravel }: {
 }
 
 export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; }) {
-  const [travel, setTravel] = useState('');
+  const { searchTravel } = useContext(AppContext);
 
-  return travel ? (
+  return searchTravel ? (
     <View>
-      <SearchPlaceTravelDetail
-        t={t}
-        travel={travel}
-        setTravel={setTravel}
-      />
+      <SearchPlaceTravelDetail t={t} />
     </View>
   ) : (
     <View>
-      <SearchPlaceTravelList t={t} setTravel={setTravel} />
+      <SearchPlaceTravelList t={t} />
     </View>
   );
 }

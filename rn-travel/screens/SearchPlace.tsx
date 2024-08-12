@@ -7,10 +7,11 @@ import SearchPlaceMain from '../components/SearchPlaceMain';
 import SearchPlaceTravel from '../components/SearchPlaceTravel';
 import SearchPlaceMap from '../components/SearchPlaceMap';
 import SearchPlaceKeyword from '../components/SearchPlaceKeyword';
+import SpotMain from '../components/SpotMain';
 
 export default function SearchPlace() {
   const { i18n } = useTranslation();
-  const { searchType, getStyle } = useContext(AppContext);
+  const { spot, searchType, getStyle } = useContext(AppContext);
 
   const stylesColor = getStyle();
 
@@ -20,12 +21,16 @@ export default function SearchPlace() {
 
   let content = <SearchPlaceMain t={t} />;
 
-  if (searchType === 'travel') {
-    content = <SearchPlaceTravel t={t} />;
-  } else if (searchType === 'map') {
-    content = <SearchPlaceMap t={t} />;
-  } else if (searchType === 'keyword') {
-    content = <SearchPlaceKeyword t={t} />
+  if (spot) {
+    content = <SpotMain />
+  } else {
+    if (searchType === 'travel') {
+      content = <SearchPlaceTravel t={t} />;
+    } else if (searchType === 'map') {
+      content = <SearchPlaceMap t={t} />;
+    } else if (searchType === 'keyword') {
+      content = <SearchPlaceKeyword t={t} />
+    }
   }
 
   return (

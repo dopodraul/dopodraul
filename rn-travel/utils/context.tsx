@@ -16,6 +16,8 @@ const AppContext = createContext({
   setSearchType: (type: string) => {},
   searchTravel: '',
   setSearchTravel: (travel: string) => {},
+  spot: '',
+  setSpot: (spot: string) => {},
   i18n,
   language: '',
   setLanguage: (language: string) => {},
@@ -36,6 +38,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [color, setColor] = useState('light');
   const [searchType, setSearchType] = useState('');
   const [searchTravel, setSearchTravel] = useState('');
+  const [spot, setSpot] = useState('');
 
   useEffect(() => {
     try {
@@ -102,6 +105,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchType,
         searchTravel,
         setSearchTravel,
+        spot,
+        setSpot,
         i18n,
         language,
         setLanguage,
