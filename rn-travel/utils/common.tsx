@@ -12,14 +12,17 @@ import indexEn from '../json/i18n/en/index.json';
 import searchPlaceEn from '../json/i18n/en/searchPlace.json';
 import configurationOptionEn from '../json/i18n/en/configurationOption.json';
 import spotKyotoEn from '../json/i18n/en/spotKyoto.json';
+import spotDetailEn from '../json/i18n/en/spotDetail.json';
 import indexJa from '../json/i18n/ja/index.json';
 import searchPlaceJa from '../json/i18n/ja/searchPlace.json';
 import configurationOptionJa from '../json/i18n/ja/configurationOption.json';
 import spotKyotoJa from '../json/i18n/ja/spotKyoto.json';
+import spotDetailJa from '../json/i18n/ja/spotDetail.json';
 import indexZhTw from '../json/i18n/zh-TW/index.json';
 import searchPlaceZhTw from '../json/i18n/zh-TW/searchPlace.json';
 import configurationOptionZhTw from '../json/i18n/zh-TW/configurationOption.json';
 import spotKyotoZhTw from '../json/i18n/zh-TW/spotKyoto.json';
+import spotDetailZhTw from '../json/i18n/zh-TW/spotDetail.json';
 
 const spotJson = {
   ...{},
@@ -40,13 +43,15 @@ i18n.use(initReactI18next)
       index: indexEn,
       searchPlace: searchPlaceEn,
       configurationOption: configurationOptionEn,
-      spot: spotKyotoEn
+      spotDetail: spotDetailEn,
+      spot: spotKyotoEn,
     },
 
     ja: {
       index: indexJa,
       searchPlace: searchPlaceJa,
       configurationOption: configurationOptionJa,
+      spotDetail: spotDetailJa,
       spot: spotKyotoJa
     },
 
@@ -54,6 +59,7 @@ i18n.use(initReactI18next)
       index: indexZhTw,
       searchPlace: searchPlaceZhTw,
       configurationOption: configurationOptionZhTw,
+      spotDetail: spotDetailZhTw,
       spot: spotKyotoZhTw
     }
   }

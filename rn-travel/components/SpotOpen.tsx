@@ -1,10 +1,12 @@
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
-import { Table, Row, Rows } from 'react-native-table-component';
+import { useTranslation } from 'react-i18next';
+import { Table, Rows } from 'react-native-table-component';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
 export default function SpotType() {
+  const { i18n } = useTranslation();
   const { spot, getStyle } = useContext(AppContext);
   const openList = getObjectValue(spotJson, `${spot}.open`);
   const stylesColor = getStyle();
@@ -25,25 +27,40 @@ export default function SpotType() {
     }
   });
 
+  const convertOpen = (open: any) => {
+    if (open) {
+      const openStr = String(open);
+      return openStr.substring(0, 2) + ':' + openStr.substring(2, 4);
+    }
+
+    return '';
+  }
+
   if (openList) {
-    const data = openList.map((obj: object) => {
-      const result = [getObjectValue(obj, 'name')];
-      const rangeList = getObjectValue(obj, 'range');
+    if (openList[1]) {
+      const data = openList.map((obj: object) => {
+        const name = getObjectValue(obj, 'name');
+        const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`) ];
+        const rangeList = getObjectValue(obj, 'range');
 
-      if (rangeList) {
-        const rangeStart = rangeList[0] || '';
-        const rangeEnd = rangeList[1] || '';
-        result.push(`${rangeStart} ~ ${rangeEnd}`);
-      }
+        if (rangeList) {
+          result.push(convertOpen(rangeList[0]) + ' ~ ' + convertOpen(rangeList[1]));
+        }
 
-      return result;
-    });
+        return result;
+      });
+
+      return (
+        <Table borderStyle={styles.table}>
+          <Rows textStyle={[styles.row, stylesColor]} data={data} />
+        </Table>
+      );
+    }
 
     return (
-      <Table borderStyle={styles.table}>
-        <Row textStyle={[styles.row, stylesColor]} data={['營業時間']} />
-        <Rows textStyle={[styles.row, stylesColor]} data={data} />
-      </Table>
+      <View style={styles.container}>
+        <Text style={stylesColor}>營業時間</Text>
+      </View>
     );
   }
 
