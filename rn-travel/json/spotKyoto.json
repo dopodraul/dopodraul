@@ -9,7 +9,11 @@
 
   "kyotoGojozakaKiyomizuderaBusStation": {
     "lastUpdate": 240714,
-    "type": "bus",
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "bus-stop"
+    },
 
     "location": [{
       "loc": [34.99647, 135.77682],
@@ -70,7 +74,11 @@
   "kyotoKiyomizudera": {
     "lastUpdate": 240714,
     "stay": 120,
-    "type": "temple",
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
 
     "location": [{
       "loc": [34.9946662, 135.784661]
@@ -109,7 +117,11 @@
 
   "kyotoKiyomizudoBusStation": {
     "lastUpdate": 240714,
-    "type": "bus",
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "bus-stop"
+    },
 
     "location": [{
       "loc": [34.9980569, 135.77718],
