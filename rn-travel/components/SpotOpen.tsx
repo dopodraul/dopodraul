@@ -2,9 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { Table, Row, Rows } from 'react-native-table-component';
 
-import spotJson from '../utils/spot';
-import { getObjectValue } from '../utils/common';
-import { AppContext } from '../utils/context';
+import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
 export default function SpotType() {
   const { spot, getStyle } = useContext(AppContext);

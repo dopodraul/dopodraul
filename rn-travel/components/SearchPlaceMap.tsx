@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import { useContext } from 'react';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 import BackComponent from './BackComponent';
 
 export default function SearchPlaceKeyword ({ t }: { t: (key: string) => string; }) {

@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Moment } from 'moment';
 
 import BackComponent from './BackComponent';
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 import travelJson from '../json/travel.json';
 
 export default function SearchPlaceTravelList({ t, convertTravelToMoment }: {

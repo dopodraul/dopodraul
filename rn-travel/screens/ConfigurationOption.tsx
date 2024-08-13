@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
 import PickerComponent from '../components/PickerComponent';
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 const ConfigurationOption = () => {
   const { i18n } = useTranslation();

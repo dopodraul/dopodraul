@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 import SearchPlaceMain from '../components/SearchPlaceMain';
 import SearchPlaceTravel from '../components/SearchPlaceTravel';
 import SearchPlaceMap from '../components/SearchPlaceMap';

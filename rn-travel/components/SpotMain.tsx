@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import BackComponent from './BackComponent';
 import SpotContent from './SpotContent';
 import SpotOpen from './SpotOpen';
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 export default function SpotMain() {
   const { i18n } = useTranslation();

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { Picker } from '@react-native-picker/picker';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 type valueType = string;
 

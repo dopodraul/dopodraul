@@ -2,7 +2,7 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 export default function BackComponent ({ title, pressBack }: {
   title: string;

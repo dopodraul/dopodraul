@@ -1,7 +1,7 @@
 import { Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 export default function SearchPlaceMain({ t }: { t: (key: string) => string; }) {
   const { setSearchType, getStyle } = useContext(AppContext);

@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import SearchPlaceTravelList from './SearchPlaceTravelList';
 import SearchPlaceTravelDetail from './SearchPlaceTravelDetail';
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; }) {
   const { searchTravel } = useContext(AppContext);

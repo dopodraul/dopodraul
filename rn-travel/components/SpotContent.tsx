@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppContext } from '../utils/context';
+import { AppContext } from '../utils/common';
 
 export default function SpotContent() {
   const { i18n } = useTranslation();

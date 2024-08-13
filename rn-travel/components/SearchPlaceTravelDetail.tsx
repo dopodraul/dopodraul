@@ -5,10 +5,8 @@ import { Moment } from 'moment';
 import { Table, Rows } from 'react-native-table-component';
 
 import travelJson from '../json/travel.json';
-import spotJson from '../utils/spot';
+import { AppContext, getObjectValue, spotJson } from '../utils/common';
 import BackComponent from './BackComponent';
-import { AppContext } from '../utils/context';
-import { getObjectValue } from '../utils/common';
 
 export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   t: (key: string) => string;

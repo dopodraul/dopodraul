@@ -8,7 +8,7 @@ import RecentPlace from './screens/RecentPlace';
 import SearchPlace from './screens/SearchPlace';
 import CommonApp from './screens/CommonApp';
 import ConfigurationOption from './screens/ConfigurationOption';
-import { AppContext } from './utils/context';
+import { AppContext } from './utils/common';
 
 const Tab = createBottomTabNavigator();
 

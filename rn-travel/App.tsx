@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Index from './Index';
-import { AppProvider } from './utils/context';
+import { AppProvider } from './utils/common';
 
 function App() {
   return (
