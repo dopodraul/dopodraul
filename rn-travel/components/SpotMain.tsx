@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -20,15 +20,19 @@ export default function SpotMain() {
   return (
     <View>
       <BackComponent title={title} pressBack={pressBack} />
-      <View>
-        <SpotContent />
-      </View>
-      <View>
-        <SpotOpen />
-      </View>
-      <View>
-        <SpotLocation />
-      </View>
+      <ScrollView>
+        <View style={styles.scrollContent}>
+          <SpotContent />
+          <SpotOpen />
+          <SpotLocation />
+        </View>
+      </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  scrollContent: {
+    marginBottom: 160
+  }
+});
