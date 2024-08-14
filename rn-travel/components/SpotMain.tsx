@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import BackComponent from './BackComponent';
 import SpotContent from './SpotContent';
 import SpotOpen from './SpotOpen';
+import SpotLocation from './SpotLocation';
 import { AppContext } from '../utils/common';
 
 export default function SpotMain() {
@@ -24,6 +25,9 @@ export default function SpotMain() {
       </View>
       <View>
         <SpotOpen />
+      </View>
+      <View>
+        <SpotLocation />
       </View>
     </View>
   );
