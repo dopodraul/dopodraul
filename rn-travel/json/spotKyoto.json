@@ -102,7 +102,7 @@
     }],
 
     "link": [{
-      "name": "spotDetail:officialWebsite",
+      "name": "spotDetail:linkOfficialWebsite",
       "url": "https://www.kiyomizudera.or.jp/"
     }, {
       "name": "spotDetail:open",
@@ -111,7 +111,7 @@
       "name": "spotDetail:access",
       "url": "https://www.kiyomizudera.or.jp/access.php"
     }, {
-      "name": "spotDetail:map",
+      "name": "spotDetail:linkMap",
       "url": "https://www.kiyomizudera.or.jp/map.php"
     }]
   },

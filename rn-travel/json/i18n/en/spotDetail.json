@@ -5,5 +5,8 @@
   "access": "Access",
   "accessFrom": "from",
   "accessWalk": "Walk",
-  "accessSentence": "{{action}} {{from}} {{place}}"
+  "accessSentence": "{{action}} {{from}} {{place}}",
+  "link": "Link",
+  "linkMap": "Map",
+  "linkOfficialWebsite": "Official Website"
 }

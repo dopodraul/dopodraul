@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
+import { Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -69,6 +70,14 @@ const getObjectValue = (object: object, keyPath: string) => {
   return keyPath.split('.').reduce((acc: any, key) => {
     return acc && acc[key] !== undefined ? acc[key] : undefined;
   }, object);
+}
+
+const openUrl = async (url: string) => {
+  const isValid = await Linking.canOpenURL(url);
+
+  if (isValid) {
+    await Linking.openURL(url);
+  }
 }
 
 const storageKey = {
@@ -188,6 +197,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 export {
   spotJson,
   getObjectValue,
+  openUrl,
   AppContext,
   AppProvider
 };

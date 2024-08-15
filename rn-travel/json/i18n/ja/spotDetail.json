@@ -5,5 +5,8 @@
   "access": "アクセス",
   "accessFrom": "から",
   "accessWalk": "歩く",
-  "accessSentence": "{{place}} {{from}} {{action}}"
+  "accessSentence": "{{place}} {{from}} {{action}}",
+  "link": "リンク",
+  "linkMap": "地図",
+  "linkOfficialWebsite": "公式サイト"
 }

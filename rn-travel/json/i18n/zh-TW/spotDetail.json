@@ -5,5 +5,8 @@
   "access": "交通方式",
   "accessFrom": "從",
   "accessWalk": "步行",
-  "accessSentence": "{{from}} {{place}} {{action}}"
+  "accessSentence": "{{from}} {{place}} {{action}}",
+  "link": "連結",
+  "linkMap": "地圖",
+  "linkOfficialWebsite": "官方網站"
 }
