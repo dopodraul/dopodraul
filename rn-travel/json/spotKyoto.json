@@ -9,6 +9,7 @@
 
   "kyotoGojozakaKiyomizuderaBusStation": {
     "lastUpdate": 240714,
+    "type": "bus",
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -117,6 +118,7 @@
 
   "kyotoKiyomizudoBusStation": {
     "lastUpdate": 240714,
+    "type": "bus",
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -150,6 +152,12 @@
   "kyotoKiyomizuGojoTrainStation": {
     "lastUpdate": 240714,
     "type": "train",
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
     "company": ["keihan"],
 
     "location": [{

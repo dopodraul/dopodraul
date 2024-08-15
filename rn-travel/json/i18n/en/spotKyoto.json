@@ -34,6 +34,10 @@
     "content": "Mountainside Shinto shrine dating from 711 A.D. featuring a path with hundreds of traditional gates."
   },
 
+  "kyotoGojozakaKiyomizuderaBusStation": {
+    "name": "Gojozaka(Kiyomizu-dera Temple)"
+  },
+
   "kyotoHanamikojidori": {
     "name": "Hanamikoji Street",
     "content": "Hanamikoji-dori is one of the north-south streets in Kyoto City. It is the main street that runs through the center of Gion, approximately 1 km from Sanjo Dori in the north to Yasui Hokumon Dori in the south. The atmosphere is very different between the north and south sides of Shijo-dori. The area north of Shijo-dori Street is lined with tenant buildings housing bars, clubs, restaurants, and izakayas."
@@ -53,6 +57,14 @@
     "name": "Kiyomizu-dera",
     "content": "Kiyomizu-dera is a Buddhist temple located in eastern Kyoto, Japan. The temple is part of the Historic Monuments of Ancient Kyoto UNESCO World Heritage Site.",
     "amuletPlace": "Amulet Place"
+  },
+
+  "kyotoKiyomizudoBusStation": {
+    "name": "Kiyomizu Do"
+  },
+
+  "kyotoKiyomizuGojoTrainStation": {
+    "name": "Kiyomizu-Gojō"
   },
 
   "kyotoKenninji": {

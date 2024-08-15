@@ -1,3 +1,9 @@
 {
-  "open": "営業時間"
+  "open": "営業時間",
+  "busStation": "バス停",
+  "trainStation": "駅",
+  "access": "アクセス",
+  "accessFrom": "から",
+  "accessWalk": "歩く",
+  "accessSentence": "{{place}} {{from}} {{action}}"
 }

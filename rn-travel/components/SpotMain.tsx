@@ -6,6 +6,7 @@ import BackComponent from './BackComponent';
 import SpotContent from './SpotContent';
 import SpotOpen from './SpotOpen';
 import SpotLocation from './SpotLocation';
+import SpotAccess from './SpotAccess';
 import { AppContext } from '../utils/common';
 
 export default function SpotMain() {
@@ -25,6 +26,7 @@ export default function SpotMain() {
           <SpotContent />
           <SpotOpen />
           <SpotLocation />
+          <SpotAccess />
         </View>
       </ScrollView>
     </View>

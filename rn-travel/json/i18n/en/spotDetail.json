@@ -1,3 +1,9 @@
 {
-  "open": "Open Hours"
+  "open": "Open Hours",
+  "busStation": "Bus Stop",
+  "trainStation": "Station",
+  "access": "Access",
+  "accessFrom": "from",
+  "accessWalk": "Walk",
+  "accessSentence": "{{action}} {{from}} {{place}}"
 }
