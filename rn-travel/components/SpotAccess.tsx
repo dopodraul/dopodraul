@@ -12,6 +12,8 @@ export default function SpotAccess() {
   const stylesColor = getStyle();
 
   if (accessList) {
+    let coordinate;
+
     const region = {
       latitude: 0,
       longitude: 0,
@@ -24,6 +26,11 @@ export default function SpotAccess() {
     if (location) {
       region.latitude = location[0];
       region.longitude = location[1];
+
+      coordinate = {
+        latitude: location[0],
+        longitude: location[1]
+      };
     }
 
     const markerList: {
@@ -79,6 +86,15 @@ export default function SpotAccess() {
     });
 
     const text = i18n.t('spotDetail:access');
+    const title = i18n.t(`spot:${spot}:name`);
+
+    const locationMarker = coordinate ?
+      <Marker
+        title={title}
+        coordinate={coordinate}
+        pinColor="red"
+      /> :
+      <View />;
 
     return (
       <View>
@@ -88,6 +104,8 @@ export default function SpotAccess() {
             region={region}
             style={styles.mapView}
           >
+            {locationMarker}
+
             {markerList.map(({title, description, coordinate}) => (
               <Marker
                 title={title}

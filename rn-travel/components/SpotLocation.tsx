@@ -35,7 +35,7 @@ export default function SpotLocation() {
 
       if (index) {
         title = getObjectValue(obj, 'name');
-        pinColor = 'blue';
+        pinColor = 'orange';
       } else {
         title = i18n.t(`spot:${spot}:name`);
         region.latitude = xy[0];
