@@ -8,5 +8,6 @@
   "accessSentence": "{{action}} {{from}} {{place}}",
   "link": "Link",
   "linkMap": "Map",
-  "linkOfficialWebsite": "Official Website"
+  "linkOfficialWebsite": "Official Website",
+  "lastUpdate": "Last Updated"
 }

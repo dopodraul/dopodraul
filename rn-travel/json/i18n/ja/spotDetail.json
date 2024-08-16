@@ -8,5 +8,6 @@
   "accessSentence": "{{place}} {{from}} {{action}}",
   "link": "リンク",
   "linkMap": "地図",
-  "linkOfficialWebsite": "公式サイト"
+  "linkOfficialWebsite": "公式サイト",
+  "lastUpdate": "最終更新"
 }

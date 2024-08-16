@@ -8,6 +8,7 @@ import SpotOpen from './SpotOpen';
 import SpotLocation from './SpotLocation';
 import SpotAccess from './SpotAccess';
 import SpotLink from './SpotLink';
+import SpotLastUpdate from './SpotLastUpdate';
 import { AppContext } from '../utils/common';
 
 export default function SpotMain() {
@@ -29,6 +30,7 @@ export default function SpotMain() {
           <SpotLocation />
           <SpotAccess />
           <SpotLink />
+          <SpotLastUpdate />
         </View>
       </ScrollView>
     </View>
