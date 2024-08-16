@@ -22,7 +22,13 @@ export default function SpotLink() {
         url: string;
       }
     }) => {
-      const name = i18n.t(item.name) + ' ' + item.url;
+      const urlLength = item.url.length;
+
+      const url = urlLength > 20 ?
+        item.url.substring(0, 10) + ' ... ' + item.url.substring(urlLength - 10) :
+        item.url;
+
+      const name = i18n.t(item.name) + ' ' + url;
 
       const onPress = () => {
         openUrl(item.url);
