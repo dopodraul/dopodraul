@@ -3,6 +3,7 @@
   "stayHour": "Hour(s)",
   "stayMinute": "Minute(s)",
   "open": "Open Hours",
+  "openService": "Services",
   "busStation": "Bus Stop",
   "trainStation": "Station",
   "access": "Access",

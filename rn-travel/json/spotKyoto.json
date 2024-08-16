@@ -4,7 +4,33 @@
   "kiddyLandKyotoKawaramachi": {},
   "kyotoAnimationCoLtd": {},
   "kyotoAquarium": {},
-  "kyotoByodoin": {},
+
+  "kyotoByodoin": {
+    "lastUpdate": 240714,
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0830", 1730]
+    }, {
+      "name": "spotDetail:openService",
+      "range": [0, 1715]
+    }],
+
+    "price": [],
+
+    "location": [{
+      "xy": [34.8892908, 135.8076783]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.byodoin.or.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://www.byodoin.or.jp/guide/"
+    }]
+  },
+
   "kyotoFushimiinaritaisha": {},
 
   "kyotoGojozakaKiyomizuderaBusStation": {
