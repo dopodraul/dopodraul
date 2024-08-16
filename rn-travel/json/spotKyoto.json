@@ -33,6 +33,12 @@
       "xy": [34.8892908, 135.8076783]
     }],
 
+    "access": [{
+      "from": ["kyotoKeihanUjiTrainStation"]
+    }, {
+      "from": ["kyotoUjiTrainStation"]
+    }],
+
     "link": [{
       "name": "spotDetail:linkOfficialWebsite",
       "url": "https://www.byodoin.or.jp/"
@@ -108,6 +114,21 @@
   "kyotoHanamikojidori": {},
   "kyotoHigashihonganji": {},
   "kyotoHiranojinja": {},
+
+  "kyotoKeihanUjiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.8945418, 135.806362]
+    }]
+  },
 
   "kyotoKiyomizudera": {
     "lastUpdate": 240714,
@@ -189,13 +210,12 @@
   "kyotoKiyomizuGojoTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
+    "company": ["keihan"],
 
     "icon": {
       "family": "MaterialCommunityIcons",
       "name": "train"
     },
-
-    "company": ["keihan"],
 
     "location": [{
       "xy": [34.9959035, 135.7685681]
@@ -209,13 +229,12 @@
   "kyotoKyotoStation": {
     "lastUpdate": 240714,
     "station": "train",
+    "company": ["jrWest", "kyotoKotsu", "kintetsu"],
 
     "icon": {
       "family": "MaterialCommunityIcons",
       "name": "train"
     },
-
-    "company": ["jrWest", "kyotoKotsu", "kintetsu"],
 
     "location": [{
       "xy": [34.985849, 135.7587667]
@@ -231,6 +250,22 @@
   "kyotoShiraminejingu": {},
   "kyotoTofukuji": {},
   "kyotoToji": {},
+
+  "kyotoUjiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.8904002, 135.8006967]
+    }]
+  },
+
   "kyotoYasakajinja": {},
   "mandarakeKyoto": {},
   "nintendoKyoto": {},

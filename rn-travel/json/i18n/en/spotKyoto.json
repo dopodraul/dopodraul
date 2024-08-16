@@ -56,6 +56,10 @@
     "content": "The Hirano Shrine is a Shinto shrine in Kyoto, Japan. This shrine is known and popular for its gardens and many trees."
   },
 
+  "kyotoKeihanUjiTrainStation": {
+    "name": "Uji"
+  },
+
   "kyotoKiyomizudera": {
     "name": "Kiyomizu-dera",
     "content": "Kiyomizu-dera is a Buddhist temple located in eastern Kyoto, Japan. The temple is part of the Historic Monuments of Ancient Kyoto UNESCO World Heritage Site.",
@@ -132,6 +136,10 @@
   "kyotoToji": {
     "name": "Tōji Temple",
     "content": "Tō-ji Temple, also known as Kyō-ō-gokoku-ji is a Shingon Buddhist temple in the Minami-ku ward of Kyoto, Japan. Founded in 796, it was one of the only three Buddhist temples allowed in the city at the time it became the capital of Japan."
+  },
+
+  "kyotoUjiTrainStation": {
+    "name": "Uji"
   },
 
   "kyotoYasakajinja": {
