@@ -13,8 +13,7 @@ export default function SpotType() {
 
   const styles = StyleSheet.create({
     container: {
-      paddingTop: 16,
-      paddingBottom: 16
+      padding: 16
     },
 
     table: {

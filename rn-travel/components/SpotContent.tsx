@@ -21,7 +21,6 @@ export default function SpotContent() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 8,
-    paddingBottom: 8
+    padding: 8
   }
 });
