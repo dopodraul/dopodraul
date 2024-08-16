@@ -51,12 +51,12 @@ export default function SpotAccess() {
 
         if (spotLocation) {
           const title = i18n.t(`spot:${from}:name`);
-          const type = getObjectValue(spotJson, `${from}.type`);
+          const station = getObjectValue(spotJson, `${from}.station`);
           let place = title;
 
-          if (type === 'bus') {
+          if (station === 'bus') {
             place += ' ' + i18n.t('spotDetail:busStation');
-          } else if (type === 'train') {
+          } else if (station === 'train') {
             place += ' ' + i18n.t('spotDetail:trainStation');
           }
 
