@@ -4,6 +4,8 @@
   "stayMinute": "Minute(s)",
   "open": "Open Hours",
   "openService": "Services",
+  "price": "Price",
+  "priceYen": "Yen",
   "busStation": "Bus Stop",
   "trainStation": "Station",
   "access": "Access",

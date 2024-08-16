@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import BackComponent from './BackComponent';
 import SpotContent from './SpotContent';
 import SpotOpen from './SpotOpen';
+import SpotPrice from './SpotPrice';
 import SpotLocation from './SpotLocation';
 import SpotAccess from './SpotAccess';
 import SpotLink from './SpotLink';
@@ -29,6 +30,7 @@ export default function SpotMain() {
           <SpotContent />
           <SpotStay />
           <SpotOpen />
+          <SpotPrice />
           <SpotLocation />
           <SpotAccess />
           <SpotLink />

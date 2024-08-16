@@ -10,13 +10,24 @@
 
     "open": [{
       "name": "spotDetail:open",
-      "range": ["0830", 1730]
+      "range": ["0830", 1730],
+      "service": [0, 1715]
     }, {
-      "name": "spotDetail:openService",
-      "range": [0, 1715]
+      "name": "museum",
+      "range": ["0900", 1700],
+      "service": [0, 1645]
     }],
 
-    "price": [],
+    "price": [{
+      "name": "spotDetail:price",
+      "value": 700
+    }, {
+      "name": "high",
+      "value": 400
+    }, {
+      "name": "elementary",
+      "value": 300
+    }],
 
     "location": [{
       "xy": [34.8892908, 135.8076783]

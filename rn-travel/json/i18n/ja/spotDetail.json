@@ -4,6 +4,8 @@
   "stayMinute": "分",
   "open": "営業時間",
   "openService": "受付",
+  "price": "料金",
+  "priceYen": "円",
   "busStation": "バス停",
   "trainStation": "駅",
   "access": "アクセス",
