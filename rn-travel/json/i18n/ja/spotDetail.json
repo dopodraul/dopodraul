@@ -1,4 +1,7 @@
 {
+  "stay": "留まる時間",
+  "stayHour": "時間",
+  "stayMinute": "分",
   "open": "営業時間",
   "busStation": "バス停",
   "trainStation": "駅",

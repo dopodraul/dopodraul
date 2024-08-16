@@ -8,6 +8,7 @@ import SpotOpen from './SpotOpen';
 import SpotLocation from './SpotLocation';
 import SpotAccess from './SpotAccess';
 import SpotLink from './SpotLink';
+import SpotStay from './SpotStay';
 import SpotLastUpdate from './SpotLastUpdate';
 import { AppContext } from '../utils/common';
 
@@ -26,6 +27,7 @@ export default function SpotMain() {
       <ScrollView>
         <View style={styles.scrollContent}>
           <SpotContent />
+          <SpotStay />
           <SpotOpen />
           <SpotLocation />
           <SpotAccess />

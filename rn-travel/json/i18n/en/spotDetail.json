@@ -1,4 +1,7 @@
 {
+  "stay": "Staying",
+  "stayHour": "Hour(s)",
+  "stayMinute": "Minute(s)",
   "open": "Open Hours",
   "busStation": "Bus Stop",
   "trainStation": "Station",
