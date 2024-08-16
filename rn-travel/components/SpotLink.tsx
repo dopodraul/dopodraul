@@ -36,7 +36,7 @@ export default function SpotLink() {
 
       return (
         <TouchableOpacity onPress={onPress}>
-          <Text style={[styles.text, stylesColor]}>{name}</Text>
+          <Text style={[styles.text, styles.url]}>{name}</Text>
         </TouchableOpacity>
       );
     }
@@ -60,5 +60,10 @@ export default function SpotLink() {
 const styles = StyleSheet.create({
   text: {
     padding: 8
+  },
+
+  url: {
+    color: '#007aff',
+    textDecorationLine: 'underline'
   }
 });
