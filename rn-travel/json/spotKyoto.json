@@ -9,7 +9,7 @@
 
   "kyotoGojozakaKiyomizuderaBusStation": {
     "lastUpdate": 240714,
-    "type": "bus",
+    "station": "bus",
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -81,16 +81,16 @@
       "name": "temple-buddhist"
     },
 
-    "location": [{
-      "xy": [34.9946662, 135.784661]
-    }],
-
     "open": [{
       "name": "spotDetail:open",
       "range": ["0600", 1800]
     }, {
       "name": "amuletPlace",
       "range": ["0800"]
+    }],
+
+    "location": [{
+      "xy": [34.9946662, 135.784661]
     }],
 
     "access": [{
@@ -118,7 +118,7 @@
 
   "kyotoKiyomizudoBusStation": {
     "lastUpdate": 240714,
-    "type": "bus",
+    "station": "bus",
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -151,7 +151,7 @@
 
   "kyotoKiyomizuGojoTrainStation": {
     "lastUpdate": 240714,
-    "type": "train",
+    "station": "train",
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -168,6 +168,23 @@
   "kyotoKenninji": {},
   "kyotoKitanotenmangu": {},
   "kyotoKodaiji": {},
+
+  "kyotoKyotoStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "company": ["jrWest", "kyotoKotsu", "kintetsu"],
+
+    "location": [{
+      "xy": [34.985849, 135.7587667]
+    }]
+  },
+
   "kyotoMyoshinji": {},
   "kyotoNijojo": {},
   "kyotoNishikitenmangu": {},
@@ -182,5 +199,34 @@
   "nintendoKyoto": {},
   "pokemonCenterKyoto": {},
   "richmondHotelPremierKyotoEkimae": {},
-  "yodobashiKyoto": {}
+
+  "yodobashiKyoto": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "electrical-services"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0930", 2200]
+    }],
+
+    "location": [{
+      "xy": [34.988109, 135.7593982]
+    }],
+
+    "access": [{
+      "from": ["kyotoKyotoStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.yodobashi.com/ec/store/0083/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.yodobashi.com/ec/store/floor/0083/"
+    }]
+  }
 }

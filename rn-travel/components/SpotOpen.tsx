@@ -13,7 +13,8 @@ export default function SpotType() {
 
   const styles = StyleSheet.create({
     container: {
-      padding: 16
+      padding: 8,
+      flexDirection: 'row'
     },
 
     table: {
@@ -23,6 +24,10 @@ export default function SpotType() {
 
     row: {
       padding: 8
+    },
+
+    value: {
+      marginLeft: 8
     }
   });
 
@@ -36,19 +41,19 @@ export default function SpotType() {
   }
 
   if (openList) {
-    if (openList[1]) {
-      const data = openList.map((obj: object) => {
-        const name = getObjectValue(obj, 'name');
-        const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`) ];
-        const rangeList = getObjectValue(obj, 'range');
+    const data = openList.map((obj: object) => {
+      const name = getObjectValue(obj, 'name');
+      const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`) ];
+      const rangeList = getObjectValue(obj, 'range');
 
-        if (rangeList) {
-          result.push(convertOpen(rangeList[0]) + ' ~ ' + convertOpen(rangeList[1]));
-        }
+      if (rangeList) {
+        result.push(convertOpen(rangeList[0]) + ' ~ ' + convertOpen(rangeList[1]));
+      }
 
-        return result;
-      });
+      return result;
+    });
 
+    if (data[1]) {
       return (
         <Table borderStyle={styles.table}>
           <Rows textStyle={[styles.row, stylesColor]} data={data} />
@@ -58,7 +63,12 @@ export default function SpotType() {
 
     return (
       <View style={styles.container}>
-        <Text style={stylesColor}>營業時間</Text>
+        <View>
+          <Text style={stylesColor}>{data[0][0]}</Text>
+        </View>
+        <View style={styles.value}>
+          <Text style={stylesColor}>{data[0][1]}</Text>
+        </View>
       </View>
     );
   }
