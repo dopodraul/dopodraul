@@ -58,6 +58,14 @@
     "content": "The Hirano Shrine is a Shinto shrine in Kyoto, Japan. This shrine is known and popular for its gardens and many trees."
   },
 
+  "kyotoInariTrainStation": {
+    "name": "Inari"
+  },
+
+  "kyotoKeihanFushimiinariTrainStation": {
+    "name": "Fushimiinari"
+  },
+
   "kyotoKeihanKohataTrainStation": {
     "name": "Kohata (Keihan)"
   },

@@ -83,7 +83,32 @@
     }]
   },
 
-  "kyotoFushimiinaritaisha": {},
+  "kyotoFushimiinaritaisha": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "location": [{
+      "xy": [34.9676945, 135.7791876]
+    }],
+
+    "access": [{
+      "from": ["kyotoInariTrainStation"]
+    }, {
+      "from": ["kyotoKeihanFushimiinariTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://inari.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://inari.jp/trip/map01/"
+    }]
+  },
 
   "kyotoGojozakaKiyomizuderaBusStation": {
     "lastUpdate": 240714,
@@ -149,6 +174,36 @@
   "kyotoHanamikojidori": {},
   "kyotoHigashihonganji": {},
   "kyotoHiranojinja": {},
+
+  "kyotoInariTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9668072, 135.7708496]
+    }]
+  },
+
+  "kyotoKeihanFushimiinariTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9687187, 135.7693455]
+    }]
+  },
 
   "kyotoKeihanKohataTrainStation": {
     "lastUpdate": 240714,

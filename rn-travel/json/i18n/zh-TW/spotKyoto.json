@@ -58,6 +58,14 @@
     "content": "平野神社是一座位於日本京都府京都市北區平野宮本町的神社，是式內社、二十二社之一、舊社格為官幣大社。神紋是「櫻花」。平野神社的本殿是日本重要文化財。平野神社也是著名的賞櫻聖地，特別以「夜櫻」而聞名。"
   },
 
+  "kyotoInariTrainStation": {
+    "name": "稻荷"
+  },
+
+  "kyotoKeihanFushimiinariTrainStation": {
+    "name": "伏見稻荷"
+  },
+
   "kyotoKeihanKohataTrainStation": {
     "name": "木幡 (京阪)"
   },
