@@ -368,7 +368,66 @@
   "kyotoSeimeijinja": {},
   "kyotoShijodoriChikado": {},
   "kyotoShiraminejingu": {},
-  "kyotoTofukuji": {},
+
+  "kyotoTofukuji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "dateRange": ["0401", 1031],
+      "range": ["0900", 1600]
+    }, {
+      "dateRange": [1101, 1201],
+      "range": ["0830", 1600]
+    }, {
+      "dateRange": [1202, "0331"],
+      "range": ["0900", 1530]
+    }],
+
+    "price": [{
+      "name": "spotDetail:price",
+      "value": 500
+    }, {
+      "name": "spotDetail:priceChild",
+      "value": 300
+    }],
+
+    "location": [{
+      "xy": [34.976025, 135.7737627]
+    }],
+
+    "access": [{
+      "from": ["kyotoTofukujiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://tofukuji.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://tofukuji.jp/guide/"
+    }]
+  },
+
+  "kyotoTofukujiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest", "keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9813652, 135.769927]
+    }]
+  },
+
   "kyotoToji": {},
 
   "kyotoUjiTrainStation": {

@@ -6,6 +6,7 @@
   "openService": "Services",
   "price": "Price",
   "priceYen": "Yen",
+  "priceChild": "Children",
   "busStation": "Bus Stop",
   "trainStation": "Station",
   "access": "Access",

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import Moment from 'moment';
 import { Table, Rows } from 'react-native-table-component';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
@@ -44,10 +45,25 @@ export default function SpotOpen() {
     return '';
   }
 
+  const convertDate = (date: any) => {
+    if (date) {
+      const moment = Moment(date, 'MMDD');
+      return moment.format('MMMM Do');
+    }
+
+    return '';
+  }
+
   if (openList) {
     const data = openList.map((obj: object) => {
       const name = getObjectValue(obj, 'name');
-      const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`) ];
+      const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`)];
+      const dateRange = getObjectValue(obj, 'dateRange');
+
+      if (dateRange) {
+        result[0] = convertDate(dateRange[0]) + ' ~ ' + convertDate(dateRange[1]);
+      }
+
       const rangeList = getObjectValue(obj, 'range');
 
       if (rangeList) {
