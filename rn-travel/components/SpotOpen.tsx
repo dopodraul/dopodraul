@@ -38,8 +38,8 @@ export default function SpotOpen() {
 
   const convertOpen = (open: any) => {
     if (open) {
-      const openStr = String(open);
-      return openStr.substring(0, 2) + ':' + openStr.substring(2, 4);
+      const moment = Moment(open, 'HHmm');
+      return moment.format('LT');
     }
 
     return '';
