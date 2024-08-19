@@ -16,7 +16,9 @@
 
   "kyotoAnimationCoLtd": {
     "name": "Kyoto Animation Co. Ltd.",
-    "content": "Kyoto Animation Co., Ltd., often abbreviated KyoAni, is a Japanese animation studio and light novel publisher located in Uji, Kyoto Prefecture. It was founded in 1985 by husband and wife Hideaki and Yoko Hatta, who remain its president and vice-president respectively."
+    "content": "Kyoto Animation Co., Ltd., often abbreviated KyoAni, is a Japanese animation studio and light novel publisher located in Uji, Kyoto Prefecture. It was founded in 1985 by husband and wife Hideaki and Yoko Hatta, who remain its president and vice-president respectively.",
+    "2nd": "2nd Studio",
+    "5th": "5th Studio"
   },
 
   "kyotoAquarium": {
@@ -56,6 +58,10 @@
     "content": "The Hirano Shrine is a Shinto shrine in Kyoto, Japan. This shrine is known and popular for its gardens and many trees."
   },
 
+  "kyotoKeihanKohataTrainStation": {
+    "name": "Kohata (Keihan)"
+  },
+
   "kyotoKeihanUjiTrainStation": {
     "name": "Uji (Keihan)"
   },
@@ -89,7 +95,11 @@
     "content": "Kōdai-ji, formally identified as Jubuzan Kōdai-ji, is a temple of the Rinzai school of Zen Buddhism in Higashiyama-ku, Kyoto, Japan—the largest subtemple of the Kennin-ji branch."
   },
 
-  "kyotoKyotoStation": {
+  "kyotoKohataTrainStation": {
+    "name": "Kohata"
+  },
+
+  "kyotoKyotoTrainStation": {
     "name": "Kyoto"
   },
 

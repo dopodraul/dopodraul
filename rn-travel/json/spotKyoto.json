@@ -2,11 +2,46 @@
   "edionKyotoShijokawaramachi": {},
   "keifukuRanden": {},
   "kiddyLandKyotoKawaramachi": {},
-  "kyotoAnimationCoLtd": {},
+
+  "kyotoAnimationCoLtd": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "menu-book"
+    },
+
+    "location": [{
+      "xy": [34.9247482, 135.7985478]
+    }, {
+      "name": "2nd",
+      "xy": [34.9255158, 135.7954627]
+    }, {
+      "name": "5th",
+      "xy": [34.9255407, 135.7986024]
+    }],
+
+    "access": [{
+      "from": ["kyotoKohataTrainStation"]
+    }, {
+      "from": ["kyotoKeihanKohataTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kyotoanimation.co.jp/"
+    }]
+  },
+
   "kyotoAquarium": {},
 
   "kyotoByodoin": {
     "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
 
     "open": [{
       "name": "spotDetail:open",
@@ -61,22 +96,22 @@
 
     "location": [{
       "xy": [34.99647, 135.77682],
-      "direction": ["spot:kyotoTrainStation"]
+      "direction": ["spot:kyotoKyotoTrainStation"]
     }],
 
     "access": [{
       "transportation": "transportation:kyotoKyotoKotsuBus",
-      "from": ["spot:kyotoTrainStation"],
+      "from": ["spot:kyotoKyotoTrainStation"],
       "line": [206],
       "direction": ["東山通北大路バスターミナル"]
     }, {
       "transportation": "transportation:kyotoKyotoKotsuBus",
-      "from": ["spot:kyotoTrainStation"],
+      "from": ["spot:kyotoKyotoTrainStation"],
       "line": [100],
       "direction": ["清水寺祇園 銀閣寺"]
     }, {
       "transportation": "transportation:kyotoKyotoBus",
-      "from": ["spot:kyotoTrainStation"],
+      "from": ["spot:kyotoKyotoTrainStation"],
       "line": [18],
       "direction": ["大原"],
 
@@ -114,6 +149,21 @@
   "kyotoHanamikojidori": {},
   "kyotoHigashihonganji": {},
   "kyotoHiranojinja": {},
+
+  "kyotoKeihanKohataTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.925721, 135.7961435]
+    }]
+  },
 
   "kyotoKeihanUjiTrainStation": {
     "lastUpdate": 240714,
@@ -185,7 +235,7 @@
 
     "location": [{
       "xy": [34.9980569, 135.77718],
-      "direction": ["spot:kyotoTrainStation"]
+      "direction": ["spot:kyotoKyotoTrainStation"]
     }, {
       "xy": [34.9980929, 135.7770049],
 
@@ -225,6 +275,21 @@
   "kyotoKenninji": {},
   "kyotoKitanotenmangu": {},
   "kyotoKodaiji": {},
+
+  "kyotoKohataTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9249715, 135.7988752]
+    }]
+  },
 
   "kyotoKyotoStation": {
     "lastUpdate": 240714,

@@ -34,7 +34,8 @@ export default function SpotLocation() {
       const xy = getObjectValue(obj, 'xy');
 
       if (index) {
-        title = getObjectValue(obj, 'name');
+        const name = getObjectValue(obj, 'name');
+        title = i18n.t(`spot:${spot}:${name}`);
         pinColor = 'orange';
       } else {
         title = i18n.t(`spot:${spot}:name`);

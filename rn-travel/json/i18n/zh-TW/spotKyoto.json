@@ -16,7 +16,9 @@
 
   "kyotoAnimationCoLtd": {
     "name": "京都動畫工作室",
-    "content": "京都動畫有限公司（通常縮寫為 KyoAni）是一家日本動畫工作室和輕小​​說出版商，位於京都府宇治市。該公司由 Hideaki 和 Yoko Hatta 夫婦於 1985 年創立，他們現在分別擔任總裁和副總裁。"
+    "content": "京都動畫有限公司（通常縮寫為 KyoAni）是一家日本動畫工作室和輕小​​說出版商，位於京都府宇治市。該公司由 Hideaki 和 Yoko Hatta 夫婦於 1985 年創立，他們現在分別擔任總裁和副總裁。",
+    "2nd": "第2工作室",
+    "5th": "第5工作室"
   },
 
   "kyotoAquarium": {
@@ -56,6 +58,10 @@
     "content": "平野神社是一座位於日本京都府京都市北區平野宮本町的神社，是式內社、二十二社之一、舊社格為官幣大社。神紋是「櫻花」。平野神社的本殿是日本重要文化財。平野神社也是著名的賞櫻聖地，特別以「夜櫻」而聞名。"
   },
 
+  "kyotoKeihanKohataTrainStation": {
+    "name": "木幡 (京阪)"
+  },
+
   "kyotoKeihanUjiTrainStation": {
     "name": "宇治 (京阪)"
   },
@@ -89,7 +95,11 @@
     "content": "高台寺是位在日本京都府京都市東山區的臨濟宗建仁寺派寺院。山號「鷲峰山」。供奉本尊釋迦如來、開基為高台院。太閤豐臣秀吉公之正室北政所為了幫亡夫秀吉公祈求冥福所興建的寺院，也是秀吉公去世後高台院的居所。始建於慶長十一年，寬永元年由建仁寺的三江紹益禪師擔任主持"
   },
 
-  "kyotoKyotoStation": {
+  "kyotoKohataTrainStation": {
+    "name": "木幡"
+  },
+
+  "kyotoKyotoTrainStation": {
     "name": "京都"
   },
 
