@@ -107,10 +107,6 @@
     "name": "Kohata"
   },
 
-  "kyotoKyotoTrainStation": {
-    "name": "Kyoto"
-  },
-
   "kyotoMyoshinji": {
     "name": "Myoshin-ji",
     "content": "Myōshin-ji is a temple complex in Kyoto, Japan, which serves as the head temple of the associated branch of Rinzai Zen Buddhism."
@@ -164,6 +160,10 @@
 
   "kyotoTojiTrainStation": {
     "name": "Toji"
+  },
+
+  "kyotoTrainStation": {
+    "name": "Kyoto"
   },
 
   "kyotoUjiTrainStation": {

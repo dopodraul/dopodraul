@@ -107,10 +107,6 @@
     "name": "木幡"
   },
 
-  "kyotoKyotoTrainStation": {
-    "name": "京都"
-  },
-
   "kyotoMyoshinji": {
     "name": "妙心寺",
     "content": "妙心寺は、京都市右京区花園妙心寺町にある臨済宗妙心寺派の大本山の寺院。山号は正法山。本尊は釈迦如来。開基は花園天皇。開山は関山慧玄。寺紋は花園紋。 日本にある臨済宗寺院約5,650か寺のうち、約3,350か寺を妙心寺派で占める。"
@@ -164,6 +160,10 @@
 
   "kyotoTojiTrainStation": {
     "name": "東寺"
+  },
+
+  "kyotoTrainStation": {
+    "name": "京都"
   },
 
   "kyotoUjiTrainStation": {

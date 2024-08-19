@@ -121,22 +121,22 @@
 
     "location": [{
       "xy": [34.99647, 135.77682],
-      "direction": ["spot:kyotoKyotoTrainStation"]
+      "direction": ["spot:kyotoTrainStation"]
     }],
 
     "access": [{
       "transportation": "transportation:kyotoKyotoKotsuBus",
-      "from": ["spot:kyotoKyotoTrainStation"],
+      "from": ["spot:kyotoTrainStation"],
       "line": [206],
       "direction": ["東山通北大路バスターミナル"]
     }, {
       "transportation": "transportation:kyotoKyotoKotsuBus",
-      "from": ["spot:kyotoKyotoTrainStation"],
+      "from": ["spot:kyotoTrainStation"],
       "line": [100],
       "direction": ["清水寺祇園 銀閣寺"]
     }, {
       "transportation": "transportation:kyotoKyotoBus",
-      "from": ["spot:kyotoKyotoTrainStation"],
+      "from": ["spot:kyotoTrainStation"],
       "line": [18],
       "direction": ["大原"],
 
@@ -290,7 +290,7 @@
 
     "location": [{
       "xy": [34.9980569, 135.77718],
-      "direction": ["spot:kyotoKyotoTrainStation"]
+      "direction": ["spot:kyotoTrainStation"]
     }, {
       "xy": [34.9980929, 135.7770049],
 
@@ -343,21 +343,6 @@
 
     "location": [{
       "xy": [34.9249715, 135.7988752]
-    }]
-  },
-
-  "kyotoKyotoStation": {
-    "lastUpdate": 240714,
-    "station": "train",
-    "company": ["jrWest", "kyotoKotsu", "kintetsu"],
-
-    "icon": {
-      "family": "MaterialCommunityIcons",
-      "name": "train"
-    },
-
-    "location": [{
-      "xy": [34.985849, 135.7587667]
     }]
   },
 
@@ -481,6 +466,21 @@
     }]
   },
 
+  "kyotoTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest", "kyotoKotsu", "kintetsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.985849, 135.7587667]
+    }]
+  },
+
   "kyotoUjiTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
@@ -520,7 +520,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKyotoStation"]
+      "from": ["kyotoTrainStation"]
     }],
 
     "link": [{
