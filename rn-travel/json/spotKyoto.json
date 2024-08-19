@@ -428,7 +428,58 @@
     }]
   },
 
-  "kyotoToji": {},
+  "kyotoToji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "auditorium",
+      "range": ["0800", 1700],
+      "service": [0, 1630]
+    }, {
+      "name": "college",
+      "range": ["0900", 1700],
+      "service": [0, 1630]
+    }],
+
+    "location": [{
+      "xy": [34.9803395, 135.7476935]
+    }],
+
+    "access": [{
+      "from": ["kyotoTojiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://toji.or.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://toji.or.jp/admission/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://toji.or.jp/guide/"
+    }]
+  },
+
+  "kyotoTojiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["kintetsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9799328, 135.7525327]
+    }]
+  },
 
   "kyotoUjiTrainStation": {
     "lastUpdate": 240714,

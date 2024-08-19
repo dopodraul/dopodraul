@@ -157,7 +157,13 @@
 
   "kyotoToji": {
     "name": "Tōji Temple",
-    "content": "Tō-ji Temple, also known as Kyō-ō-gokoku-ji is a Shingon Buddhist temple in the Minami-ku ward of Kyoto, Japan. Founded in 796, it was one of the only three Buddhist temples allowed in the city at the time it became the capital of Japan."
+    "content": "Tō-ji Temple, also known as Kyō-ō-gokoku-ji is a Shingon Buddhist temple in the Minami-ku ward of Kyoto, Japan. Founded in 796, it was one of the only three Buddhist temples allowed in the city at the time it became the capital of Japan.",
+    "auditorium": "Kondo Auditorium",
+    "college": "Kanchiin College"
+  },
+
+  "kyotoTojiTrainStation": {
+    "name": "Toji"
   },
 
   "kyotoUjiTrainStation": {
