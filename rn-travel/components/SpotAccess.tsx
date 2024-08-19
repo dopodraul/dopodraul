@@ -50,19 +50,18 @@ export default function SpotAccess() {
         const spotLocation = getObjectValue(spotJson, `${from}.location`);
 
         if (spotLocation) {
-          const title = i18n.t(`spot:${from}:name`);
+          let title = i18n.t(`spot:${from}:name`);
           const station = getObjectValue(spotJson, `${from}.station`);
-          let place = title;
 
           if (station === 'bus') {
-            place += ' ' + i18n.t('spotDetail:busStation');
+            title += ' ' + i18n.t('spotDetail:busStation');
           } else if (station === 'train') {
-            place += ' ' + i18n.t('spotDetail:trainStation');
+            title += ' ' + i18n.t('spotDetail:trainStation');
           }
 
           const description = i18n.t(
             'spotDetail:accessSentence', {
-              place,
+              place: title,
               action: i18n.t('spotDetail:accessWalk'),
               from: i18n.t('spotDetail:accessFrom')
             }
