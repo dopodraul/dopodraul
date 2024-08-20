@@ -37,6 +37,14 @@
     "content": "Mountainside Shinto shrine dating from 711 A.D. featuring a path with hundreds of traditional gates."
   },
 
+  "kyotoFushimiinariTrainStation": {
+    "name": "Fushimiinari"
+  },
+
+  "kyotoGionshijoTrainStation": {
+    "name": "Gion-Shijō"
+  },
+
   "kyotoGojozakaKiyomizuderaBusStation": {
     "name": "Gojozaka(Kiyomizu-dera Temple)"
   },
@@ -60,8 +68,8 @@
     "name": "Inari"
   },
 
-  "kyotoKeihanFushimiinariTrainStation": {
-    "name": "Fushimiinari"
+  "kyotoKarawamachiTrainStation": {
+    "name": "Kyoto-kawaramachi"
   },
 
   "kyotoKeihanKohataTrainStation": {

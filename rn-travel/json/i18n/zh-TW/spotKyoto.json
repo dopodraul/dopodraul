@@ -37,6 +37,14 @@
     "content": "伏見稻荷大社是一座位於日本京都市伏見區內的神社，是遍及日本全國各地約三萬所的稻荷神社之總本社，也是近畿地方初詣參拜者最多的社寺。以境內所擁有的「千本鳥居」聞名。 為式內社、二十二社之一社。舊社格為官幣大社，現在是不屬於神社本廳的單立神社。現存舊社家是大西家。"
   },
 
+  "kyotoFushimiinariTrainStation": {
+    "name": "伏見稻荷"
+  },
+
+  "kyotoGionshijoTrainStation": {
+    "name": "祇園四條"
+  },
+
   "kyotoGojozakaKiyomizuderaBusStation": {
     "name": "五條坂(清水寺)"
   },
@@ -60,8 +68,8 @@
     "name": "稻荷"
   },
 
-  "kyotoKeihanFushimiinariTrainStation": {
-    "name": "伏見稻荷"
+  "kyotoKarawamachiTrainStation": {
+    "name": "京都河原町"
   },
 
   "kyotoKeihanKohataTrainStation": {

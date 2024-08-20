@@ -37,6 +37,14 @@
     "content": "伏見稲荷大社は、京都府京都市伏見区深草薮之内町にある神社。式内社、二十二社の一社。旧社格は官幣大社で、現在は単立神社となっている。 旧称は「稲荷神社」。1946年に現社名に改称した。稲荷山の麓に本殿があり、稲荷山全体を神域とする。全国に約3万社あるといわれる稲荷神社の総本社である。"
   },
 
+  "kyotoFushimiinariTrainStation": {
+    "name": "伏見稲荷"
+  },
+
+  "kyotoGionshijoTrainStation": {
+    "name": "祇園四条"
+  },
+
   "kyotoGojozakaKiyomizuderaBusStation": {
     "name": "五条坂(清水寺)"
   },
@@ -60,8 +68,8 @@
     "name": "稲荷"
   },
 
-  "kyotoKeihanFushimiinariTrainStation": {
-    "name": "伏見稲荷"
+  "kyotoKarawamachiTrainStation": {
+    "name": "京都河原町"
   },
 
   "kyotoKeihanKohataTrainStation": {

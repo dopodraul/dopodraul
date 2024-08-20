@@ -146,7 +146,7 @@
     "access": [{
       "from": ["kyotoInariTrainStation"]
     }, {
-      "from": ["kyotoKeihanFushimiinariTrainStation"]
+      "from": ["kyotoFushimiinariTrainStation"]
     }],
 
     "link": [{
@@ -155,6 +155,36 @@
     }, {
       "name": "spotDetail:linkMap",
       "url": "https://inari.jp/trip/map01/"
+    }]
+  },
+
+  "kyotoFushimiinariTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9687187, 135.7693455]
+    }]
+  },
+
+  "kyotoGionshijoTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keihan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0033014, 135.7719122]
     }]
   },
 
@@ -238,10 +268,10 @@
     }]
   },
 
-  "kyotoKeihanFushimiinariTrainStation": {
+  "kyotoKarawamachiTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
-    "company": ["keihan"],
+    "company": ["hankyu"],
 
     "icon": {
       "family": "MaterialCommunityIcons",
@@ -249,7 +279,7 @@
     },
 
     "location": [{
-      "xy": [34.9687187, 135.7693455]
+      "xy": [35.0037565, 135.7687486]
     }]
   },
 
@@ -396,7 +426,35 @@
 
   "kyotoMyoshinji": {},
   "kyotoNijojo": {},
-  "kyotoNishikitenmangu": {},
+
+  "kyotoNishikitenmangu": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0800", 2000]
+    }],
+
+    "location": [{
+      "xy": [35.0050475, 135.7672983]
+    }],
+
+    "access": [{
+      "from": ["kyotoKarawamachiTrainStation"]
+    }, {
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://nishikitenmangu.or.jp/"
+    }]
+  },
 
   "kyotoRailwayMuseum": {
     "lastUpdate": 240714,
