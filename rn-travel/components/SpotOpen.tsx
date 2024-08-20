@@ -82,6 +82,29 @@ export default function SpotOpen() {
         }
       }
 
+      const except = i18n.t('spotDetail:openExcept');
+      const dayExcept: number[] = getObjectValue(obj, 'dayExcept');
+
+      if (dayExcept) {
+        result[1] += "\n(" +
+          i18n.t('spotDetail:openExceptSentence', {
+            except,
+            day: dayExcept.map(day => i18n.t('spotDetail:openDay' + day)).join(' & ')
+          }) +
+          ')';
+      }
+
+      const dateExceptRange = getObjectValue(obj, 'dateExceptRange');
+
+      if (dateExceptRange) {
+        result[1] += "\n(" +
+          i18n.t('spotDetail:openExceptSentence', {
+            except,
+            day: convertDate(dateExceptRange[0]) + ' ~ ' + convertDate(dateExceptRange[1])
+          }) +
+          ')';
+      }
+
       return result;
     });
 

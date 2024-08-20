@@ -58,6 +58,9 @@
     }, {
       "name": ["spotDetail:price3YearsChild"],
       "value": 800
+    }, {
+      "name": ["spot:kyotoRailwayMuseum:name", "spot:kyotoAquarium:name"],
+      "value": 3510
     }],
 
     "location": [{
@@ -394,7 +397,60 @@
   "kyotoMyoshinji": {},
   "kyotoNijojo": {},
   "kyotoNishikitenmangu": {},
-  "kyotoRailwayMuseum": {},
+
+  "kyotoRailwayMuseum": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "museum"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "dayExcept": [3],
+      "dateExceptRange": [1230, "0101"],
+      "range": [1000, 1700],
+      "service": [0, 1630]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 1500
+    }, {
+      "name": ["spotDetail:priceUniversity", "spotDetail:priceHighSchool"],
+      "value": 1300
+    }, {
+      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceElementarySchool"],
+      "value": 500
+    }, {
+      "name": ["spotDetail:price3YearsChild"],
+      "value": 200
+    }, {
+      "name": ["spot:kyotoRailwayMuseum:name", "spot:kyotoAquarium:name"],
+      "value": 3510
+    }],
+
+    "location": [{
+      "xy": [34.9870986, 135.7422732]
+    }],
+
+    "access": [{
+      "from": ["kyotoUmekojiKyotonishiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kyotorailwaymuseum.jp/"
+    }, {
+      "name": "spotDetail:price",
+      "url": "https://www.kyotorailwaymuseum.jp/guide/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.kyotorailwaymuseum.jp/floor-map/"
+    }]
+  },
+
   "kyotoSeimeijinja": {},
   "kyotoShijodoriChikado": {},
   "kyotoShiraminejingu": {},
