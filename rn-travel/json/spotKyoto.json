@@ -33,7 +33,52 @@
     }]
   },
 
-  "kyotoAquarium": {},
+  "kyotoAquarium": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "museum"
+    },
+
+    "open": [{
+      "name": "spotDetail:openNormal",
+      "range": [1000, 1700]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 2400
+    }, {
+      "name": ["spotDetail:priceHighSchool"],
+      "value": 1800
+    }, {
+      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceElementarySchool"],
+      "value": 1200
+    }, {
+      "name": ["spotDetail:price3YearsChild"],
+      "value": 800
+    }],
+
+    "location": [{
+      "xy": [34.987516, 135.7472123]
+    }],
+
+    "access": [{
+      "from": ["kyotoUmekojiKyotonishiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kyoto-aquarium.com"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://www.kyoto-aquarium.com/about/price/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.kyoto-aquarium.com/floor/"
+    }]
+  },
 
   "kyotoByodoin": {
     "lastUpdate": 240714,
@@ -54,13 +99,13 @@
     }],
 
     "price": [{
-      "name": "spotDetail:price",
+      "name": ["spotDetail:price"],
       "value": 700
     }, {
-      "name": "high",
+      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
       "value": 400
     }, {
-      "name": "elementary",
+      "name": ["spotDetail:priceElementarySchool"],
       "value": 300
     }],
 
@@ -374,10 +419,10 @@
     }],
 
     "price": [{
-      "name": "spotDetail:price",
+      "name": ["spotDetail:price"],
       "value": 500
     }, {
-      "name": "spotDetail:priceChild",
+      "name": ["spotDetail:priceChild"],
       "value": 300
     }],
 
@@ -493,6 +538,21 @@
 
     "location": [{
       "xy": [34.8904002, 135.8006967]
+    }]
+  },
+
+  "kyotoUmekojiKyotonishiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.9888864, 135.7430949]
     }]
   },
 

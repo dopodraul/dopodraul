@@ -29,9 +29,7 @@
   "kyotoByodoin": {
     "name": "Byodo-in Temple",
     "content": "Byōdō-in is a Buddhist temple in the city of Uji in Kyoto Prefecture, Japan, built in the late Heian period. It is jointly a temple of the Jōdo-shū and Tendai-shū sects.",
-    "museum": "Museum",
-    "elementary": "Elementary School Students",
-    "high": "Middle and High School Students"
+    "museum": "Museum"
   },
 
   "kyotoFushimiinaritaisha": {
@@ -168,6 +166,10 @@
 
   "kyotoUjiTrainStation": {
     "name": "Uji"
+  },
+
+  "kyotoUmekojiKyotonishiTrainStation": {
+    "name": "Umekoji Kyotonishi"
   },
 
   "kyotoYasakajinja": {

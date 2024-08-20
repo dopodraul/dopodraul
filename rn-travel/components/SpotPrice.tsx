@@ -37,15 +37,26 @@ export default function SpotPrice() {
 
   if (priceList) {
     const data = priceList.map((obj: object) => {
-      const name = getObjectValue(obj, 'name');
-      const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`) ];
+      const keyList: string[] = getObjectValue(obj, 'name');
+      const nameList: string[] = [];
+
+      if (keyList) {
+        keyList.forEach((key) => {
+          nameList.push(i18n.exists(key) ? i18n.t(key) : i18n.t(`spot:${spot}:${key}`));
+        });
+      }
+
+      let price = '';
       const value = getObjectValue(obj, 'value');
 
       if (value) {
-        result.push(value + ' ' + i18n.t('spotDetail:priceYen'));
+        price = value + ' ' + i18n.t('spotDetail:priceYen');
       }
 
-      return result;
+      return [
+        nameList.join(' & '),
+        price
+      ];
     });
 
     if (data[1]) {
