@@ -1,7 +1,35 @@
 {
   "edionKyotoShijokawaramachi": {},
   "keifukuRanden": {},
-  "kiddyLandKyotoKawaramachi": {},
+
+  "kiddyLandKyotoKawaramachi": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "emoji-emotions"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1100, 2100]
+    }],
+
+    "location": [{
+      "xy": [35.0047583, 135.768967]
+    }],
+
+    "access": [{
+      "from": ["kyotoKarawamachiTrainStation"]
+    }, {
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kiddyland.co.jp/shoplist/kyoto_kawaramachi/"
+    }]
+  },
 
   "kyotoAnimationCoLtd": {
     "lastUpdate": 240714,
