@@ -1,5 +1,6 @@
 {
   "floorSentence": "{{floor}} 階",
+  "reserve": "予約制",
   "stay": "留まる時間",
   "stayHour": "時間",
   "stayMinute": "分",
@@ -30,7 +31,8 @@
   "accessWalk": "歩く",
   "accessSentence": "{{place}} {{from}} {{action}}",
   "link": "リンク",
-  "linkMap": "地図",
   "linkOfficialWebsite": "公式サイト",
+  "linkTicket": "チケット",
+  "linkMap": "地図",
   "lastUpdate": "最終更新"
 }

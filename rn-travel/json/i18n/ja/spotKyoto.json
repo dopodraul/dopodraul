@@ -99,6 +99,10 @@
     "content": "建仁寺は、京都市東山区にある臨済宗建仁寺派の大本山の寺院。山号は東山。本尊は釈迦如来。開基は源頼家、開山は栄西である。かつて京都五山の第3位であった。「建仁寺の学問面」などと呼ばれる。寺号は「けんにんじ」と読むが、地元では「けんねんさん」の名で親しまれている。"
   },
 
+  "kyotoKintetsuOguraTrainStation": {
+    "name": "小倉 (近鉄)"
+  },
+
   "kyotoKitanotenmangu": {
     "name": "北野天満宮",
     "content": "北野天満宮は、京都市上京区にある神社。二十二社の一社。旧社格は官幣中社で、現在は神社本庁の別表神社。旧称は北野神社。神紋は「星梅鉢紋」。 通称として天神さん・北野さんとも呼ばれる。"
@@ -126,6 +130,10 @@
   "kyotoNishikitenmangu": {
     "name": "錦天満宮",
     "content": "錦天満宮は、京都市中京区錦小路通新京極にある神社。天満天神を祀る。京の台所として知られる錦市場の東の端にあり、学業に加え商売繁盛も御利益に謳われている。"
+  },
+
+  "kyotoOguraTrainStation": {
+    "name": "小倉"
   },
 
   "kyotoRailwayMuseum": {
@@ -193,6 +201,10 @@
   "nintendoKyoto": {
     "name": "Nintendo KYOTO",
     "content": "日本 京都市のホビーショップ"
+  },
+
+  "nintendoMuseum": {
+    "name": "ニンテンドーミュージアム"
   },
 
   "pokemonCenterKyoto": {

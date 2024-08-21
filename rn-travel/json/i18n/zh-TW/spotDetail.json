@@ -1,5 +1,6 @@
 {
   "floorSentence": "{{floor}} 樓",
+  "reserve": "預約制",
   "stay": "停留時間",
   "stayHour": "小時",
   "stayMinute": "分鐘",
@@ -30,7 +31,8 @@
   "accessWalk": "步行",
   "accessSentence": "{{from}} {{place}} {{action}}",
   "link": "連結",
-  "linkMap": "地圖",
   "linkOfficialWebsite": "官方網站",
+  "linkTicket": "門票",
+  "linkMap": "地圖",
   "lastUpdate": "最後更新"
 }

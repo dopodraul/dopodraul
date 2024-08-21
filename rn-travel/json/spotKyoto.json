@@ -375,6 +375,21 @@
     }]
   },
 
+  "kyotoKintetsuOguraTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["kintetsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.8931814, 135.7817732]
+    }]
+  },
+
   "kyotoKiyomizudera": {
     "lastUpdate": 240714,
     "stay": 120,
@@ -515,6 +530,21 @@
     "link": [{
       "name": "spotDetail:linkOfficialWebsite",
       "url": "https://nishikitenmangu.or.jp/"
+    }]
+  },
+
+  "kyotoOguraTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.8891497, 135.7859983]
     }]
   },
 
@@ -766,6 +796,55 @@
   },
 
   "nintendoKyoto": {},
+
+  "nintendoMuseum": {
+    "lastUpdate": 241003,
+    "stay": 180,
+    "isReserve": true,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "nintendo-switch"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1000, 1800],
+      "service": [0, 1630],
+      "dayExcept": [2],
+      "dateExceptRange": [1230, "0103"]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 3300
+    }, {
+      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
+      "value": 2200
+    }, {
+      "name": ["spotDetail:priceElementarySchool"],
+      "value": 1100
+    }],
+
+    "location": [{
+      "xy": [34.8927989, 135.784166]
+    }],
+
+    "access": [{
+      "from": ["kyotoKintetsuOguraTrainStation"]
+    }, {
+      "from": ["kyotoOguraTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://museum.nintendo.com/"
+    }, {
+      "name": "spotDetail:linkTicket",
+      "url": "https://museum.nintendo.com/guide/"
+    }]
+  },
+
   "pokemonCenterKyoto": {},
   "richmondHotelPremierKyotoEkimae": {},
 

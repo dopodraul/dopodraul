@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BackComponent from './BackComponent';
+import SpotReserve from './SpotReserve';
 import SpotContent from './SpotContent';
 import SpotOpen from './SpotOpen';
 import SpotPrice from './SpotPrice';
@@ -27,6 +28,7 @@ export default function SpotMain() {
       <BackComponent title={title} pressBack={pressBack} />
       <ScrollView>
         <View style={styles.scrollContent}>
+          <SpotReserve />
           <SpotContent />
           <SpotStay />
           <SpotOpen />

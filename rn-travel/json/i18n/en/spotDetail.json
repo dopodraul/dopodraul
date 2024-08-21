@@ -1,5 +1,6 @@
 {
   "floorSentence": "Floor {{floor}}",
+  "reserve": "Reservation Required",
   "stay": "Staying",
   "stayHour": "Hour(s)",
   "stayMinute": "Minute(s)",
@@ -30,7 +31,8 @@
   "accessWalk": "Walk",
   "accessSentence": "{{action}} {{from}} {{place}}",
   "link": "Link",
-  "linkMap": "Map",
   "linkOfficialWebsite": "Official Website",
+  "linkTicket": "Ticket",
+  "linkMap": "Map",
   "lastUpdate": "Last Updated"
 }

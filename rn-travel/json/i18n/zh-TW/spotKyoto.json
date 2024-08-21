@@ -99,6 +99,10 @@
     "content": "建仁寺是位在日本京都府京都市東山區的寺院，臨濟宗建仁寺派大本山。山號「東山」。本尊釋迦如來、開基為源賴家、開山為榮西，在京都五山中位居第三位。"
   },
 
+  "kyotoKintetsuOguraTrainStation": {
+    "name": "小倉 (近鐵)"
+  },
+
   "kyotoKitanotenmangu": {
     "name": "北野天滿宮",
     "content": "北野天滿宮是位於日本京都府京都市上京區的神社。為二十二社、舊社格為官幣中社。和太宰府天滿宮同為日本全國天滿宮之總本社、天神信仰的中心。主祭神是學問之神菅原道真。京都市民以愛稱「てんじんさん」稱之。 北野天滿宮與太宰府天滿宮、防府天滿宮並稱為日本三大天神。"
@@ -126,6 +130,10 @@
   "kyotoNishikitenmangu": {
     "name": "錦天滿宮",
     "content": "錦天滿宮是日本京都府京都市的一個神社，位於中京區錦小路通新京極通，錦市場以東。祭祀學問之神菅原道真。"
+  },
+
+  "kyotoOguraTrainStation": {
+    "name": "小倉"
   },
 
   "kyotoRailwayMuseum": {
@@ -193,6 +201,10 @@
   "nintendoKyoto": {
     "name": "Nintendo 京都",
     "content": "位於日本京都市的玩具模型店"
+  },
+
+  "nintendoMuseum": {
+    "name": "任天堂博物館"
   },
 
   "pokemonCenterKyoto": {
