@@ -795,7 +795,35 @@
     }]
   },
 
-  "nintendoKyoto": {},
+  "nintendoKyoto": {
+    "lastUpdate": 241003,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "nintendo-switch"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1000, 2000]
+    }],
+
+    "location": [{
+      "xy": [35.0035271, 135.768255],
+      "floor": 7
+    }],
+
+    "access": [{
+      "from": ["kyotoKarawamachiTrainStation"]
+    }, {
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.nintendo.com/jp/officialstore/"
+    }]
+  },
 
   "nintendoMuseum": {
     "lastUpdate": 241003,
