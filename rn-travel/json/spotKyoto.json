@@ -1,5 +1,39 @@
 {
-  "edionKyotoShijokawaramachi": {},
+  "edionKyotoShijokawaramachi": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "electrical-services"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1000, 2100]
+    }, {
+      "name": "spotDetail:floor6",
+      "range": [1000, 2000]
+    }],
+
+    "location": [{
+      "xy": [35.0034526, 135.7697595]
+    }],
+
+    "access": [{
+      "from": ["kyotoKarawamachiTrainStation"]
+    }, {
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://kyoto.edion.com/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://kyoto.edion.com/floor/"
+    }]
+  },
+
   "keifukuRanden": {},
 
   "kiddyLandKyotoKawaramachi": {
