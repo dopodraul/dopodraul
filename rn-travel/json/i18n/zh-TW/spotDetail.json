@@ -1,5 +1,5 @@
 {
-  "floor6": "6樓",
+  "floorSentence": "{{floor}} 樓",
   "stay": "停留時間",
   "stayHour": "小時",
   "stayMinute": "分鐘",

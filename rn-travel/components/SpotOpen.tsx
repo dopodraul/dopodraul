@@ -58,6 +58,12 @@ export default function SpotOpen() {
     const data = openList.map((obj: object) => {
       const name = getObjectValue(obj, 'name');
       const result = [i18n.exists(name) ? i18n.t(name) : i18n.t(`spot:${spot}:${name}`)];
+      const floor = getObjectValue(obj, 'floor');
+
+      if (floor) {
+        result[0] = i18n.t('spotDetail:floorSentence', { floor });
+      }
+
       const dateRange = getObjectValue(obj, 'dateRange');
 
       if (dateRange) {

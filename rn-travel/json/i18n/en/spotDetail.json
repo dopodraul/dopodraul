@@ -1,5 +1,5 @@
 {
-  "floor6": "6th Floor",
+  "floorSentence": "Floor {{floor}}",
   "stay": "Staying",
   "stayHour": "Hour(s)",
   "stayMinute": "Minute(s)",

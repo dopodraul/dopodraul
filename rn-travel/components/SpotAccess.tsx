@@ -21,15 +21,16 @@ export default function SpotAccess() {
       longitudeDelta: 0.0421
     };
 
-    const location = getObjectValue(spotJson, `${spot}.location.0.xy`);
+    const location = getObjectValue(spotJson, `${spot}.location.0`);
 
     if (location) {
-      region.latitude = location[0];
-      region.longitude = location[1];
+      const xy = getObjectValue(location, 'xy');
+      region.latitude = xy[0];
+      region.longitude = xy[1];
 
       coordinate = {
-        latitude: location[0],
-        longitude: location[1]
+        latitude: xy[0],
+        longitude: xy[1]
       };
     }
 
@@ -85,7 +86,12 @@ export default function SpotAccess() {
     });
 
     const text = i18n.t('spotDetail:access');
-    const title = i18n.t(`spot:${spot}:name`);
+    let title = i18n.t(`spot:${spot}:name`);
+    const floor = getObjectValue(location, 'floor');
+
+    if (floor) {
+      title += ' (' + i18n.t('spotDetail:floorSentence', { floor }) + ')';
+    }
 
     const locationMarker = coordinate ?
       <Marker

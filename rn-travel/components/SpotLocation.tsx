@@ -43,6 +43,12 @@ export default function SpotLocation() {
         region.longitude = xy[1];
       }
 
+      const floor = getObjectValue(obj, 'floor');
+
+      if (floor) {
+        title += ' (' + i18n.t('spotDetail:floorSentence', { floor }) + ')';
+      }
+
       markerList.push({
         title,
         pinColor,

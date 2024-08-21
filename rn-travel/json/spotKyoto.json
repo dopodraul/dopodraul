@@ -11,7 +11,7 @@
       "name": "spotDetail:open",
       "range": [1000, 2100]
     }, {
-      "name": "spotDetail:floor6",
+      "floor": 6,
       "range": [1000, 2000]
     }],
 
@@ -733,7 +733,38 @@
   },
 
   "kyotoYasakajinja": {},
-  "mandarakeKyoto": {},
+
+  "mandarakeKyoto": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "menu-book"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1200, 2000],
+      "service": [0, 1930]
+    }],
+
+    "location": [{
+      "xy": [35.0034769, 135.7686392],
+      "floor": 4
+    }],
+
+    "access": [{
+      "from": ["kyotoKarawamachiTrainStation"]
+    }, {
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.mandarake.co.jp/dir/kyt/"
+    }]
+  },
+
   "nintendoKyoto": {},
   "pokemonCenterKyoto": {},
   "richmondHotelPremierKyotoEkimae": {},
