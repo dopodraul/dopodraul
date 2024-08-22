@@ -778,7 +778,36 @@
     }]
   },
 
-  "kyotoSeimeijinja": {},
+  "kyotoSeimeijinja": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0900", 1700],
+      "service": [0, 1630]
+    }],
+
+    "location": [{
+      "xy": [35.02776, 135.7511802]
+    }],
+
+    "access": [{
+      "from": ["kyotoImadegawaTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.seimeijinja.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.seimeijinja.jp/guide/"
+    }]
+  },
 
   "kyotoShijodoriChikado": {
     "lastUpdate": 240714,
