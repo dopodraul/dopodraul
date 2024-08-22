@@ -967,7 +967,33 @@
     }]
   },
 
-  "kyotoYasakajinja": {},
+  "kyotoYasakajinja": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "location": [{
+      "xy": [35.0036559, 135.7785534]
+    }],
+
+    "access": [{
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.yasaka-jinja.or.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://www.yasaka-jinja.or.jp/sanpai/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.yasaka-jinja.or.jp/access/"
+    }]
+  },
 
   "mandarakeKyoto": {
     "lastUpdate": 240714,
