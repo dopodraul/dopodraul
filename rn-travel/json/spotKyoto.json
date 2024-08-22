@@ -314,7 +314,23 @@
     }]
   },
 
-  "kyotoHanamikojidori": {},
+  "kyotoHanamikojidori": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "directions-walk"
+    },
+
+    "location": [{
+      "xy": [35.0054928, 135.7752402]
+    }],
+
+    "access": [{
+      "from": ["kyotoGionshijoTrainStation"]
+    }]
+  },
+
   "kyotoHigashihonganji": {},
 
   "kyotoHigashiyamaYasuiBusStation": {
