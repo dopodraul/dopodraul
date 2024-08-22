@@ -357,6 +357,21 @@
 
   "kyotoHiranojinja": {},
 
+  "kyotoImadegawaTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["kyotoKotsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0298223, 135.7593593]
+    }]
+  },
+
   "kyotoInariTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
@@ -805,7 +820,36 @@
     }]
   },
 
-  "kyotoShiraminejingu": {},
+  "kyotoShiraminejingu": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0800", 1700],
+      "service": [0, 1630]
+    }],
+
+    "location": [{
+      "xy": [35.0301576, 135.7531608]
+    }],
+
+    "access": [{
+      "from": ["kyotoImadegawaTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://shiraminejingu.or.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://shiraminejingu.or.jp/guide-shrine/"
+    }]
+  },
 
   "kyotoTofukuji": {
     "lastUpdate": 240714,
