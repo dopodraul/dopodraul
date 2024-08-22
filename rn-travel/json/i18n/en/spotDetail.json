@@ -1,5 +1,6 @@
 {
   "floorSentence": "Floor {{floor}}",
+  "floorBasementSentence": "Basement {{floor}}",
   "reserve": "Reservation Required",
   "stay": "Staying",
   "stayHour": "Hour(s)",

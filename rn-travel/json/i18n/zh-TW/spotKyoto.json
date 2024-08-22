@@ -68,7 +68,11 @@
     "name": "稻荷"
   },
 
-  "kyotoKarawamachiTrainStation": {
+  "kyotoKarasumaTrainStation": {
+    "name": "烏丸"
+  },
+
+  "kyotoKawaramachiTrainStation": {
     "name": "京都河原町"
   },
 
@@ -78,6 +82,11 @@
 
   "kyotoKeihanUjiTrainStation": {
     "name": "宇治 (京阪)"
+  },
+
+  "kyotoKenninji": {
+    "name": "建仁寺",
+    "content": "建仁寺是位在日本京都府京都市東山區的寺院，臨濟宗建仁寺派大本山。山號「東山」。本尊釋迦如來、開基為源賴家、開山為榮西，在京都五山中位居第三位。"
   },
 
   "kyotoKiyomizudera": {
@@ -92,11 +101,6 @@
 
   "kyotoKiyomizuGojoTrainStation": {
     "name": "清水五條"
-  },
-
-  "kyotoKenninji": {
-    "name": "建仁寺",
-    "content": "建仁寺是位在日本京都府京都市東山區的寺院，臨濟宗建仁寺派大本山。山號「東山」。本尊釋迦如來、開基為源賴家、開山為榮西，在京都五山中位居第三位。"
   },
 
   "kyotoKintetsuOguraTrainStation": {
@@ -148,7 +152,12 @@
 
   "kyotoShijodoriChikado": {
     "name": "四條通地下道",
-    "content": "四條通地下通道是1963年阪急京都線延長至河原町站時修建的，是一條全長約1,100公尺的地下通道，其中包括京都市隨後修建的通道（約90公尺）。 。 Porta、Zest等所謂「地下商場」是商業空間，由各類商店組成，通道營造出華麗的氛圍。"
+    "content": "四條通地下通道是1963年阪急京都線延長至河原町站時修建的，是一條全長約1,100公尺的地下通道，其中包括京都市隨後修建的通道（約90公尺）。 。 Porta、Zest等所謂「地下商場」是商業空間，由各類商店組成，通道營造出華麗的氛圍。",
+    "mario": "超級瑪利歐的世界在四條通地下道出現"
+  },
+
+  "kyotoShijoTrainStation": {
+    "name": "四條"
   },
 
   "kyotoShiraminejingu": {

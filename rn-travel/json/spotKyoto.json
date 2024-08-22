@@ -20,7 +20,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKarawamachiTrainStation"]
+      "from": ["kyotoKawaramachiTrainStation"]
     }, {
       "from": ["kyotoGionshijoTrainStation"]
     }],
@@ -54,7 +54,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKarawamachiTrainStation"]
+      "from": ["kyotoKawaramachiTrainStation"]
     }, {
       "from": ["kyotoGionshijoTrainStation"]
     }],
@@ -330,7 +330,22 @@
     }]
   },
 
-  "kyotoKarawamachiTrainStation": {
+  "kyotoKarasumaTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["hankyu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0036744, 135.7605895]
+    }]
+  },
+
+  "kyotoKawaramachiTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
     "company": ["hankyu"],
@@ -375,6 +390,8 @@
     }]
   },
 
+  "kyotoKenninji": {},
+
   "kyotoKintetsuOguraTrainStation": {
     "lastUpdate": 240714,
     "station": "train",
@@ -389,6 +406,8 @@
       "xy": [34.8931814, 135.7817732]
     }]
   },
+
+  "kyotoKitanotenmangu": {},
 
   "kyotoKiyomizudera": {
     "lastUpdate": 240714,
@@ -482,8 +501,6 @@
     }]
   },
 
-  "kyotoKenninji": {},
-  "kyotoKitanotenmangu": {},
   "kyotoKodaiji": {},
 
   "kyotoKohataTrainStation": {
@@ -522,7 +539,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKarawamachiTrainStation"]
+      "from": ["kyotoKawaramachiTrainStation"]
     }, {
       "from": ["kyotoGionshijoTrainStation"]
     }],
@@ -602,7 +619,47 @@
   },
 
   "kyotoSeimeijinja": {},
-  "kyotoShijodoriChikado": {},
+
+  "kyotoShijodoriChikado": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "directions-walk"
+    },
+
+    "location": [{
+      "xy": [35.0037034, 135.7664372],
+      "floor": -1
+    }],
+
+    "access": [{
+      "from": ["kyotoShijoTrainStation", "kyotoKarasumaTrainStation"]
+    }, {
+      "from": ["kyotoKawaramachiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "mario",
+      "url": "https://www.city.kyoto.lg.jp/tokei/page/0000317140.html"
+    }]
+  },
+
+  "kyotoShijoTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["kyotoKotsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0024081, 135.7597178]
+    }]
+  },
+
   "kyotoShiraminejingu": {},
 
   "kyotoTofukuji": {
@@ -784,7 +841,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKarawamachiTrainStation"]
+      "from": ["kyotoKawaramachiTrainStation"]
     }, {
       "from": ["kyotoGionshijoTrainStation"]
     }],
@@ -814,7 +871,7 @@
     }],
 
     "access": [{
-      "from": ["kyotoKarawamachiTrainStation"]
+      "from": ["kyotoKawaramachiTrainStation"]
     }, {
       "from": ["kyotoGionshijoTrainStation"]
     }],

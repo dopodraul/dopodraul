@@ -28,7 +28,8 @@ export default function SpotLink() {
         item.url.substring(0, 10) + ' ... ' + item.url.substring(urlLength - 10) :
         item.url;
 
-      const name = i18n.t(item.name) + ' ' + url;
+      let name = i18n.t(i18n.exists(item.name) ? item.name : `spot:${spot}:${item.name}`);
+      name += ' ' + url;
 
       const onPress = () => {
         openUrl(item.url);

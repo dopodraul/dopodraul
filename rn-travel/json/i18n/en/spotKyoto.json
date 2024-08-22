@@ -68,7 +68,11 @@
     "name": "Inari"
   },
 
-  "kyotoKarawamachiTrainStation": {
+  "kyotoKarasumaTrainStation": {
+    "name": "Karasuma"
+  },
+
+  "kyotoKawaramachiTrainStation": {
     "name": "Kyoto-kawaramachi"
   },
 
@@ -78,6 +82,11 @@
 
   "kyotoKeihanUjiTrainStation": {
     "name": "Uji (Keihan)"
+  },
+
+  "kyotoKenninji": {
+    "name": "Kenninji Temple",
+    "content": "Kennin-ji is a historic Zen Buddhist temple in Kyoto, Japan, and head temple of its associated branch of Rinzai Buddhism. It is considered to be one of the so-called Kyoto Gozan or \"five most important Zen temples of Kyoto\"."
   },
 
   "kyotoKiyomizudera": {
@@ -92,11 +101,6 @@
 
   "kyotoKiyomizuGojoTrainStation": {
     "name": "Kiyomizu-Gojō"
-  },
-
-  "kyotoKenninji": {
-    "name": "Kenninji Temple",
-    "content": "Kennin-ji is a historic Zen Buddhist temple in Kyoto, Japan, and head temple of its associated branch of Rinzai Buddhism. It is considered to be one of the so-called Kyoto Gozan or \"five most important Zen temples of Kyoto\"."
   },
 
   "kyotoKintetsuOguraTrainStation": {
@@ -148,7 +152,12 @@
 
   "kyotoShijodoriChikado": {
     "name": "Shijo-dori UnderPass",
-    "content": "The Shijo-dori Underpass was built in 1963 when the Hankyu Kyoto Line was extended to Kawaramachi Station, and is an underground passageway with a total length of approximately 1,100 meters, including a passageway (approximately 90 meters) that was subsequently constructed by Kyoto City. . The so-called \"underground shopping malls\" such as Porta and Zest are commercial spaces and are made up of various shops, and the passageways create a gorgeous atmosphere."
+    "content": "The Shijo-dori Underpass was built in 1963 when the Hankyu Kyoto Line was extended to Kawaramachi Station, and is an underground passageway with a total length of approximately 1,100 meters, including a passageway (approximately 90 meters) that was subsequently constructed by Kyoto City. . The so-called \"underground shopping malls\" such as Porta and Zest are commercial spaces and are made up of various shops, and the passageways create a gorgeous atmosphere.",
+    "mario": "The world of super Mario appears in a Shijo-dori Street subway"
+  },
+
+  "kyotoShijoTrainStation": {
+    "name": "Shijō"
   },
 
   "kyotoShiraminejingu": {

@@ -2,8 +2,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppContext, getObjectValue, spotJson } from '../utils/common';
 import { MapView, Marker } from '../utils/react-native-maps';
+
+import {
+  AppContext,
+  getObjectValue,
+  spotJson,
+  getFloorName
+} from '../utils/common';
 
 export default function SpotAccess() {
   const { i18n } = useTranslation();
@@ -90,7 +96,7 @@ export default function SpotAccess() {
     const floor = getObjectValue(location, 'floor');
 
     if (floor) {
-      title += ' (' + i18n.t('spotDetail:floorSentence', { floor }) + ')';
+      title += ' (' + getFloorName(floor) + ')';
     }
 
     const locationMarker = coordinate ?

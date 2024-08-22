@@ -1,5 +1,6 @@
 {
   "floorSentence": "{{floor}} 階",
+  "floorBasementSentence": "地下 {{floor}} 階",
   "reserve": "予約制",
   "stay": "留まる時間",
   "stayHour": "時間",

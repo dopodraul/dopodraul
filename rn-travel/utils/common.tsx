@@ -80,6 +80,18 @@ const openUrl = async (url: string) => {
   }
 }
 
+const getFloorName = (floor: number) => {
+  if (floor > 0) {
+    return i18n.t('spotDetail:floorSentence', { floor });
+  }
+
+  if (floor < 0) {
+    return i18n.t('spotDetail:floorBasementSentence', { floor: -floor });
+  }
+
+  return '';
+}
+
 const storageKey = {
   language: 'travel-language',
   color: 'travel-color'
@@ -198,6 +210,7 @@ export {
   spotJson,
   getObjectValue,
   openUrl,
+  getFloorName,
   AppContext,
   AppProvider
 };

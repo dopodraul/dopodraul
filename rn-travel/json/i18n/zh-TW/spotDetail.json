@@ -1,5 +1,6 @@
 {
   "floorSentence": "{{floor}} 樓",
+  "floorBasementSentence": "地下 {{floor}} 樓",
   "reserve": "預約制",
   "stay": "停留時間",
   "stayHour": "小時",
