@@ -172,6 +172,9 @@
     }, {
       "name": ["spotDetail:priceElementarySchool"],
       "value": 300
+    }, {
+      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
+      "value": 350
     }],
 
     "location": [{
@@ -413,7 +416,52 @@
     }]
   },
 
-  "kyotoKenninji": {},
+  "kyotoKenninji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1000, 1700],
+      "service": [0, 1630]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 800
+    }, {
+      "name": [
+        "spotDetail:priceElementarySchool",
+        "spotDetail:priceJuniorHighSchool",
+        "spotDetail:priceHighSchool"
+      ],
+
+      "value": 500
+    }, {
+      "name": ["spotDetail:priceDisibility"],
+      "value": 0
+    }],
+
+    "location": [{
+      "xy": [35.0000363, 135.7735632]
+    }],
+
+    "access": [{
+      "from": ["kyotoGionshijoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kenninji.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.kenninji.jp/access/"
+    }]
+  },
 
   "kyotoKintetsuOguraTrainStation": {
     "lastUpdate": 240714,
@@ -672,6 +720,9 @@
       "name": ["spotDetail:price3YearsChild"],
       "value": 200
     }, {
+      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
+      "value": 750
+    }, {
       "name": ["spot:kyotoRailwayMuseum:name", "spot:kyotoAquarium:name"],
       "value": 3510
     }],
@@ -765,6 +816,9 @@
     }, {
       "name": ["spotDetail:priceChild"],
       "value": 300
+    }, {
+      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
+      "value": 0
     }],
 
     "location": [{
@@ -985,7 +1039,12 @@
       "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
       "value": 2200
     }, {
-      "name": ["spotDetail:priceElementarySchool"],
+      "name": [
+        "spotDetail:priceElementarySchool",
+        "spotDetail:priceDisibility",
+        "spotDetail:priceEscort"
+      ],
+
       "value": 1100
     }],
 

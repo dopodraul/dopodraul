@@ -51,6 +51,8 @@ export default function SpotPrice() {
 
       if (value) {
         price = value + ' ' + i18n.t('spotDetail:priceYen');
+      } else {
+        price = i18n.t('spotDetail:priceFree');
       }
 
       return [
