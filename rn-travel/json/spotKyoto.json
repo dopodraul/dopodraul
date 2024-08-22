@@ -930,7 +930,34 @@
     }]
   },
 
-  "pokemonCenterKyoto": {},
+  "pokemonCenterKyoto": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "nintendo-switch"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": [1000, 2000]
+    }],
+
+    "location": [{
+      "xy": [35.0034167, 135.7583839],
+      "floor": 10
+    }],
+
+    "access": [{
+      "from": ["kyotoShijoTrainStation", "kyotoKarasumaTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.pokemon.co.jp/shop/pokecen/kyoto/"
+    }]
+  },
+
   "richmondHotelPremierKyotoEkimae": {},
 
   "yodobashiKyoto": {
