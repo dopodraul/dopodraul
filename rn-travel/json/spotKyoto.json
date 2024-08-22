@@ -288,8 +288,8 @@
       "transportation": "transportation:kyotoKeihanBus",
 
       "from": [
-        "京阪電鉄 祇園四条駅",
-        "阪急電鉄 京都河原町駅"
+        "kyotogionshijoTrainstation",
+        "kyotoKawaramachiTrainStation"
       ],
 
       "line": [
@@ -313,6 +313,29 @@
 
   "kyotoHanamikojidori": {},
   "kyotoHigashihonganji": {},
+
+  "kyotoHigashiyamaYasuiBusStation": {
+    "lastUpdate": 240714,
+    "station": "bus",
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "bus-stop"
+    },
+
+    "location": [{
+      "xy": [35.0001195, 135.7773766],
+
+      "direction": [
+        "kyotogionshijoTrainstation",
+        "kyotoKawaramachiTrainStation"
+      ]
+    }, {
+      "xy": [35.0002388, 135.7775498],
+      "direction": ["spot:kyotoTrainStation"]
+    }]
+  },
+
   "kyotoHiranojinja": {},
 
   "kyotoInariTrainStation": {
@@ -469,8 +492,8 @@
       "xy": [34.9980929, 135.7770049],
 
       "direction": [
-        "京阪電鉄 祇園四条駅",
-        "阪急電鉄 京都河原町駅"
+        "kyotogionshijoTrainstation",
+        "kyotoKawaramachiTrainStation"
       ]
     }],
 
@@ -480,8 +503,8 @@
       "direction": ["東福寺・九条車庫"],
 
       "from": [
-        "京阪電鉄 祇園四条駅",
-        "阪急電鉄 京都河原町駅"
+        "kyotogionshijoTrainstation",
+        "kyotoKawaramachiTrainStation"
       ]
     }]
   },
@@ -501,7 +524,62 @@
     }]
   },
 
-  "kyotoKodaiji": {},
+  "kyotoKodaiji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:openNormal",
+      "range": ["0900", 1730],
+      "service": [0, 1700]
+    }, {
+      "name": "lightup",
+      "range": [1700, 2200],
+      "service": [0, 2130]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 600
+    }, {
+      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
+      "value": 250
+    }, {
+      "name": ["name", "entokuin"],
+      "value": 900
+    }],
+
+    "location": [{
+      "xy": [35.0007687, 135.7812718]
+    }, {
+      "name": "entokuin",
+      "xy": [35.0004235, 135.779797]
+    }],
+
+    "access": [{
+      "from": ["kyotoGionshijoTrainStation"]
+    }, {
+      "from": ["kyotoHigashiyamaYasuiBusStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kodaiji.com/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://www.kodaiji.com/admission.html"
+    }, {
+      "name": "lightup",
+      "url": "https://www.kodaiji.com/lightup.html"
+    }, {
+      "name": "entokuin",
+      "url": "https://www.kodaiji.com/entoku-in/"
+    }]
+  },
 
   "kyotoKohataTrainStation": {
     "lastUpdate": 240714,
