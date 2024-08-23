@@ -676,7 +676,63 @@
   },
 
   "kyotoMyoshinji": {},
-  "kyotoNijojo": {},
+
+  "kyotoNijojo": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "castle"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0845", 1600],
+      "dateExceptRange": [1229, 1231]
+    }],
+
+    "price": [{
+      "name": ["spotDetail:price"],
+      "value": 800
+    }],
+
+    "location": [{
+      "xy": [35.0140379, 135.7484258]
+    }],
+
+    "access": [{
+      "from": ["kyotoNijojoMaeTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://nijo-jocastle.city.kyoto.lg.jp/"
+    }, {
+      "name": "spotDetail:open",
+      "url": "https://nijo-jocastle.city.kyoto.lg.jp/guide/annai/"
+    }, {
+      "name": "spotDetail:price",
+      "url": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://nijo-jocastle.city.kyoto.lg.jp/guide/map/"
+    }]
+  },
+
+  "kyotoNijojoMaeTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["kyotoKotsu"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0119082, 135.7504709]
+    }]
+  },
 
   "kyotoNishikitenmangu": {
     "lastUpdate": 240714,
