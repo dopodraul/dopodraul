@@ -688,7 +688,7 @@
     "open": [{
       "name": "spotDetail:open",
       "range": ["0845", 1600],
-      "dateExceptRange": [1229, 1231]
+      "dateExcept": [[1229, 1231]]
     }],
 
     "price": [{
@@ -789,7 +789,7 @@
     "open": [{
       "name": "spotDetail:open",
       "dayExcept": [3],
-      "dateExceptRange": [1230, "0101"],
+      "dateExcept": [[1230, "0101"]],
       "range": [1000, 1700],
       "service": [0, 1630]
     }],
@@ -945,13 +945,13 @@
     },
 
     "open": [{
-      "dateRange": ["0401", 1031],
+      "date": [["0401", 1031]],
       "range": ["0900", 1600]
     }, {
-      "dateRange": [1101, 1201],
+      "date": [[1101, 1201]],
       "range": ["0830", 1600]
     }, {
-      "dateRange": [1202, "0331"],
+      "date": [[1202, "0331"]],
       "range": ["0900", 1530]
     }],
 
@@ -1200,7 +1200,7 @@
       "range": [1000, 1800],
       "service": [0, 1630],
       "dayExcept": [2],
-      "dateExceptRange": [1230, "0103"]
+      "dateExcept": [[1230, "0103"]]
     }],
 
     "price": [{

@@ -64,10 +64,20 @@ export default function SpotOpen() {
         result[0] = i18n.t('spotDetail:floorSentence', { floor });
       }
 
-      const dateRange = getObjectValue(obj, 'dateRange');
+      const dateList = getObjectValue(obj, 'date');
 
-      if (dateRange) {
-        result[0] = convertDate(dateRange[0]) + ' ~ ' + convertDate(dateRange[1]);
+      if (dateList) {
+        const elementList: string[] = [];
+
+        dateList.forEach((element: any) => {
+          if (Array.isArray(element)) {
+            elementList.push(convertDate(element[0]) + '~' + convertDate(element[1]));
+          } else {
+            elementList.push(convertDate(element));
+          }
+        });
+
+        result[0] = elementList.join(' & ');
       }
 
       const rangeList = getObjectValue(obj, 'range');
@@ -89,24 +99,52 @@ export default function SpotOpen() {
       }
 
       const except = i18n.t('spotDetail:openExcept');
-      const dayExcept: number[] = getObjectValue(obj, 'dayExcept');
+      const dayExceptList = getObjectValue(obj, 'dayExcept');
 
-      if (dayExcept) {
+      if (dayExceptList) {
+        const elementList: string[] = [];
+
+        dayExceptList.forEach((element: any) => {
+          if (Array.isArray(element)) {
+            elementList.push(
+              i18n.t('spotDetail:openDay' + element[0]) +
+              '~' +
+              i18n.t('spotDetail:openDay' + element[1])
+            );
+          } else {
+            elementList.push(i18n.t('spotDetail:openDay' + element));
+          }
+        });
+
         result[1] += "\n(" +
           i18n.t('spotDetail:openExceptSentence', {
             except,
-            day: dayExcept.map(day => i18n.t('spotDetail:openDay' + day)).join(' & ')
+            day: elementList.join(' & ')
           }) +
           ')';
       }
 
-      const dateExceptRange = getObjectValue(obj, 'dateExceptRange');
+      const dateExceptList = getObjectValue(obj, 'dateExcept');
 
-      if (dateExceptRange) {
+      if (dateExceptList) {
+        const elementList: string[] = [];
+
+        dateExceptList.forEach((element: any) => {
+          if (Array.isArray(element)) {
+            elementList.push(
+              convertDate(element[0]) +
+              '~' +
+              convertDate(element[1])
+            );
+          } else {
+            elementList.push(convertDate(element));
+          }
+        });
+
         result[1] += "\n(" +
           i18n.t('spotDetail:openExceptSentence', {
             except,
-            day: convertDate(dateExceptRange[0]) + ' ~ ' + convertDate(dateExceptRange[1])
+            day: elementList.join(' & ')
           }) +
           ')';
       }
