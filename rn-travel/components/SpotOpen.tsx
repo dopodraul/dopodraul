@@ -48,7 +48,7 @@ export default function SpotOpen() {
   const convertDate = (date: any) => {
     if (date) {
       const moment = Moment(date, 'MMDD');
-      return moment.format('MMMM Do');
+      return moment.format('MMM Do');
     }
 
     return '';
