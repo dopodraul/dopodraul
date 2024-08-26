@@ -622,7 +622,51 @@
     }]
   },
 
-  "kyotoKitanotenmangu": {},
+  "kyotoKitanoHakubaichoTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keifuku"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0273504, 135.7308888]
+    }]
+  },
+
+  "kyotoKitanotenmangu": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0700", 1700],
+      "service": ["0900", 1630]
+    }],
+
+    "location": [{
+      "xy": [35.0311737, 135.7351227]
+    }],
+
+    "access": [{
+      "from": ["kyotoKitanoHakubaichoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://kitanotenmangu.or.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://kitanotenmangu.or.jp/guidance/"
+    }]
+  },
 
   "kyotoKiyomizudera": {
     "lastUpdate": 240714,
