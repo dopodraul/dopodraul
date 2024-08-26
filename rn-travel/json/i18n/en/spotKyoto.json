@@ -23,13 +23,15 @@
 
   "kyotoAquarium": {
     "name": "Kyoto Aquarium",
-    "content": "Kyoto Aquarium is an aquarium located in Umekoji Park in Kyoto City, Kyoto Prefecture's Shimogyo Ward, Japan."
+    "content": "Kyoto Aquarium is an aquarium located in Umekoji Park in Kyoto City, Kyoto Prefecture's Shimogyo Ward, Japan.",
+    "schoolGroup": "School Group"
   },
 
   "kyotoByodoin": {
     "name": "Byodo-in Temple",
     "content": "Byōdō-in is a Buddhist temple in the city of Uji in Kyoto Prefecture, Japan, built in the late Heian period. It is jointly a temple of the Jōdo-shū and Tendai-shū sects.",
-    "museum": "Museum"
+    "museum": "Museum",
+    "phoenixHall": "Phoenix Hall"
   },
 
   "kyotoFushimiinaritaisha": {
@@ -138,7 +140,10 @@
 
   "kyotoNijojo": {
     "name": "Nijō Castle",
-    "content": "Nijō Castle is a flatland castle in Kyoto, Japan. The castle consists of two concentric rings of fortifications, the Ninomaru Palace, the ruins of the Honmaru Palace, various support buildings and several gardens."
+    "content": "Nijō Castle is a flatland castle in Kyoto, Japan. The castle consists of two concentric rings of fortifications, the Ninomaru Palace, the ruins of the Honmaru Palace, various support buildings and several gardens.",
+    "honmaru": "Honmaru-goten Palace / Garden",
+    "ninomaru": "Ninomaru-goten Palace / Garden",
+    "tenji": "Painting Gallery"
   },
 
   "kyotoNijojoMaeTrainStation": {

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { useContext } from 'react';
+import { useContext, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Table, Rows } from 'react-native-table-component';
 
@@ -8,7 +8,6 @@ import { AppContext, getObjectValue, spotJson } from '../utils/common';
 export default function SpotPrice() {
   const { i18n } = useTranslation();
   const { spot, getStyle } = useContext(AppContext);
-  const priceList = getObjectValue(spotJson, `${spot}.price`);
   const stylesColor = getStyle();
 
   const styles = StyleSheet.create({
@@ -35,50 +34,120 @@ export default function SpotPrice() {
     }
   });
 
-  if (priceList) {
-    const data = priceList.map((obj: object) => {
-      const keyList: string[] = getObjectValue(obj, 'name');
-      const nameList: string[] = [];
+  type priceDataNameType = string;
+  type priceDataValueType = {[type: string]: number};
 
-      if (keyList) {
-        keyList.forEach((key) => {
-          nameList.push(i18n.exists(key) ? i18n.t(key) : i18n.t(`spot:${spot}:${key}`));
-        });
-      }
+  type priceDataType = {
+    name: priceDataNameType;
+    nameList: priceDataNameType[];
+    groupNumber: number;
+    data: {[age: string]: priceDataValueType};
+  };
 
-      let price = '';
-      const value = getObjectValue(obj, 'value');
+  const t = (key: string) => {
+    return i18n.exists(key) ? i18n.t(key) : i18n.t(`spot:${spot}:${key}`);
+  }
 
-      if (value) {
-        price = value + ' ' + i18n.t('spotDetail:priceYen');
-      } else {
-        price = i18n.t('spotDetail:priceFree');
-      }
+  const convertPriceToTable = (obj: priceDataType) => {
+    const typeSort = ['disibility', 'escort'];
+    const key = 'price';
+    let colMax = 0;
+    const resultHead = [''];
 
-      return [
-        nameList.join(' & '),
-        price
-      ];
-    });
-
-    if (data[1]) {
-      return (
-        <Table style={styles.table} borderStyle={styles.tableBorder}>
-          <Rows textStyle={[styles.row, stylesColor]} data={data} />
-        </Table>
-      );
+    if (obj.name) {
+      resultHead[0] = t(obj.name);
+    } else if (obj.nameList) {
+      resultHead[0] = obj.nameList.map((name) => t(name)).join(' & ');
     }
 
-    return (
-      <View style={styles.container}>
-        <View>
-          <Text style={stylesColor}>{data[0][0]}</Text>
-        </View>
-        <View style={styles.value}>
-          <Text style={stylesColor}>{data[0][1]}</Text>
-        </View>
-      </View>
-    );
+    const result = [resultHead];
+    let colLength = 0;
+    const colList: string[] = [];
+    const data = Object.entries(obj.data);
+
+    data.sort(
+      ([_l, colObjLhs], [_r, colObjRhs]) => colObjRhs[key] - colObjLhs[key]
+    ).forEach(([row, colObj], rowIndex) => {
+      const resultRow = [
+        row.split(',').map((age) => i18n.t('spotDetail:' + age)).join(' & ')
+      ];
+
+      result.push(resultRow);
+
+      if (rowIndex === 0) {
+        Object.entries(colObj).sort(([colLhs, priceLhs], [colRhs, priceRhs]) => {
+          return priceLhs === priceRhs ?
+            typeSort.indexOf(colLhs) - typeSort.indexOf(colRhs) :
+            priceRhs - priceLhs;
+        }).forEach(([col]) => {
+          colList.push(col);
+        });
+
+        colLength = colList.length;
+      }
+
+      colList.forEach((col) => {
+        if (colObj[col] === 0) {
+          resultRow.push(i18n.t('spotDetail:priceFree'));
+        } else if (colObj[col]) {
+          resultRow.push(colObj[col] + ' ' + i18n.t('spotDetail:priceYen'));
+        } else {
+          resultRow.push('');
+        }
+
+        if (rowIndex === 0) {
+          let head = i18n.t('spotDetail:' + col);
+
+          if (col === 'group' && obj.groupNumber) {
+            head += ' (' + i18n.t('spotDetail:groupNumber', { number: obj.groupNumber }) + ')';
+          }
+
+          resultHead.push(head);
+        }
+      });
+
+      if (colLength > colMax) {
+        colMax = colLength;
+      }
+    });
+
+    return colMax > data.length ?
+      result[0].map((_, colIndex) => result.map(row => row[colIndex])) :
+      result;
+  }
+
+  const priceList = getObjectValue(spotJson, `${spot}.priceData`);
+
+  if (priceList) {
+    const content: ReactNode[] = [];
+
+    priceList.forEach((priceData: priceDataType, priceIndex: number) => {
+      const priceTable = convertPriceToTable(priceData);
+
+      if (priceIndex === 0 &&
+        !priceList[1] &&
+        !priceTable[2] &&
+        !priceTable[0][2]) {
+        content.push(
+          <View style={styles.container}>
+            <View>
+              <Text style={stylesColor}>{i18n.t('spotDetail:price')}</Text>
+            </View>
+            <View style={styles.value}>
+              <Text style={stylesColor}>{priceTable[1][1]}</Text>
+            </View>
+          </View>
+        );
+      } else {
+        content.push(
+          <Table style={styles.table} borderStyle={styles.tableBorder}>
+            <Rows textStyle={[styles.row, stylesColor]} data={priceTable} />
+          </Table>
+        );
+      }
+    });
+
+    return (content);
   }
 
   return (<View />);

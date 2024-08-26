@@ -108,21 +108,102 @@
       "range": [1000, 1700]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 2400
+    "priceData": [{
+      "groupNumber": 20,
+
+      "data": {
+        "adult": {
+          "price": 2400,
+          "group": 2160,
+          "disibility": 1200,
+          "escort": 1200
+        },
+
+        "highSchool": {
+          "price": 1800,
+          "group": 1620,
+          "disibility": 900,
+          "escort": 900
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 1200,
+          "group": 1080,
+          "disibility": 600,
+          "escort": 600
+        },
+
+        "3YearsChild": {
+          "price": 800,
+          "group": 720,
+          "disibility": 400,
+          "escort": 400
+        }
+      }
     }, {
-      "name": ["spotDetail:priceHighSchool"],
-      "value": 1800
+      "name": "schoolGroup",
+
+      "data": {
+        "adult": {
+          "price": 1800
+        },
+
+        "highSchool": {
+          "price": 1350
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 900
+        },
+
+        "child": {
+          "price": 600
+        }
+      }
     }, {
-      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceElementarySchool"],
-      "value": 1200
+      "name": "spotDetail:annualPassport",
+
+      "data": {
+        "adult": {
+          "price": 5300,
+          "disibility": 2650
+        },
+
+        "highSchool": {
+          "price": 4000,
+          "disibility": 2000
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 2700,
+          "disibility": 1350
+        },
+
+        "3YearsChild": {
+          "price": 1800,
+          "disibility": 900
+        }
+      }
     }, {
-      "name": ["spotDetail:price3YearsChild"],
-      "value": 800
-    }, {
-      "name": ["spot:kyotoRailwayMuseum:name", "spot:kyotoAquarium:name"],
-      "value": 3510
+      "nameList": ["spot:kyotoRailwayMuseum:name", "name"],
+
+      "data": {
+        "adult": {
+          "price": 3510
+        },
+
+        "highSchool": {
+          "price": 2790
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 1530
+        },
+
+        "3YearsChild": {
+          "price": 900
+        }
+      }
     }],
 
     "location": [{
@@ -163,18 +244,37 @@
       "service": [0, 1645]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 700
+    "priceData": [{
+      "groupNumber": 25,
+
+      "data": {
+        "adult": {
+          "price": 700,
+          "group": 600,
+          "disibility": 350,
+          "escort": 350
+        },
+
+        "highSchool,juniorHighSchool": {
+          "price": 400,
+          "group": 300,
+          "disibility": 200,
+          "escort": 200
+        },
+
+        "elementarySchool": {
+          "price": 300,
+          "group": 200,
+          "disibility": 150,
+          "escort": 150
+        }
+      }
     }, {
-      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
-      "value": 400
-    }, {
-      "name": ["spotDetail:priceElementarySchool"],
-      "value": 300
-    }, {
-      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
-      "value": 350
+      "name": "phoenixHall",
+
+      "data": {
+        "adult": {"price": 300}
+      }
     }],
 
     "location": [{
@@ -461,20 +561,18 @@
       "service": [0, 1630]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 800
-    }, {
-      "name": [
-        "spotDetail:priceElementarySchool",
-        "spotDetail:priceJuniorHighSchool",
-        "spotDetail:priceHighSchool"
-      ],
+    "priceData": [{
+      "data": {
+        "adult": {
+          "price": 800,
+          "disibility": 0
+        },
 
-      "value": 500
-    }, {
-      "name": ["spotDetail:priceDisibility"],
-      "value": 0
+        "elementarySchool,juniorHighSchool,highSchool": {
+          "price": 500,
+          "disibility": 0
+        }
+      }
     }],
 
     "location": [{
@@ -621,15 +719,29 @@
       "service": [0, 2130]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 600
+    "priceData": [{
+      "groupNumber": 30,
+
+      "data": {
+        "adult": {
+          "price": 600,
+          "group": 500,
+          "disibility": 0,
+          "escort": 0
+        },
+
+        "juniorHighSchool,highSchool": {
+          "price": 250,
+          "disibility": 0,
+          "escort": 0
+        }
+      }
     }, {
-      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
-      "value": 250
-    }, {
-      "name": ["name", "entokuin"],
-      "value": 900
+      "nameList": ["name", "entokuin"],
+
+      "data": {
+        "adult": {"price": 900}
+      }
     }],
 
     "location": [{
@@ -691,9 +803,75 @@
       "dateExcept": [[1229, 1231]]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 800
+    "priceData": [{
+      "groupNumber": 30,
+
+      "data": {
+        "adult": {
+          "price": 800,
+          "group": 700,
+          "disibility": 0,
+          "escort": 0
+        },
+
+        "juniorHighSchool,highSchool": {
+          "price": 400
+        },
+
+        "elementarySchool": {
+          "price": 300
+        }
+      }
+    }, {
+      "nameList": ["name", "ninomaru"],
+      "groupNumber": 30,
+
+      "data": {
+        "adult": {
+          "price": 1300,
+          "group": 1100
+        },
+
+        "juniorHighSchool,highSchool": {
+          "price": 400
+        },
+
+        "elementarySchool": {
+          "price": 300
+        }
+      }
+    }, {
+      "name": "honmaru",
+
+      "data": {
+        "adult": {
+          "price": 1000
+        },
+
+        "juniorHighSchool,highSchool": {
+          "price": 300
+        },
+
+        "elementarySchool": {
+          "price": 200
+        }
+      }
+    }, {
+      "name": "tenji",
+
+      "data": {
+        "adult": {
+          "price": 100
+        },
+
+        "juniorHighSchool,highSchool": {
+          "price": 100
+        },
+
+        "elementarySchool": {
+          "price": 100
+        }
+      }
     }],
 
     "location": [{
@@ -794,24 +972,58 @@
       "service": [0, 1630]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 1500
+    "priceData": [{
+      "groupNumber": 20,
+
+      "data": {
+        "adult": {
+          "price": 1500,
+          "group": 1200,
+          "disibility": 750,
+          "escort": 650
+        },
+
+        "university,highSchool": {
+          "price": 1300,
+          "group": 1040,
+          "disibility": 650,
+          "escort": 650
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 500,
+          "group": 400,
+          "disibility": 250,
+          "escort": 250
+        },
+
+        "3YearsChild": {
+          "price": 200,
+          "group": 100,
+          "disibility": 100,
+          "escort": 100
+        }
+      }
     }, {
-      "name": ["spotDetail:priceUniversity", "spotDetail:priceHighSchool"],
-      "value": 1300
-    }, {
-      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceElementarySchool"],
-      "value": 500
-    }, {
-      "name": ["spotDetail:price3YearsChild"],
-      "value": 200
-    }, {
-      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
-      "value": 750
-    }, {
-      "name": ["spot:kyotoRailwayMuseum:name", "spot:kyotoAquarium:name"],
-      "value": 3510
+      "nameList": ["name", "spot:kyotoAquarium:name"],
+
+      "data": {
+        "adult": {
+          "price": 3510
+        },
+
+        "highSchool": {
+          "price": 2790
+        },
+
+        "juniorHighSchool,elementarySchool": {
+          "price": 1530
+        },
+
+        "3YearsChild": {
+          "price": 900
+        }
+      }
     }],
 
     "location": [{
@@ -955,15 +1167,20 @@
       "range": ["0900", 1530]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 500
-    }, {
-      "name": ["spotDetail:priceChild"],
-      "value": 300
-    }, {
-      "name": ["spotDetail:priceDisibility", "spotDetail:priceEscort"],
-      "value": 0
+    "priceData": [{
+      "data": {
+        "adult": {
+          "price": 500,
+          "disibility": 0,
+          "escort": 0
+        },
+
+        "child": {
+          "price": 300,
+          "disibility": 0,
+          "escort": 0
+        }
+      }
     }],
 
     "location": [{
@@ -1203,20 +1420,26 @@
       "dateExcept": [[1230, "0103"]]
     }],
 
-    "price": [{
-      "name": ["spotDetail:price"],
-      "value": 3300
-    }, {
-      "name": ["spotDetail:priceJuniorHighSchool", "spotDetail:priceHighSchool"],
-      "value": 2200
-    }, {
-      "name": [
-        "spotDetail:priceElementarySchool",
-        "spotDetail:priceDisibility",
-        "spotDetail:priceEscort"
-      ],
+    "priceData": [{
+      "data": {
+        "adult": {
+          "price": 3300,
+          "disibility": 1100,
+          "escort": 1100
+        },
 
-      "value": 1100
+        "juniorHighSchool,highSchool": {
+          "price": 2200,
+          "disibility": 1100,
+          "escort": 1100
+        },
+
+        "elementarySchool": {
+          "price": 1100,
+          "disibility": 0,
+          "escort": 1100
+        }
+      }
     }],
 
     "location": [{
