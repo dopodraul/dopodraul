@@ -431,6 +431,21 @@
     }]
   },
 
+  "kyotoHanazonoTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0186065, 135.7177017]
+    }]
+  },
+
   "kyotoHigashihonganji": {},
 
   "kyotoHigashiyamaYasuiBusStation": {
@@ -787,7 +802,47 @@
     }]
   },
 
-  "kyotoMyoshinji": {},
+  "kyotoMyoshinji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "location": [{
+      "xy": [35.0230157, 135.7198525]
+    }],
+
+    "access": [{
+      "from": ["kyotoHanazonoTrainStation"]
+    }, {
+      "from": ["kyotoMyoshinjiTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.myoshinji.or.jp/"
+    }, {
+      "name": "spotDetail:price",
+      "url": "https://www.myoshinji.or.jp/about_zen/haikan/haikan"
+    }]
+  },
+
+  "kyotoMyoshinjiTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["keifuku"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [35.0264472, 135.718133]
+    }]
+  },
 
   "kyotoNijojo": {
     "lastUpdate": 240714,

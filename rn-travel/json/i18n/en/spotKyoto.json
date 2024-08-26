@@ -56,6 +56,10 @@
     "content": "Hanamikoji-dori is one of the north-south streets in Kyoto City. It is the main street that runs through the center of Gion, approximately 1 km from Sanjo Dori in the north to Yasui Hokumon Dori in the south. The atmosphere is very different between the north and south sides of Shijo-dori. The area north of Shijo-dori Street is lined with tenant buildings housing bars, clubs, restaurants, and izakayas."
   },
 
+  "kyotoHanazonoTrainStation": {
+    "name": "Hanazono"
+  },
+
   "kyotoHigashihonganji": {
     "name": "Higashi Hongan-ji Temple",
     "content": "Higashi Hongan-ji, or, \"the Eastern Monastery of the Original Vow\", is one of two dominant sub-sects of Shin Buddhism in Japan and abroad, the other being Nishi Honganji."
@@ -136,6 +140,10 @@
   "kyotoMyoshinji": {
     "name": "Myoshin-ji",
     "content": "Myōshin-ji is a temple complex in Kyoto, Japan, which serves as the head temple of the associated branch of Rinzai Zen Buddhism."
+  },
+
+  "kyotoMyoshinjiTrainStation": {
+    "name": "Myoushinji"
   },
 
   "kyotoNijojo": {
