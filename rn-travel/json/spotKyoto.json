@@ -446,7 +446,38 @@
     }]
   },
 
-  "kyotoHigashihonganji": {},
+  "kyotoHigashihonganji": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "date": [["0301", 1031]],
+      "range": ["0550", 1730]
+    }, {
+      "date": [[1101, "0229"]],
+      "range": ["0620", 1630]
+    }],
+
+    "location": [{
+      "xy": [34.9909478, 135.7584754]
+    }],
+
+    "access": [{
+      "from": ["kyotoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.higashihonganji.or.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.higashihonganji.or.jp/about/guide/"
+    }]
+  },
 
   "kyotoHigashiyamaYasuiBusStation": {
     "lastUpdate": 240714,
