@@ -470,7 +470,32 @@
     }]
   },
 
-  "kyotoHiranojinja": {},
+  "kyotoHiranojinja": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "temple-buddhist"
+    },
+
+    "open": [{
+      "name": "spotDetail:open",
+      "range": ["0600", 1700]
+    }],
+
+    "location": [{
+      "xy": [35.0325953, 135.7319823]
+    }],
+
+    "access": [{
+      "from": ["kyotoKitanoHakubaichoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.hiranojinja.com/"
+    }]
+  },
 
   "kyotoImadegawaTrainStation": {
     "lastUpdate": 240714,
