@@ -1,0 +1,38 @@
+{
+  "kansaiAirport": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "airplane"
+    },
+
+    "location": [{
+      "xy": [34.4370923, 135.2449819]
+    }],
+
+    "access": [{
+      "from": ["kansaiAirportTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.kansai-airport.or.jp/"
+    }]
+  },
+
+  "kansaiAirportTrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["jrWest", "nankai"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [34.4358892, 135.243459]
+    }]
+  }
+}

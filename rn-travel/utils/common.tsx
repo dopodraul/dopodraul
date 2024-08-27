@@ -8,27 +8,37 @@ import 'moment/locale/zh-tw';
 import 'moment/locale/ja';
 
 import spotKyotoJson from '../json/spotKyoto.json';
+import spotOsakaJson from '../json/spotOsaka.json';
 
 import indexEn from '../json/i18n/en/index.json';
 import searchPlaceEn from '../json/i18n/en/searchPlace.json';
 import configurationOptionEn from '../json/i18n/en/configurationOption.json';
-import spotKyotoEn from '../json/i18n/en/spotKyoto.json';
 import spotDetailEn from '../json/i18n/en/spotDetail.json';
+import spotKyotoEn from '../json/i18n/en/spotKyoto.json';
+import spotOsakaEn from '../json/i18n/en/spotOsaka.json';
 import indexJa from '../json/i18n/ja/index.json';
 import searchPlaceJa from '../json/i18n/ja/searchPlace.json';
 import configurationOptionJa from '../json/i18n/ja/configurationOption.json';
-import spotKyotoJa from '../json/i18n/ja/spotKyoto.json';
 import spotDetailJa from '../json/i18n/ja/spotDetail.json';
+import spotKyotoJa from '../json/i18n/ja/spotKyoto.json';
+import spotOsakaJa from '../json/i18n/ja/spotOsaka.json';
 import indexZhTw from '../json/i18n/zh-TW/index.json';
 import searchPlaceZhTw from '../json/i18n/zh-TW/searchPlace.json';
 import configurationOptionZhTw from '../json/i18n/zh-TW/configurationOption.json';
-import spotKyotoZhTw from '../json/i18n/zh-TW/spotKyoto.json';
 import spotDetailZhTw from '../json/i18n/zh-TW/spotDetail.json';
+import spotKyotoZhTw from '../json/i18n/zh-TW/spotKyoto.json';
+import spotOsakaZhTw from '../json/i18n/zh-TW/spotOsaka.json';
 
-const spotJson = {
-  ...{},
-  ...spotKyotoJson
+let spotJson = {};
+
+const areaJson = {
+  kyoto: spotKyotoJson,
+  osaka: spotOsakaJson
 };
+
+Object.values(areaJson).forEach((json) => {
+  spotJson = {...spotJson, ...json};
+});
 
 i18n.use(initReactI18next)
   .init({
@@ -45,7 +55,12 @@ i18n.use(initReactI18next)
       searchPlace: searchPlaceEn,
       configurationOption: configurationOptionEn,
       spotDetail: spotDetailEn,
-      spot: spotKyotoEn,
+
+      spot: {
+        ...{},
+        ...spotKyotoEn,
+        ...spotOsakaEn
+      }
     },
 
     ja: {
@@ -53,7 +68,12 @@ i18n.use(initReactI18next)
       searchPlace: searchPlaceJa,
       configurationOption: configurationOptionJa,
       spotDetail: spotDetailJa,
-      spot: spotKyotoJa
+
+      spot: {
+        ...{},
+        ...spotKyotoJa,
+        ...spotOsakaJa
+      }
     },
 
     'zh-TW': {
@@ -61,7 +81,12 @@ i18n.use(initReactI18next)
       searchPlace: searchPlaceZhTw,
       configurationOption: configurationOptionZhTw,
       spotDetail: spotDetailZhTw,
-      spot: spotKyotoZhTw
+
+      spot: {
+        ...{},
+        ...spotKyotoZhTw,
+        ...spotOsakaZhTw
+      }
     }
   }
 });
@@ -208,6 +233,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
 export {
   spotJson,
+  areaJson,
   getObjectValue,
   openUrl,
   getFloorName,
