@@ -1644,7 +1644,27 @@
     }]
   },
 
-  "richmondHotelPremierKyotoEkimae": {},
+  "richmondHotelPremierKyotoEkimae": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "hotel"
+    },
+
+    "location": [{
+      "xy": [34.9873245, 135.7545555]
+    }],
+
+    "access": [{
+      "from": ["kyotoTrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://richmondhotel.jp/kyoto-ekimae/"
+    }]
+  },
 
   "yodobashiKyoto": {
     "lastUpdate": 240714,
