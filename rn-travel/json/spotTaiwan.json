@@ -1,0 +1,55 @@
+{
+  "taoyuanAirport": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "airplane"
+    },
+
+    "location": [{
+      "xy": [25.0779697, 121.2348725]
+    }],
+
+    "access": [{
+      "from": ["taoyuanAirportTerminal1TrainStation"]
+    }, {
+      "from": ["taoyuanAirportTerminal2TrainStation"]
+    }],
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.taoyuan-airport.com/"
+    }]
+  },
+
+  "taoyuanAirportTerminal1TrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["taoyuan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [25.081705, 121.2391126]
+    }]
+  },
+
+  "taoyuanAirportTerminal2TrainStation": {
+    "lastUpdate": 240714,
+    "station": "train",
+    "company": ["taoyuan"],
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    },
+
+    "location": [{
+      "xy": [25.07735, 121.2321056]
+    }]
+  }
+}

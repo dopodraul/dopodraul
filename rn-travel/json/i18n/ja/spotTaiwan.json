@@ -1,0 +1,13 @@
+{
+  "taoyuanAirport": {
+    "name": "桃園国際空港"
+  },
+
+  "taoyuanAirportTerminal1TrainStation": {
+    "name": "空港第1ターミナル"
+  },
+
+  "taoyuanAirportTerminal2TrainStation": {
+    "name": "空港第2ターミナル"
+  }
+}

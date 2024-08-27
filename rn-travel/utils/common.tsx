@@ -9,6 +9,7 @@ import 'moment/locale/ja';
 
 import spotKyotoJson from '../json/spotKyoto.json';
 import spotOsakaJson from '../json/spotOsaka.json';
+import spotTaiwanJson from '../json/spotTaiwan.json';
 
 import indexEn from '../json/i18n/en/index.json';
 import searchPlaceEn from '../json/i18n/en/searchPlace.json';
@@ -16,24 +17,28 @@ import configurationOptionEn from '../json/i18n/en/configurationOption.json';
 import spotDetailEn from '../json/i18n/en/spotDetail.json';
 import spotKyotoEn from '../json/i18n/en/spotKyoto.json';
 import spotOsakaEn from '../json/i18n/en/spotOsaka.json';
+import spotTaiwanEn from '../json/i18n/en/spotTaiwan.json';
 import indexJa from '../json/i18n/ja/index.json';
 import searchPlaceJa from '../json/i18n/ja/searchPlace.json';
 import configurationOptionJa from '../json/i18n/ja/configurationOption.json';
 import spotDetailJa from '../json/i18n/ja/spotDetail.json';
 import spotKyotoJa from '../json/i18n/ja/spotKyoto.json';
 import spotOsakaJa from '../json/i18n/ja/spotOsaka.json';
+import spotTaiwanJa from '../json/i18n/ja/spotTaiwan.json';
 import indexZhTw from '../json/i18n/zh-TW/index.json';
 import searchPlaceZhTw from '../json/i18n/zh-TW/searchPlace.json';
 import configurationOptionZhTw from '../json/i18n/zh-TW/configurationOption.json';
 import spotDetailZhTw from '../json/i18n/zh-TW/spotDetail.json';
 import spotKyotoZhTw from '../json/i18n/zh-TW/spotKyoto.json';
 import spotOsakaZhTw from '../json/i18n/zh-TW/spotOsaka.json';
+import spotTaiwanZhTw from '../json/i18n/zh-TW/spotTaiwan.json';
 
 let spotJson = {};
 
 const areaJson = {
   kyoto: spotKyotoJson,
-  osaka: spotOsakaJson
+  osaka: spotOsakaJson,
+  taiwan: spotTaiwanJson
 };
 
 Object.values(areaJson).forEach((json) => {
@@ -59,7 +64,8 @@ i18n.use(initReactI18next)
       spot: {
         ...{},
         ...spotKyotoEn,
-        ...spotOsakaEn
+        ...spotOsakaEn,
+        ...spotTaiwanEn
       }
     },
 
@@ -72,7 +78,8 @@ i18n.use(initReactI18next)
       spot: {
         ...{},
         ...spotKyotoJa,
-        ...spotOsakaJa
+        ...spotOsakaJa,
+        ...spotTaiwanJa
       }
     },
 
@@ -85,7 +92,8 @@ i18n.use(initReactI18next)
       spot: {
         ...{},
         ...spotKyotoZhTw,
-        ...spotOsakaZhTw
+        ...spotOsakaZhTw,
+        ...spotTaiwanZhTw
       }
     }
   }

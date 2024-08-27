@@ -1,0 +1,13 @@
+{
+  "taoyuanAirport": {
+    "name": "Taoyuan International Airport"
+  },
+
+  "taoyuanAirportTerminal1TrainStation": {
+    "name": "Airport Terminal 1"
+  },
+
+  "taoyuanAirportTerminal2TrainStation": {
+    "name": "Airport Terminal 2"
+  }
+}
