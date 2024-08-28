@@ -23,7 +23,7 @@ export default function SpotMain() {
 
   useEffect(() => {
     addRecent(spot);
-  }, [spot]);
+  }, [spot]); // eslint-disable-line
 
   const { i18n } = useTranslation();
   const title = i18n.t(`spot:${spot}:name`);
