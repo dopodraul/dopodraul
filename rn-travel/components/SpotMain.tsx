@@ -1,5 +1,5 @@
 import { View, ScrollView, StyleSheet } from 'react-native';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BackComponent from './BackComponent';
@@ -15,8 +15,17 @@ import SpotLastUpdate from './SpotLastUpdate';
 import { AppContext } from '../utils/common';
 
 export default function SpotMain() {
+  const {
+    spot,
+    setSpot,
+    addRecent
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    addRecent(spot);
+  }, [spot]);
+
   const { i18n } = useTranslation();
-  const { spot, setSpot } = useContext(AppContext);
   const title = i18n.t(`spot:${spot}:name`);
 
   const pressBack = () => {

@@ -127,7 +127,8 @@ const getFloorName = (floor: number) => {
 
 const storageKey = {
   language: 'travel-language',
-  color: 'travel-color'
+  color: 'travel-color',
+  recent: 'travel-recent'
 };
 
 const AppContext = createContext({
@@ -142,6 +143,8 @@ const AppContext = createContext({
   setLanguage: (language: string) => {},
   color: '',
   setColor: (color: string) => {},
+  recent: [] as string[],
+  addRecent: (spot: string) => {},
 
   getStyle: () => {
     return {
@@ -155,9 +158,27 @@ const AppContext = createContext({
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [color, setColor] = useState('light');
+  const [recent, setRecent] = useState<string[]>([]);
   const [searchType, setSearchType] = useState('');
   const [searchTravel, setSearchTravel] = useState('');
   const [spot, setSpot] = useState('');
+
+  const addRecent = (spot: string) => {
+    const newRecent = [ ...[], ...recent ];
+    const index = recent.indexOf(spot);
+
+    if (index !== -1) {
+      newRecent.splice(index, 1);
+    }
+
+    newRecent.unshift(spot);
+
+    if (newRecent.length > 20) {
+      newRecent.pop();
+    }
+
+    setRecent(newRecent);
+  }
 
   useEffect(() => {
     try {
@@ -166,7 +187,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
         valueList = await AsyncStorage.multiGet([
           storageKey.language,
-          storageKey.color
+          storageKey.color,
+          storageKey.recent
         ]);
 
         if (valueList) {
@@ -178,6 +200,31 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                 moment.locale(value);
               } else if (key === storageKey.color) {
                 setColor(value);
+              } else if (key === storageKey.recent) {
+                let recentStorage;
+
+                try {
+                  recentStorage = JSON.parse(value);
+                } catch {
+                }
+
+                if (!Array.isArray(recentStorage)) {
+                  recentStorage = [];
+                }
+
+                recentStorage = recentStorage.reduce((list, element) => {
+                  if (
+                    typeof element === 'string' &&
+                    getObjectValue(spotJson, element) &&
+                    list.indexOf(element) === -1
+                  ) {
+                    list.push(element);
+                  }
+
+                  return list;
+                }, []);
+
+                setRecent(recentStorage);
               }
             }
           });
@@ -205,6 +252,15 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     })();
   }, [color]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        await AsyncStorage.setItem(storageKey.recent, JSON.stringify(recent));
+      } catch {
+      }
+    })();
+  }, [recent]);
+
   const getStyle = () => {
     return color === 'dark' ? {
         color: 'white',
@@ -231,7 +287,9 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setLanguage,
         color,
         setColor,
-        getStyle
+        getStyle,
+        recent,
+        addRecent
       }}
     >
       {children}

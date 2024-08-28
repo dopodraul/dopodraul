@@ -12,7 +12,6 @@ import SpotMain from '../components/SpotMain';
 export default function SearchPlace() {
   const { i18n } = useTranslation();
   const { spot, searchType, getStyle } = useContext(AppContext);
-
   const stylesColor = getStyle();
 
   const t = (key: string) => {
