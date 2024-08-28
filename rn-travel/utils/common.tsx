@@ -12,6 +12,7 @@ import spotOsakaJson from '../json/spotOsaka.json';
 import spotTaiwanJson from '../json/spotTaiwan.json';
 
 import indexEn from '../json/i18n/en/index.json';
+import recentPlaceEn from '../json/i18n/en/recentPlace.json';
 import searchPlaceEn from '../json/i18n/en/searchPlace.json';
 import configurationOptionEn from '../json/i18n/en/configurationOption.json';
 import spotDetailEn from '../json/i18n/en/spotDetail.json';
@@ -19,6 +20,7 @@ import spotKyotoEn from '../json/i18n/en/spotKyoto.json';
 import spotOsakaEn from '../json/i18n/en/spotOsaka.json';
 import spotTaiwanEn from '../json/i18n/en/spotTaiwan.json';
 import indexJa from '../json/i18n/ja/index.json';
+import recentPlaceJa from '../json/i18n/ja/recentPlace.json';
 import searchPlaceJa from '../json/i18n/ja/searchPlace.json';
 import configurationOptionJa from '../json/i18n/ja/configurationOption.json';
 import spotDetailJa from '../json/i18n/ja/spotDetail.json';
@@ -26,6 +28,7 @@ import spotKyotoJa from '../json/i18n/ja/spotKyoto.json';
 import spotOsakaJa from '../json/i18n/ja/spotOsaka.json';
 import spotTaiwanJa from '../json/i18n/ja/spotTaiwan.json';
 import indexZhTw from '../json/i18n/zh-TW/index.json';
+import recentPlaceZhTw from '../json/i18n/zh-TW/recentPlace.json';
 import searchPlaceZhTw from '../json/i18n/zh-TW/searchPlace.json';
 import configurationOptionZhTw from '../json/i18n/zh-TW/configurationOption.json';
 import spotDetailZhTw from '../json/i18n/zh-TW/spotDetail.json';
@@ -57,6 +60,7 @@ i18n.use(initReactI18next)
   resources: {
     en: {
       index: indexEn,
+      recentPlace: recentPlaceEn,
       searchPlace: searchPlaceEn,
       configurationOption: configurationOptionEn,
       spotDetail: spotDetailEn,
@@ -71,6 +75,7 @@ i18n.use(initReactI18next)
 
     ja: {
       index: indexJa,
+      recentPlace: recentPlaceJa,
       searchPlace: searchPlaceJa,
       configurationOption: configurationOptionJa,
       spotDetail: spotDetailJa,
@@ -85,6 +90,7 @@ i18n.use(initReactI18next)
 
     'zh-TW': {
       index: indexZhTw,
+      recentPlace: recentPlaceZhTw,
       searchPlace: searchPlaceZhTw,
       configurationOption: configurationOptionZhTw,
       spotDetail: spotDetailZhTw,

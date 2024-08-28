@@ -1,0 +1,7 @@
+{
+  "welcome": "歡迎來到旅遊APP",
+  "searchPlaceSentencePrefix": "請選擇",
+  "searchPlaceSentenceSuffix": "{{page}} 來查看旅遊景點",
+  "configurationOptionSentencePrefix": "請選擇",
+  "configurationOptionSentenceSuffix": "{{page}} 來調整您的語言"
+}

@@ -1,9 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { useContext } from 'react';
 
-export default function RecentPlace() {
+import RecentPlaceMain from '../components/RecentPlaceMain';
+import { AppContext } from '../utils/common';
+
+export default function RecentPlace({ navigation }: { navigation: { navigate: (name: string) => void } }) {
+  const { getStyle } = useContext(AppContext);
+  const stylesColor = getStyle();
+
   return (
-    <View style={styles.container}>
-      <Text>最近觀看景點</Text>
+    <View style={[styles.container, stylesColor]}>
+      <RecentPlaceMain navigation={navigation} />
     </View>
   );
 }

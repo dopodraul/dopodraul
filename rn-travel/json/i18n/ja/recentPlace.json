@@ -1,0 +1,7 @@
+{
+  "welcome": "旅行アプリへようこそ",
+  "searchPlaceSentencePrefix": "",
+  "searchPlaceSentenceSuffix": "{{page}} をクリックして旅行スポットを読んでください",
+  "configurationOptionSentencePrefix": "",
+  "configurationOptionSentenceSuffix": "{{page}} をクリックして言語を設定してください"
+}
