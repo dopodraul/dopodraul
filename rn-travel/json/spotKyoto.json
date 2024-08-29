@@ -34,7 +34,14 @@
     }]
   },
 
-  "keifukuRanden": {},
+  "keifukuRanden": {
+    "lastUpdate": 240714,
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "train"
+    }
+  },
 
   "kiddyLandKyotoKawaramachi": {
     "lastUpdate": 240714,

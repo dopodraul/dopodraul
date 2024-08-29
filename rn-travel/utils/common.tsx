@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import { Linking } from 'react-native';
+import { View, Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -215,10 +215,15 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const icon = getObjectValue(spotJson, `${input}.icon`);
-    const IconComponent = getObjectValue(iconObj, getObjectValue(icon, 'family'));
-    const name = getObjectValue(icon, 'name');
-    const color = getStyle().color;
-    return <IconComponent name={name} size={size} color={color} />;
+
+    if (icon) {
+      const IconComponent = getObjectValue(iconObj, getObjectValue(icon, 'family'));
+      const name = getObjectValue(icon, 'name');
+      const color = getStyle().color;
+      return <IconComponent name={name} size={size} color={color} />;
+    }
+
+    return <View />
   }
 
   useEffect(() => {
