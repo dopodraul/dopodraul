@@ -1,18 +1,22 @@
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Moment } from 'moment';
 import { Table, Rows } from 'react-native-table-component';
 
 import travelJson from '../json/travel.json';
-import { AppContext, getObjectValue, spotJson } from '../utils/common';
 import BackComponent from './BackComponent';
+
+import {
+  AppContext,
+  getObjectValue,
+  getSpotName,
+  spotJson
+} from '../utils/common';
 
 export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   t: (key: string) => string;
   convertTravelToMoment: (travel: string) => Moment
 }) {
-  const i18n = useTranslation();
   const { searchTravel, setSearchTravel, setSpot, getStyle } = useContext(AppContext);
   const travelData = getObjectValue(travelJson, searchTravel);
   const travelMoment = convertTravelToMoment(searchTravel);
@@ -50,7 +54,7 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   const data = [];
 
   const convertSpotToButton = (spot: string) => {
-    const name = i18n.t(`spot:${spot}:name`);
+    const name = getSpotName(spot);
 
     const onPress = () => {
       setSpot(spot);

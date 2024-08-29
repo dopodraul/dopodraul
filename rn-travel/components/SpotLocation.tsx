@@ -8,7 +8,8 @@ import {
   AppContext,
   getObjectValue,
   spotJson,
-  getFloorName
+  getFloorName,
+  getSpotName
 } from '../utils/common';
 
 export default function SpotLocation() {
@@ -44,7 +45,7 @@ export default function SpotLocation() {
         title = i18n.t(`spot:${spot}:${name}`);
         pinColor = 'orange';
       } else {
-        title = i18n.t(`spot:${spot}:name`);
+        title = getSpotName(spot);
         region.latitude = xy[0];
         region.longitude = xy[1];
       }

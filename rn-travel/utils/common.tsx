@@ -131,6 +131,19 @@ const getFloorName = (floor: number) => {
   return '';
 }
 
+const getSpotName = (spot: string) => {
+  let result = i18n.t(`spot:${spot}:name`);
+  const station = getObjectValue(spotJson, `${spot}.station`);
+
+  if (station === 'bus') {
+    result += ' ' + i18n.t('spotDetail:busStation');
+  } else if (station === 'train') {
+    result += ' ' + i18n.t('spotDetail:trainStation');
+  }
+
+  return result;
+}
+
 const storageKey = {
   language: 'travel-language',
   color: 'travel-color',
@@ -309,6 +322,7 @@ export {
   getObjectValue,
   openUrl,
   getFloorName,
+  getSpotName,
   AppContext,
   AppProvider
 };

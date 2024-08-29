@@ -8,7 +8,8 @@ import {
   AppContext,
   getObjectValue,
   spotJson,
-  getFloorName
+  getFloorName,
+  getSpotName
 } from '../utils/common';
 
 export default function SpotAccess() {
@@ -57,14 +58,7 @@ export default function SpotAccess() {
         const spotLocation = getObjectValue(spotJson, `${from}.location`);
 
         if (spotLocation) {
-          let title = i18n.t(`spot:${from}:name`);
-          const station = getObjectValue(spotJson, `${from}.station`);
-
-          if (station === 'bus') {
-            title += ' ' + i18n.t('spotDetail:busStation');
-          } else if (station === 'train') {
-            title += ' ' + i18n.t('spotDetail:trainStation');
-          }
+          const title = getSpotName(from);
 
           const description = i18n.t(
             'spotDetail:accessSentence', {
@@ -92,7 +86,7 @@ export default function SpotAccess() {
     });
 
     const text = i18n.t('spotDetail:access');
-    let title = i18n.t(`spot:${spot}:name`);
+    let title = getSpotName(spot);
     const floor = getObjectValue(location, 'floor');
 
     if (floor) {
