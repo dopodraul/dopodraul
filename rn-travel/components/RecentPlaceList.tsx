@@ -1,29 +1,25 @@
 import { ScrollView, FlatList, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { spotJson, getObjectValue, AppContext } from '../utils/common';
+import { AppContext } from '../utils/common';
 
 export default function RecentPlaceList() {
-  const { i18n } = useTranslation();
-  const { recent, getStyle } = useContext(AppContext);
-  const stylesColor = getStyle();
+  const {
+    recent,
+    getStyle,
+    getSpotIcon
+  } = useContext(AppContext);
 
-  const iconObj = {
-    MaterialIcons,
-    MaterialCommunityIcons
-  };
+  const { i18n } = useTranslation();
+  const stylesColor = getStyle();
 
   const renderItem = ({ item }: { item: string }) => {
     const name = i18n.t(`spot:${item}:name`);
-    const icon: object = getObjectValue(spotJson, `${item}.icon`);
-    const IconComponent = getObjectValue(iconObj, getObjectValue(icon, 'family'));
-    const iconName = getObjectValue(icon, 'name');
+    const icon = getSpotIcon(item, 16);
 
     return <TouchableOpacity style={styles.item}>
-      <IconComponent name={iconName} size={16} color={stylesColor.color} />
+      {icon}
       <Text style={[styles.text, stylesColor]}>{name}</Text>
     </TouchableOpacity>;
   }

@@ -3,6 +3,8 @@ import { Linking } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
 import 'moment/locale/zh-tw';
 import 'moment/locale/ja';
@@ -165,6 +167,10 @@ const AppContext = createContext({
   recent: [] as string[],
   addRecent: (spot: string) => {},
 
+  getSpotIcon: (spot: string, size: number) => {
+    return <></>;
+  },
+
   getStyle: () => {
     return {
       color: '',
@@ -197,6 +203,19 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     }
 
     setRecent(newRecent);
+  }
+
+  const getSpotIcon = (input: string, size: number) => {
+    const iconObj = {
+      MaterialIcons,
+      MaterialCommunityIcons
+    };
+
+    const icon = getObjectValue(spotJson, `${input}.icon`);
+    const IconComponent = getObjectValue(iconObj, getObjectValue(icon, 'family'));
+    const name = getObjectValue(icon, 'name');
+    const color = getStyle().color;
+    return <IconComponent name={name} size={size} color={color} />;
   }
 
   useEffect(() => {
@@ -301,6 +320,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchTravel,
         spot,
         setSpot,
+        getSpotIcon,
         i18n,
         language,
         setLanguage,
