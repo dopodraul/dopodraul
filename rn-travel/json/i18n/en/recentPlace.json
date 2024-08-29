@@ -1,7 +1,7 @@
 {
   "welcome": "Welcome to Travel App",
-  "searchPlaceSentencePrefix": "Please click",
-  "searchPlaceSentenceSuffix": "{{page}} and find some travel spots",
-  "configurationOptionSentencePrefix": "Please click",
-  "configurationOptionSentenceSuffix": "{{page}} to set your language"
+  "searchPlaceSentencePrefix": "Click",
+  "searchPlaceSentenceSuffix": "{{page}} to find travel spots",
+  "configurationOptionSentencePrefix": "Click",
+  "configurationOptionSentenceSuffix": "{{page}} to set the language"
 }

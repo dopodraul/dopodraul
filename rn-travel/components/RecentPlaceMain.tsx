@@ -32,12 +32,12 @@ export default function RecentPlaceMain({ navigation }: { navigation: { navigate
       <Text style={[styles.text, stylesColor]}>{welcome}</Text>
       <TouchableOpacity style={styles.touch} onPress={() => { navigate('SearchPlace'); }}>
         <Text style={[styles.text, stylesColor]}>{searchPlaceSentencePrefix}</Text>
-        <Icon name="search-outline" size={24} color={stylesColor.color} />
+        <Icon name="search-outline" size={16} color={stylesColor.color} />
         <Text style={[styles.text, stylesColor]}>{searchPlaceSentenceSuffix}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.touch} onPress={() => { navigate('ConfigurationOption'); }}>
         <Text style={[styles.text, stylesColor]}>{configurationOptionSentencePrefix}</Text>
-        <Icon name="settings-outline" size={24} color={stylesColor.color} />
+        <Icon name="settings-outline" size={16} color={stylesColor.color} />
         <Text style={[styles.text, stylesColor]}>{configurationOptionSentenceSuffix}</Text>
       </TouchableOpacity>
     </View>
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
   text: {
     paddingTop: 8,
     paddingBottom: 8,
-    fontSize: 24
+    fontSize: 16
   }
 });
