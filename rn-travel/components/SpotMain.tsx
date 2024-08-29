@@ -13,15 +13,14 @@ import SpotStay from './SpotStay';
 import SpotLastUpdate from './SpotLastUpdate';
 import { getSpotName, AppContext } from '../utils/common';
 
-export default function SpotMain() {
-  const {
-    spot,
-    setSpot,
-    addRecent
-  } = useContext(AppContext);
+export default function SpotMain({ spot, setSpot }: {
+  spot: string;
+  setSpot: (spot: string) => void;
+}) {
+  const { addRecentSpot } = useContext(AppContext);
 
   useEffect(() => {
-    addRecent(spot);
+    addRecentSpot(spot);
   }, [spot]); // eslint-disable-line
 
   const title = getSpotName(spot);
@@ -35,15 +34,15 @@ export default function SpotMain() {
       <BackComponent title={title} pressBack={pressBack} />
       <ScrollView>
         <View style={styles.scrollContent}>
-          <SpotReserve />
-          <SpotContent />
-          <SpotStay />
-          <SpotOpen />
-          <SpotPrice />
-          <SpotLocation />
-          <SpotAccess />
-          <SpotLink />
-          <SpotLastUpdate />
+          <SpotReserve spot={spot} />
+          <SpotContent spot={spot} />
+          <SpotStay spot={spot} />
+          <SpotOpen spot={spot} />
+          <SpotPrice spot={spot} />
+          <SpotLocation spot={spot} />
+          <SpotAccess spot={spot} />
+          <SpotLink spot={spot} />
+          <SpotLastUpdate spot={spot} />
         </View>
       </ScrollView>
     </View>

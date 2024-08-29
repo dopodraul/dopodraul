@@ -5,9 +5,9 @@ import { Table, Rows } from 'react-native-table-component';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
-export default function SpotPrice() {
+export default function SpotPrice({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
 
   const styles = StyleSheet.create({

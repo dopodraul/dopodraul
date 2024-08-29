@@ -6,9 +6,9 @@ import { Table, Rows } from 'react-native-table-component';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
-export default function SpotOpen() {
+export default function SpotOpen({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const openList = getObjectValue(spotJson, `${spot}.open`);
   const stylesColor = getStyle();
 

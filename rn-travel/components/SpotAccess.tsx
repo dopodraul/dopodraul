@@ -12,9 +12,9 @@ import {
   getSpotName
 } from '../utils/common';
 
-export default function SpotAccess() {
+export default function SpotAccess({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const accessList = getObjectValue(spotJson, `${spot}.access`);
   const stylesColor = getStyle();
 

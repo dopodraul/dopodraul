@@ -9,9 +9,9 @@ import {
   spotJson
 } from '../utils/common';
 
-export default function SpotLink() {
+export default function SpotLink({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const linkList = getObjectValue(spotJson, `${spot}.link`);
   const stylesColor = getStyle();
 

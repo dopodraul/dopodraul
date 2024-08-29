@@ -1,20 +1,17 @@
 import { View, StyleSheet } from 'react-native';
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { MapView, Marker } from '../utils/react-native-maps';
 
 import {
-  AppContext,
   getObjectValue,
   spotJson,
   getFloorName,
   getSpotName
 } from '../utils/common';
 
-export default function SpotLocation() {
+export default function SpotLocation({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot } = useContext(AppContext);
   const locationList = getObjectValue(spotJson, `${spot}.location`);
 
   if (locationList) {

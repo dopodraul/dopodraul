@@ -5,9 +5,9 @@ import moment from 'moment';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
-export default function SpotLastUpdate() {
+export default function SpotLastUpdate({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const lastUpdate = getObjectValue(spotJson, `${spot}.lastUpdate`);
   const stylesColor = getStyle();
 

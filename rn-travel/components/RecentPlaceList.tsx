@@ -6,7 +6,8 @@ import { AppContext } from '../utils/common';
 
 export default function RecentPlaceList() {
   const {
-    recent,
+    recentList,
+    setRecentSpot,
     getStyle,
     getSpotIcon
   } = useContext(AppContext);
@@ -18,7 +19,11 @@ export default function RecentPlaceList() {
     const name = i18n.t(`spot:${item}:name`);
     const icon = getSpotIcon(item, 16);
 
-    return <TouchableOpacity style={styles.item}>
+    const pressSpot = (spot: string) => {
+      setRecentSpot(spot);
+    }
+
+    return <TouchableOpacity style={styles.item} onPress={() => { pressSpot(item); }}>
       {icon}
       <Text style={[styles.text, stylesColor]}>{name}</Text>
     </TouchableOpacity>;
@@ -27,7 +32,7 @@ export default function RecentPlaceList() {
   return (
     <ScrollView>
       <FlatList
-        data={recent}
+        data={recentList}
         renderItem={renderItem}/>
     </ScrollView>
   );
@@ -37,6 +42,7 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 16,
     paddingBottom: 16
   },

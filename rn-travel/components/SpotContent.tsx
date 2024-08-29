@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 import { AppContext } from '../utils/common';
 
-export default function SpotContent() {
+export default function SpotContent({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
   const key = `spot:${spot}:content`;
 

@@ -1,13 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { AppContext, spotJson, getObjectValue } from '../utils/common';
+import { spotJson, getObjectValue } from '../utils/common';
 
-export default function SpotReserve() {
+export default function SpotReserve({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot } = useContext(AppContext);
 
   return (
     getObjectValue(spotJson, `${spot}.isReserve`) ?

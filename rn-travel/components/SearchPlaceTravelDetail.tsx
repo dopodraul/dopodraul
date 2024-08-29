@@ -17,7 +17,13 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   t: (key: string) => string;
   convertTravelToMoment: (travel: string) => Moment
 }) {
-  const { searchTravel, setSearchTravel, setSpot, getStyle } = useContext(AppContext);
+  const {
+    searchTravel,
+    setSearchTravel,
+    setSearchSpot,
+    getStyle
+  } = useContext(AppContext);
+
   const travelData = getObjectValue(travelJson, searchTravel);
   const travelMoment = convertTravelToMoment(searchTravel);
   const title = travelMoment.format('LL');
@@ -57,7 +63,7 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
     const name = getSpotName(spot);
 
     const onPress = () => {
-      setSpot(spot);
+      setSearchSpot(spot);
     }
 
     return spotJson.hasOwnProperty(spot) ?

@@ -10,8 +10,14 @@ import SearchPlaceKeyword from '../components/SearchPlaceKeyword';
 import SpotMain from '../components/SpotMain';
 
 export default function SearchPlace() {
+  const {
+    searchSpot,
+    setSearchSpot,
+    searchType,
+    getStyle
+  } = useContext(AppContext);
+
   const { i18n } = useTranslation();
-  const { spot, searchType, getStyle } = useContext(AppContext);
   const stylesColor = getStyle();
 
   const t = (key: string) => {
@@ -20,8 +26,8 @@ export default function SearchPlace() {
 
   let content = <SearchPlaceMain t={t} />;
 
-  if (spot) {
-    content = <SpotMain />
+  if (searchSpot) {
+    content = <SpotMain spot={searchSpot} setSpot={setSearchSpot} />
   } else {
     if (searchType === 'travel') {
       content = <SearchPlaceTravel t={t} />;

@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 import { AppContext, getObjectValue, spotJson } from '../utils/common';
 
-export default function SpotLastUpdate() {
+export default function SpotLastUpdate({ spot }: { spot: string; }) {
   const { i18n } = useTranslation();
-  const { spot, getStyle } = useContext(AppContext);
+  const { getStyle } = useContext(AppContext);
   const stay = getObjectValue(spotJson, `${spot}.stay`);
   const stylesColor = getStyle();
 

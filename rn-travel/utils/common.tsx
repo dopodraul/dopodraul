@@ -157,15 +157,17 @@ const AppContext = createContext({
   setSearchType: (type: string) => {},
   searchTravel: '',
   setSearchTravel: (travel: string) => {},
-  spot: '',
-  setSpot: (spot: string) => {},
+  recentSpot: '',
+  setRecentSpot: (spot: string) => {},
+  searchSpot: '',
+  setSearchSpot: (spot: string) => {},
   i18n,
   language: '',
   setLanguage: (language: string) => {},
   color: '',
   setColor: (color: string) => {},
-  recent: [] as string[],
-  addRecent: (spot: string) => {},
+  recentList: [] as string[],
+  addRecentSpot: (spot: string) => {},
 
   getSpotIcon: (spot: string, size: number) => {
     return <></>;
@@ -183,14 +185,15 @@ const AppContext = createContext({
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState('en');
   const [color, setColor] = useState('light');
-  const [recent, setRecent] = useState<string[]>([]);
+  const [recentList, setRecentList] = useState<string[]>([]);
   const [searchType, setSearchType] = useState('');
   const [searchTravel, setSearchTravel] = useState('');
-  const [spot, setSpot] = useState('');
+  const [recentSpot, setRecentSpot] = useState('');
+  const [searchSpot, setSearchSpot] = useState('');
 
-  const addRecent = (spot: string) => {
-    const newRecent = [ ...[], ...recent ];
-    const index = recent.indexOf(spot);
+  const addRecentSpot = (spot: string) => {
+    const newRecent = [ ...[], ...recentList ];
+    const index = recentList.indexOf(spot);
 
     if (index !== -1) {
       newRecent.splice(index, 1);
@@ -202,7 +205,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       newRecent.pop();
     }
 
-    setRecent(newRecent);
+    setRecentList(newRecent);
   }
 
   const getSpotIcon = (input: string, size: number) => {
@@ -262,7 +265,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
                   return list;
                 }, []);
 
-                setRecent(recentStorage);
+                setRecentList(recentStorage);
               }
             }
           });
@@ -293,11 +296,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     (async () => {
       try {
-        await AsyncStorage.setItem(storageKey.recent, JSON.stringify(recent));
+        await AsyncStorage.setItem(storageKey.recent, JSON.stringify(recentList));
       } catch {
       }
     })();
-  }, [recent]);
+  }, [recentList]);
 
   const getStyle = () => {
     return color === 'dark' ? {
@@ -318,8 +321,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchType,
         searchTravel,
         setSearchTravel,
-        spot,
-        setSpot,
+        recentSpot,
+        setRecentSpot,
+        searchSpot,
+        setSearchSpot,
         getSpotIcon,
         i18n,
         language,
@@ -327,8 +332,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         color,
         setColor,
         getStyle,
-        recent,
-        addRecent
+        recentList,
+        addRecentSpot
       }}
     >
       {children}
