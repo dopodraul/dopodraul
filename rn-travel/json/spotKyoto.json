@@ -40,7 +40,15 @@
     "icon": {
       "family": "MaterialCommunityIcons",
       "name": "train"
-    }
+    },
+
+    "link": [{
+      "name": "spotDetail:linkOfficialWebsite",
+      "url": "https://www.keifuku.co.jp/"
+    }, {
+      "name": "spotDetail:linkMap",
+      "url": "https://www.keifuku.co.jp/randen_timetable.php"
+    }]
   },
 
   "kiddyLandKyotoKawaramachi": {
