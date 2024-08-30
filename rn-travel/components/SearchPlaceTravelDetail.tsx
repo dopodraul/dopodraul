@@ -122,7 +122,7 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
     });
   }
 
-  const content = [
+  return ([
     <BackComponent title={title} pressBack={pressBack} />,
     <ScrollView>
       <Table borderStyle={styles.table}>
@@ -133,7 +133,5 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
         />
       </Table>
     </ScrollView>
-  ];
-
-  return (content);
+  ]);
 }

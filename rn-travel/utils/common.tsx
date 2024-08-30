@@ -38,17 +38,11 @@ import spotKyotoZhTw from '../json/i18n/zh-TW/spotKyoto.json';
 import spotOsakaZhTw from '../json/i18n/zh-TW/spotOsaka.json';
 import spotTaiwanZhTw from '../json/i18n/zh-TW/spotTaiwan.json';
 
-let spotJson = {};
-
-const areaJson = {
+const inputJson = {
   kyoto: spotKyotoJson,
   osaka: spotOsakaJson,
   taiwan: spotTaiwanJson
 };
-
-Object.values(areaJson).forEach((json) => {
-  spotJson = {...spotJson, ...json};
-});
 
 i18n.use(initReactI18next)
   .init({
@@ -146,6 +140,35 @@ const getSpotName = (spot: string) => {
   return result;
 }
 
+let spotJson = {};
+const areaJson: {[area: string]: any} = {};
+
+Object.entries(inputJson).forEach(([area, json]) => {
+  spotJson = {...spotJson, ...json};
+
+  areaJson[area] = {
+    data: json,
+    center: [0, 0]
+  };
+
+  let number = 0;
+
+  Object.values(json).forEach((obj) => {
+    const xy = getObjectValue(obj, 'location.0.xy');
+
+    if (xy) {
+      number++;
+      areaJson[area].center[0] += xy[0];
+      areaJson[area].center[1] += xy[1];
+    }
+  });
+
+  if (number) {
+    areaJson[area].center[0] /= number;
+    areaJson[area].center[1] /= number;
+  }
+});
+
 const storageKey = {
   language: 'travel-language',
   color: 'travel-color',
@@ -157,6 +180,8 @@ const AppContext = createContext({
   setSearchType: (type: string) => {},
   searchTravel: '',
   setSearchTravel: (travel: string) => {},
+  searchMapArea: '',
+  setSearchMapArea: (searchMapArea: string) => {},
   recentSpot: '',
   setRecentSpot: (spot: string) => {},
   searchSpot: '',
@@ -188,6 +213,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [recentList, setRecentList] = useState<string[]>([]);
   const [searchType, setSearchType] = useState('');
   const [searchTravel, setSearchTravel] = useState('');
+  const [searchMapArea, setSearchMapArea] = useState('');
   const [recentSpot, setRecentSpot] = useState('');
   const [searchSpot, setSearchSpot] = useState('');
 
@@ -326,6 +352,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchType,
         searchTravel,
         setSearchTravel,
+        searchMapArea,
+        setSearchMapArea,
         recentSpot,
         setRecentSpot,
         searchSpot,

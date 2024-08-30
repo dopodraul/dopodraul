@@ -12,7 +12,8 @@ export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; 
     return moment('20' + travel, 'YYYYMMDD');
   }
 
-  const content = searchTravel ?
+  return (
+    searchTravel ?
     <SearchPlaceTravelDetail
       t={t}
       convertTravelToMoment={convertTravelToMoment}
@@ -20,7 +21,6 @@ export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; 
     <SearchPlaceTravelList
       t={t}
       convertTravelToMoment={convertTravelToMoment}
-    />;
-
-  return (content);
+    />
+  );
 }

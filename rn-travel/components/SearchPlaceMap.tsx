@@ -1,20 +1,24 @@
-import { View } from 'react-native'
 import { useContext } from 'react';
 
 import { AppContext } from '../utils/common';
-import BackComponent from './BackComponent';
+import SearchPlaceMapList from './SearchPlaceMapList';
+import SearchPlaceMapDetail from './SearchPlaceMapDetail';
+import SpotMain from './SpotMain';
 
 export default function SearchPlaceKeyword ({ t }: { t: (key: string) => string; }) {
-  const { setSearchType } = useContext(AppContext);
-  const title = t('mapSearch');
+  const {
+    searchMapArea,
+    searchSpot,
+    setSearchSpot
+  } = useContext(AppContext);
 
-  const pressBack = () => {
-    setSearchType('');
+  let content = <SearchPlaceMapList t={t} />;
+
+  if (searchSpot) {
+    content = <SpotMain spot={searchSpot} setSpot={setSearchSpot} />;
+  } else if (searchMapArea) {
+    content = <SearchPlaceMapDetail t={t} />;
   }
 
-  return (
-    <View>
-      <BackComponent title={title} pressBack={pressBack} />
-    </View>
-  );
+  return (content);
 }

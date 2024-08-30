@@ -1,4 +1,11 @@
-import { View, TouchableOpacity, Text, FlatList, StyleSheet } from 'react-native';
+import {
+  ScrollView,
+  TouchableOpacity,
+  Text,
+  FlatList,
+  StyleSheet
+} from 'react-native';
+
 import { useContext } from 'react';
 import { Moment } from 'moment';
 
@@ -31,7 +38,7 @@ export default function SearchPlaceTravelList({ t, convertTravelToMoment }: {
     }
 
     const styles = StyleSheet.create({
-      listItem: {
+      item: {
         padding: 16,
         marginLeft: 16,
         marginRight: 16,
@@ -44,21 +51,15 @@ export default function SearchPlaceTravelList({ t, convertTravelToMoment }: {
 
     return (
       <TouchableOpacity onPress={onPress}>
-        <Text style={[styles.listItem, stylesColor, stylesBorder]}>{text}</Text>
+        <Text style={[styles.item, stylesColor, stylesBorder]}>{text}</Text>
       </TouchableOpacity>
     );
   }
 
-  return (
-    <View>
-      <View>
-        <BackComponent title={t('travelSearch')} pressBack={pressBack} />
-      </View>
-      <View>
-        <FlatList
-          data={data}
-          renderItem={renderItem} />
-      </View>
-    </View>
-  );
+  return ([
+    <BackComponent title={t('travelSearch')} pressBack={pressBack} />,
+    <ScrollView>
+      <FlatList data={data} renderItem={renderItem} />
+    </ScrollView>
+  ]);
 }
