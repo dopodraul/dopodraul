@@ -24,8 +24,32 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     setSearchMapArea('');
   };
 
+  const colorList = [
+    'red',
+    'yellow',
+    'tan',
+    'blue',
+    'teal',
+    'purple',
+    'tomato',
+    'gold',
+    'linen',
+    'navy',
+    'turquoise',
+    'plum',
+    'orange',
+    'wheat',
+    'green',
+    'aqua',
+    'voilet',
+    'indigo'
+  ];
+
+  const iconToColor: {[icon: string]: string} = {};
+
   const markerList: {
     title: string;
+    pinColor: string;
     onCalloutPress: () => void;
 
     coordinate: {
@@ -43,7 +67,21 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     const location = getObjectValue(obj, 'location.0.xy');
 
     if (location) {
+      let pinColor = '';
+      const icon = getObjectValue(obj, 'icon');
+
+      if (icon) {
+        const iconKey = [icon.family, icon.name].join(',');
+
+        if (!iconToColor[iconKey]) {
+          iconToColor[iconKey] = colorList[Object.keys(iconToColor).length];
+        }
+
+        pinColor = iconToColor[iconKey]
+      }
+
       markerList.push({
+        pinColor,
         title: getSpotName(spot),
 
         coordinate: {
@@ -69,12 +107,12 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     <BackComponent title={title} pressBack={pressBack} />,
     <View style={styles.container}>
       <MapView style={styles.map} region={region}>
-        {markerList.map(({title, coordinate, onCalloutPress}) => (
+        {markerList.map(({title, pinColor, coordinate, onCalloutPress}) => (
           <Marker
             title={title}
+            pinColor={pinColor}
             coordinate={coordinate}
             onCalloutPress={onCalloutPress}
-            pinColor="red"
           />
         ))}
       </MapView>
