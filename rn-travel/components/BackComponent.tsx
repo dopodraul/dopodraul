@@ -13,40 +13,24 @@ export default function BackComponent ({ title, pressBack }: {
 
   return (
     <View style={styles.container}>
-      <View style={styles.backContent}>
-        <View style={styles.backIcon}>
-          <TouchableOpacity onPress={pressBack}>
-            <Icon name="chevron-back" size={24} style={stylesColor} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.backBlank}>
-        </View>
-      </View>
-      <View style={styles.title}>
-        <Text style={stylesColor}>{title}</Text>
-      </View>
+      <TouchableOpacity onPress={pressBack}>
+        <Icon name="chevron-back" size={24} style={stylesColor} />
+      </TouchableOpacity>
+      <Text style={[styles.title, stylesColor]}>{title}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16
-  },
-
-  backContent: {
-    flexDirection: 'row'
-  },
-
-  backIcon: {
-    flex: 1
-  },
-
-  backBlank: {
-    flex: 11
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
 
   title: {
-    alignItems: 'center'
+    flex: 1,
+    textAlign: 'center'
   }
 });
