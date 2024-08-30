@@ -1,6 +1,5 @@
 import { View, StyleSheet } from 'react-native';
 import { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import BackComponent from './BackComponent';
 import { MapView, Marker } from '../utils/react-native-maps';
@@ -8,6 +7,7 @@ import { MapView, Marker } from '../utils/react-native-maps';
 import {
   areaJson,
   getObjectValue,
+  getSpotName,
   AppContext
 } from '../utils/common';
 
@@ -18,7 +18,6 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     setSearchSpot
   } = useContext(AppContext);
 
-  const { i18n } = useTranslation();
   const title = t(searchMapArea);
 
   const pressBack = () => {
@@ -45,7 +44,7 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
 
     if (location) {
       markerList.push({
-        title: i18n.t(`spot:${spot}:name`),
+        title: getSpotName(spot),
 
         coordinate: {
           latitude: location[0],
