@@ -1,4 +1,3 @@
-import { View } from 'react-native'
 import { useContext } from 'react';
 import moment from 'moment';
 
@@ -13,19 +12,15 @@ export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; 
     return moment('20' + travel, 'YYYYMMDD');
   }
 
-  return searchTravel ? (
-    <View>
-      <SearchPlaceTravelDetail
-        t={t}
-        convertTravelToMoment={convertTravelToMoment}
-      />
-    </View>
-  ) : (
-    <View>
-      <SearchPlaceTravelList
-        t={t}
-        convertTravelToMoment={convertTravelToMoment}
-      />
-    </View>
-  );
+  const content = searchTravel ?
+    <SearchPlaceTravelDetail
+      t={t}
+      convertTravelToMoment={convertTravelToMoment}
+    /> :
+    <SearchPlaceTravelList
+      t={t}
+      convertTravelToMoment={convertTravelToMoment}
+    />;
+
+  return (content);
 }

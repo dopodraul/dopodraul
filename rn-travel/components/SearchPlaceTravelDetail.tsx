@@ -36,10 +36,6 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
 
   const styles = StyleSheet.create({
     table: {
-      marginBottom: 160
-    },
-
-    border: {
       borderWidth: 1,
       borderColor: stylesColor.color
     },
@@ -126,20 +122,18 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
     });
   }
 
-  return (
-    <View>
-      <View>
-        <BackComponent title={title} pressBack={pressBack} />
-      </View>
-      <ScrollView>
-        <Table style={styles.table} borderStyle={styles.border}>
-          <Rows
-            textStyle={[styles.text, stylesColor]}
-            data={data}
-            flexArr={flexArr}
-          />
-        </Table>
-      </ScrollView>
-    </View>
-  );
+  const content = [
+    <BackComponent title={title} pressBack={pressBack} />,
+    <ScrollView>
+      <Table borderStyle={styles.table}>
+        <Rows
+          textStyle={[styles.text, stylesColor]}
+          data={data}
+          flexArr={flexArr}
+        />
+      </Table>
+    </ScrollView>
+  ];
+
+  return (content);
 }

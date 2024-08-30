@@ -1,4 +1,4 @@
-import { View, ScrollView, StyleSheet } from 'react-native';
+import {ScrollView } from 'react-native';
 import { useContext, useEffect } from 'react';
 
 import BackComponent from './BackComponent';
@@ -29,28 +29,20 @@ export default function SpotMain({ spot, setSpot }: {
     setSpot('');
   }
 
-  return (
-    <View>
-      <BackComponent title={title} pressBack={pressBack} />
-      <ScrollView>
-        <View style={styles.scrollContent}>
-          <SpotReserve spot={spot} />
-          <SpotContent spot={spot} />
-          <SpotStay spot={spot} />
-          <SpotOpen spot={spot} />
-          <SpotPrice spot={spot} />
-          <SpotLocation spot={spot} />
-          <SpotAccess spot={spot} />
-          <SpotLink spot={spot} />
-          <SpotLastUpdate spot={spot} />
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
+  const content = [
+    <BackComponent title={title} pressBack={pressBack} />,
+    <ScrollView>
+      <SpotReserve spot={spot} />
+      <SpotContent spot={spot} />
+      <SpotStay spot={spot} />
+      <SpotOpen spot={spot} />
+      <SpotPrice spot={spot} />
+      <SpotLocation spot={spot} />
+      <SpotAccess spot={spot} />
+      <SpotLink spot={spot} />
+      <SpotLastUpdate spot={spot} />
+    </ScrollView>
+  ];
 
-const styles = StyleSheet.create({
-  scrollContent: {
-    marginBottom: 160
-  }
-});
+  return (content);
+}
