@@ -5,7 +5,7 @@ import BackComponent from './BackComponent';
 import { MapView, Marker } from '../utils/react-native-maps';
 
 import {
-  areaJson,
+  mapJson,
   getObjectValue,
   getSpotName,
   AppContext
@@ -61,7 +61,7 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
   const data: {
     center: number[];
     data: {[spot: string]: any};
-  } = getObjectValue(areaJson, searchMapArea);
+  } = getObjectValue(mapJson, searchMapArea);
 
   Object.entries(data.data).forEach(([spot, obj]) => {
     const location = getObjectValue(obj, 'location.0.xy');

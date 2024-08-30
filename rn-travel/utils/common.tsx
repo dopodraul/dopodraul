@@ -141,31 +141,32 @@ const getSpotName = (spot: string) => {
 }
 
 let spotJson = {};
-const areaJson: {[area: string]: any} = {};
+const mapJson: {[area: string]: any} = {};
 
 Object.entries(inputJson).forEach(([area, json]) => {
   spotJson = {...spotJson, ...json};
 
-  areaJson[area] = {
-    data: json,
+  mapJson[area] = {
+    data: {},
     center: [0, 0]
   };
 
   let number = 0;
 
-  Object.values(json).forEach((obj) => {
+  Object.entries(json).forEach(([spot, obj]) => {
     const xy = getObjectValue(obj, 'location.0.xy');
 
-    if (xy) {
+    if (xy && !getObjectValue(obj, 'station')) {
       number++;
-      areaJson[area].center[0] += xy[0];
-      areaJson[area].center[1] += xy[1];
+      mapJson[area].data[spot] = obj;
+      mapJson[area].center[0] += xy[0];
+      mapJson[area].center[1] += xy[1];
     }
   });
 
   if (number) {
-    areaJson[area].center[0] /= number;
-    areaJson[area].center[1] /= number;
+    mapJson[area].center[0] /= number;
+    mapJson[area].center[1] /= number;
   }
 });
 
@@ -376,7 +377,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
 export {
   spotJson,
-  areaJson,
+  mapJson,
   getObjectValue,
   openUrl,
   getFloorName,

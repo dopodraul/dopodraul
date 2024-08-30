@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 
 import BackComponent from './BackComponent';
-import { areaJson, AppContext } from '../utils/common';
+import { mapJson, AppContext } from '../utils/common';
 
 export default function SearchPlaceMapList({ t }: { t: (key: string) => string; }) {
   const {
@@ -20,7 +20,7 @@ export default function SearchPlaceMapList({ t }: { t: (key: string) => string; 
 
   const stylesColor = getStyle();
   const stylesBorder = { borderColor: stylesColor.color };
-  const data = Object.keys(areaJson).sort();
+  const data = Object.keys(mapJson).sort();
 
   const renderItem = ({ item }: { item: string; }) => {
     const text = t(item);
