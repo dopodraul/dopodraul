@@ -17,7 +17,12 @@ export default function SearchPlaceTravelList({ t, convertTravelToMoment }: {
   t: (key: string) => string;
   convertTravelToMoment: (travel: string) => Moment
 }) {
-  const { setSearchType, setSearchTravel, getStyle } = useContext(AppContext);
+  const {
+    setSearchType,
+    setSearchTravelDate,
+    getStyle
+  } = useContext(AppContext);
+
   const stylesColor = getStyle();
   const stylesBorder = { borderColor: stylesColor.color };
 
@@ -34,7 +39,7 @@ export default function SearchPlaceTravelList({ t, convertTravelToMoment }: {
     const text = convertTravelToMoment(item).format('LL');
 
     const onPress = () => {
-      setSearchTravel(item);
+      setSearchTravelDate(item);
     }
 
     const styles = StyleSheet.create({

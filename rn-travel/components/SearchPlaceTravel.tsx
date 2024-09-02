@@ -6,14 +6,14 @@ import SearchPlaceTravelDetail from './SearchPlaceTravelDetail';
 import { AppContext } from '../utils/common';
 
 export default function SearchPlaceTravel ({ t }: { t: (key: string) => string; }) {
-  const { searchTravel } = useContext(AppContext);
+  const { searchTravelDate } = useContext(AppContext);
 
   const convertTravelToMoment = (travel: string) => {
     return moment('20' + travel, 'YYYYMMDD');
   }
 
   return (
-    searchTravel ?
+    searchTravelDate ?
     <SearchPlaceTravelDetail
       t={t}
       convertTravelToMoment={convertTravelToMoment}

@@ -1,7 +1,21 @@
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import { useContext } from 'react';
 import { Moment } from 'moment';
 import { Table, Rows } from 'react-native-table-component';
+
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  NativeSyntheticEvent,
+  NativeScrollEvent
+} from 'react-native';
+
+import {
+  useContext,
+  useEffect,
+  useRef
+} from 'react';
 
 import travelJson from '../json/travel.json';
 import BackComponent from './BackComponent';
@@ -18,20 +32,28 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   convertTravelToMoment: (travel: string) => Moment
 }) {
   const {
-    searchTravel,
-    setSearchTravel,
+    searchTravelDate,
+    setSearchTravelDate,
+    searchTravelTop,
+    setSearchTravelTop,
     setSearchSpot,
     getStyle
   } = useContext(AppContext);
 
-  const travelData = getObjectValue(travelJson, searchTravel);
-  const travelMoment = convertTravelToMoment(searchTravel);
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({y: searchTravelTop, animated: false});
+    }
+  }, [searchTravelTop]);
+
+  const travelData = getObjectValue(travelJson, searchTravelDate);
+  const travelMoment = convertTravelToMoment(searchTravelDate);
   const title = travelMoment.format('LL');
   const stylesColor = getStyle();
   const flexArr = [1, 5];
 
   const pressBack = () => {
-    setSearchTravel('');
+    setSearchTravelDate('');
   }
 
   const styles = StyleSheet.create({
@@ -122,9 +144,18 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
     });
   }
 
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  const saveScrollTop = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    setSearchTravelTop(event.nativeEvent.contentOffset.y);
+  }
+
   return ([
     <BackComponent title={title} pressBack={pressBack} />,
-    <ScrollView>
+    <ScrollView
+      ref={scrollViewRef}
+      onScroll={saveScrollTop}
+      scrollEventThrottle={16}>
       <Table borderStyle={styles.table}>
         <Rows
           textStyle={[styles.text, stylesColor]}

@@ -179,8 +179,10 @@ const storageKey = {
 const AppContext = createContext({
   searchType: '',
   setSearchType: (type: string) => {},
-  searchTravel: '',
-  setSearchTravel: (travel: string) => {},
+  searchTravelDate: '',
+  setSearchTravelDate: (searchTravelDate: string) => {},
+  searchTravelTop: 0,
+  setSearchTravelTop: (searchTravelTop: number) => {},
   searchMapArea: '',
   setSearchMapArea: (searchMapArea: string) => {},
   recentSpot: '',
@@ -213,7 +215,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [color, setColor] = useState('light');
   const [recentList, setRecentList] = useState<string[]>([]);
   const [searchType, setSearchType] = useState('');
-  const [searchTravel, setSearchTravel] = useState('');
+  const [searchTravelDate, setSearchTravelDate] = useState('');
+  const [searchTravelTop, setSearchTravelTop] = useState(0);
   const [searchMapArea, setSearchMapArea] = useState('');
   const [recentSpot, setRecentSpot] = useState('');
   const [searchSpot, setSearchSpot] = useState('');
@@ -351,8 +354,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       value={{
         searchType,
         setSearchType,
-        searchTravel,
-        setSearchTravel,
+        searchTravelDate,
+        setSearchTravelDate,
+        searchTravelTop,
+        setSearchTravelTop,
         searchMapArea,
         setSearchMapArea,
         recentSpot,
