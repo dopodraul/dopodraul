@@ -45,11 +45,13 @@ const MapView = ({ children, region }: {
 const Marker = ({
   title,
   description,
-  coordinate
+  coordinate,
+  onCalloutPress
 }: {
   title: string;
   description: string;
   coordinate: LatLng;
+  onCalloutPress: () => void;
 }) => {
   const position: LatLngExpression = [coordinate.latitude, coordinate.longitude];
   const icon = new L.Icon({ iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png' });
@@ -60,8 +62,10 @@ const Marker = ({
       icon={icon}
     >
       <Popup>
-        {title} <br />
-        {description}
+        <div onClick={onCalloutPress}>
+          {title} <br />
+          {description}
+        </div>
       </Popup>
     </LeafletMarker>
   );
