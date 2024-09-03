@@ -34,17 +34,17 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   const {
     searchTravelDate,
     setSearchTravelDate,
-    searchTravelTop,
-    setSearchTravelTop,
+    searchTravelDateToTop,
+    setSearchTravelDateToTop,
     setSearchSpot,
     getStyle
   } = useContext(AppContext);
 
   useEffect(() => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({y: searchTravelTop, animated: false});
+      scrollViewRef.current.scrollTo({y: searchTravelDateToTop[searchTravelDate], animated: false});
     }
-  }, [searchTravelTop]);
+  }, [searchTravelDate, searchTravelDateToTop]);
 
   const travelData = getObjectValue(travelJson, searchTravelDate);
   const travelMoment = convertTravelToMoment(searchTravelDate);
@@ -147,7 +147,8 @@ export default function SearchPlaceTravelDetail({ t, convertTravelToMoment }: {
   const scrollViewRef = useRef<ScrollView>(null);
 
   const saveScrollTop = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    setSearchTravelTop(event.nativeEvent.contentOffset.y);
+    searchTravelDateToTop[searchTravelDate] = event.nativeEvent.contentOffset.y;
+    setSearchTravelDateToTop(searchTravelDateToTop);
   }
 
   return ([

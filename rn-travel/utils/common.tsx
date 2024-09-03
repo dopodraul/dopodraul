@@ -181,8 +181,8 @@ const AppContext = createContext({
   setSearchType: (type: string) => {},
   searchTravelDate: '',
   setSearchTravelDate: (searchTravelDate: string) => {},
-  searchTravelTop: 0,
-  setSearchTravelTop: (searchTravelTop: number) => {},
+  searchTravelDateToTop: {} as {[date: string]: number},
+  setSearchTravelDateToTop: (searchTravelDateToTop: {[searchTravelDate: string]: number}) => {},
   searchMapArea: '',
   setSearchMapArea: (searchMapArea: string) => {},
   recentSpot: '',
@@ -216,7 +216,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [recentList, setRecentList] = useState<string[]>([]);
   const [searchType, setSearchType] = useState('');
   const [searchTravelDate, setSearchTravelDate] = useState('');
-  const [searchTravelTop, setSearchTravelTop] = useState(0);
+  const [searchTravelDateToTop, setSearchTravelDateToTop] = useState<{[date: string]: number}>({});
   const [searchMapArea, setSearchMapArea] = useState('');
   const [recentSpot, setRecentSpot] = useState('');
   const [searchSpot, setSearchSpot] = useState('');
@@ -356,8 +356,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchType,
         searchTravelDate,
         setSearchTravelDate,
-        searchTravelTop,
-        setSearchTravelTop,
+        searchTravelDateToTop,
+        setSearchTravelDateToTop,
         searchMapArea,
         setSearchMapArea,
         recentSpot,
