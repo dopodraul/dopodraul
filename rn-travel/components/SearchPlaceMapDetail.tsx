@@ -108,6 +108,7 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     }
   });
 
+  // eslint-disable-next-line
   const regionDefault = {
     latitude: data.center[0],
     longitude: data.center[1],
