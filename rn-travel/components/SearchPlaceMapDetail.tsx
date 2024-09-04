@@ -1,8 +1,18 @@
 import { View, StyleSheet } from 'react-native';
-import { useContext } from 'react';
+
+import {
+  useContext,
+  useEffect,
+  useRef
+} from 'react';
 
 import BackComponent from './BackComponent';
-import { MapView, Marker } from '../utils/react-native-maps';
+
+import {
+  MapView,
+  Marker,
+  Region
+} from '../utils/react-native-maps';
 
 import {
   mapJson,
@@ -15,6 +25,8 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
   const {
     searchMapArea,
     setSearchMapArea,
+    searchMapAreaToRegion,
+    setSearchMapAreaToRegion,
     setSearchSpot
   } = useContext(AppContext);
 
@@ -96,17 +108,42 @@ export default function SearchPlaceMapDetail({ t }: { t: (key: string) => string
     }
   });
 
-  const region = {
+  const regionDefault = {
     latitude: data.center[0],
     longitude: data.center[1],
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421
   };
 
+  const mapRef = useRef<MapView>(null);
+
+  const saveRegion = (region: Region) => {
+    searchMapAreaToRegion[searchMapArea] = region;
+    setSearchMapAreaToRegion(searchMapAreaToRegion);
+  }
+
+  useEffect(() => {
+    if (mapRef.current && searchMapAreaToRegion[searchMapArea]) {
+      mapRef.current.fitToCoordinates([searchMapAreaToRegion[searchMapArea]]);
+
+      (Object.keys(regionDefault) as (keyof typeof regionDefault)[]).forEach((key) => {
+        regionDefault[key] = getObjectValue(searchMapAreaToRegion[searchMapArea], key);
+      });
+    }
+  }, [
+    regionDefault,
+    searchMapArea,
+    searchMapAreaToRegion
+  ]);
+
   return([
     <BackComponent title={title} pressBack={pressBack} />,
     <View style={styles.container}>
-      <MapView style={styles.map} region={region}>
+      <MapView
+        style={styles.map}
+        region={regionDefault}
+        ref={mapRef}
+        onRegionChangeComplete={(region) => { saveRegion(region); }}>
         {markerList.map(({title, pinColor, coordinate, onCalloutPress}) => (
           <Marker
             title={title}

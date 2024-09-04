@@ -9,6 +9,7 @@ import moment from 'moment';
 import 'moment/locale/zh-tw';
 import 'moment/locale/ja';
 
+import { Region } from './react-native-maps';
 import spotKyotoJson from '../json/spotKyoto.json';
 import spotOsakaJson from '../json/spotOsaka.json';
 import spotTaiwanJson from '../json/spotTaiwan.json';
@@ -185,6 +186,8 @@ const AppContext = createContext({
   setSearchTravelDateToTop: (searchTravelDateToTop: {[searchTravelDate: string]: number}) => {},
   searchMapArea: '',
   setSearchMapArea: (searchMapArea: string) => {},
+  searchMapAreaToRegion: {} as {[area: string]: Region},
+  setSearchMapAreaToRegion: (searchMapAreaToRegion: {[searchMapArea: string]: Region}) => {},
   recentSpot: '',
   setRecentSpot: (spot: string) => {},
   searchSpot: '',
@@ -218,6 +221,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [searchTravelDate, setSearchTravelDate] = useState('');
   const [searchTravelDateToTop, setSearchTravelDateToTop] = useState<{[date: string]: number}>({});
   const [searchMapArea, setSearchMapArea] = useState('');
+  const [searchMapAreaToRegion, setSearchMapAreaToRegion] = useState<{[area: string]: Region}>({});
   const [recentSpot, setRecentSpot] = useState('');
   const [searchSpot, setSearchSpot] = useState('');
 
@@ -360,6 +364,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchTravelDateToTop,
         searchMapArea,
         setSearchMapArea,
+        searchMapAreaToRegion,
+        setSearchMapAreaToRegion,
         recentSpot,
         setRecentSpot,
         searchSpot,

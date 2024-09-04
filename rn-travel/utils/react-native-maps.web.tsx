@@ -78,4 +78,11 @@ const styles = StyleSheet.create({
   }
 });
 
-export { MapView, Marker };
+type Region = {
+  latitude: number;
+  longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
+}
+
+export { MapView, Marker, Region };
