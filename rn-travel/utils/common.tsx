@@ -141,8 +141,33 @@ const getSpotName = (spot: string) => {
   return result;
 }
 
+const getSpotNameAllLanguage = (spot: string) => {
+  const result: {[lng: string]: string} = {};
+  const i18nResource = getObjectValue(i18n.options, 'resources');
+  const lngList = Object.keys(i18nResource);
+
+  lngList.forEach((lng) => {
+    result[lng] = i18nResource[lng].spot[spot].name;
+  });
+
+  const station = getObjectValue(spotJson, `${spot}.station`);
+
+  if (station === 'bus') {
+    lngList.forEach((lng) => {
+      result[lng] += ' ' + i18nResource[lng].spotDetail.busStation;
+    });
+  } else if (station === 'train') {
+    lngList.forEach((lng) => {
+      result[lng] += ' ' + i18nResource[lng].spotDetail.trainStation;
+    });
+  }
+
+  return result;
+}
+
 let spotJson = {};
 const mapJson: {[area: string]: any} = {};
+const keywordJson: {[keyword: string]: {[name: string]: any}} = {};
 
 Object.entries(inputJson).forEach(([area, json]) => {
   spotJson = {...spotJson, ...json};
@@ -163,6 +188,16 @@ Object.entries(inputJson).forEach(([area, json]) => {
       mapJson[area].center[0] += xy[0];
       mapJson[area].center[1] += xy[1];
     }
+
+    Object.values(getSpotNameAllLanguage(spot)).forEach((k) => {
+      const keyword = k.toLowerCase();
+
+      if (!keywordJson[keyword]) {
+        keywordJson[keyword] = {};
+      }
+
+      keywordJson[keyword][spot] = 1;
+    });
   });
 
   if (number) {
@@ -188,6 +223,8 @@ const AppContext = createContext({
   setSearchMapArea: (searchMapArea: string) => {},
   searchMapAreaToRegion: {} as {[area: string]: Region},
   setSearchMapAreaToRegion: (searchMapAreaToRegion: {[searchMapArea: string]: Region}) => {},
+  searchKeyword: [] as string[],
+  setSearchKeyword: (searchKeyword: string[]) => {},
   recentSpot: '',
   setRecentSpot: (spot: string) => {},
   searchSpot: '',
@@ -222,6 +259,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [searchTravelDateToTop, setSearchTravelDateToTop] = useState<{[date: string]: number}>({});
   const [searchMapArea, setSearchMapArea] = useState('');
   const [searchMapAreaToRegion, setSearchMapAreaToRegion] = useState<{[area: string]: Region}>({});
+  const [searchKeyword, setSearchKeyword] = useState<string[]>([]);
   const [recentSpot, setRecentSpot] = useState('');
   const [searchSpot, setSearchSpot] = useState('');
 
@@ -366,6 +404,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         setSearchMapArea,
         searchMapAreaToRegion,
         setSearchMapAreaToRegion,
+        searchKeyword,
+        setSearchKeyword,
         recentSpot,
         setRecentSpot,
         searchSpot,
@@ -389,6 +429,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 export {
   spotJson,
   mapJson,
+  keywordJson,
   getObjectValue,
   openUrl,
   getFloorName,

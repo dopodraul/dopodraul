@@ -9,5 +9,7 @@
   "afternoon": "午後",
   "kyoto": "京都",
   "osaka": "大阪",
-  "taiwan": "台湾"
+  "taiwan": "台湾",
+  "inputKeyword": "キーワードを入力してください",
+  "recentKeyword": "最近入力されたキーワード"
 }

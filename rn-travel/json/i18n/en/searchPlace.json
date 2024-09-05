@@ -9,5 +9,7 @@
   "afternoon": "Afternoon",
   "kyoto": "Kyoto",
   "osaka": "Osaka",
-  "taiwan": "Taiwan"
+  "taiwan": "Taiwan",
+  "inputKeyword": "Please enter the keyword",
+  "recentKeyword": "Recently entered keywords"
 }
