@@ -1,0 +1,72 @@
+{
+  "googleMap": {
+    "name": "Google Maps",
+
+    "id": {
+      "android": "com.google.android.apps.maps",
+      "ios": "id585027354"
+    },
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "google-maps"
+    }
+  },
+
+  "googleTranslate": {
+    "name": "Google Translate",
+
+    "id": {
+      "android": "com.google.android.apps.translate",
+      "ios": "id414706506"
+    },
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "google-translate"
+    }
+  },
+
+  "norikaeannai": {
+    "name": "乗換案内",
+
+    "id": {
+      "android": "jp.ne.sakura.ccice.norikae"
+    },
+
+    "icon": {
+      "family": "MaterialIcons",
+      "name": "train"
+    }
+  },
+
+  "tenki": {
+    "name": "天気予報アプリ",
+    "link": "https://tenki.jp/pr/app-lp.html",
+
+    "id": {
+      "android": "jwa.or.jp.tenkijp3",
+      "ios": "id433865746"
+    },
+
+    "icon": {
+      "family": "Ionicons",
+      "name": "partly-sunny-outline"
+    }
+  },
+
+  "voicetra": {
+    "name": "VoiceTra",
+    "link": "https://voicetra.nict.go.jp/",
+
+    "id": {
+      "android": "jp.go.nict.voicetra",
+      "ios": "id581137577"
+    },
+
+    "icon": {
+      "family": "MaterialCommunityIcons",
+      "name": "cellphone-message"
+    }
+  }
+}
