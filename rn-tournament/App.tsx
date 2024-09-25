@@ -5,13 +5,16 @@ import {
   StatusBar
 } from 'react-native'
 
+import { AppProvider } from './utils/common'
 import Index from './Index'
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Index />
-    </SafeAreaView>
+    <AppProvider>
+      <SafeAreaView style={styles.container}>
+        <Index />
+      </SafeAreaView>
+    </AppProvider>
   )
 }
 
