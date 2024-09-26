@@ -15,7 +15,7 @@ export default function TournamentScreen({ navigation }) {
   const value = route.params['id'] ? '賽程名稱' : ''
   const [name, setName] = useState(value)
   const [isDisable, setIsDisable] = useState(true)
-  const { getStyle } = useContext(AppContext)
+  const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const getName = (newName: string) => {
@@ -27,6 +27,7 @@ export default function TournamentScreen({ navigation }) {
   }, [name])
 
   const pressConfirmButton = () => {
+    setTournamentList([...tournamentList, { id: 0, name }])
     navigation.navigate(screenEnum.home)
   }
 

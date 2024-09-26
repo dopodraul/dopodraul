@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
   },
 
   rowItem: {
-    paddingRight: 16
+    marginRight: 16
   }
 })

@@ -15,7 +15,14 @@ enum colorEnum {
   dark = 'dark'
 }
 
+type tournamentType = {
+  id: number,
+  name: string
+}
+
 const AppContext = createContext({
+  tournamentList: [] as tournamentType[],
+  setTournamentList: (tournamentList: tournamentType[]) => {},
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
   getStyle: () => { return { color: '', backgroundColor: '', card: '' } }
@@ -23,6 +30,7 @@ const AppContext = createContext({
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [colorValue, setColorValue] = useState(colorEnum.light)
+  const [tournamentList, setTournamentList]= useState<tournamentType[]>([])
 
   const getStyle = () => {
     return colorValue === colorEnum.dark ? {
@@ -38,6 +46,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider value={{
+      tournamentList,
+      setTournamentList,
       colorValue,
       setColorValue,
       getStyle
