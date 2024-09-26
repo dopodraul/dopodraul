@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { useContext } from 'react'
 import { Picker } from '@react-native-picker/picker'
 import { AppContext } from '../utils/common'
-type valueType = number
+type valueType = string
 
 export default function PickerComponent({
   itemList,

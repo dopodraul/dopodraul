@@ -6,7 +6,8 @@ import {
 
 enum screenEnum {
   home = 'home',
-  menu = 'menu'
+  menu = 'menu',
+  tournament = 'tournament'
 }
 
 enum colorEnum {
@@ -15,8 +16,6 @@ enum colorEnum {
 }
 
 const AppContext = createContext({
-  screenEnum,
-  colorEnum,
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
   getStyle: () => { return { color: '', backgroundColor: '', card: '' } }
@@ -39,8 +38,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider value={{
-      screenEnum,
-      colorEnum,
       colorValue,
       setColorValue,
       getStyle
@@ -50,4 +47,9 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export { AppContext, AppProvider }
+export {
+  screenEnum,
+  colorEnum,
+  AppContext,
+  AppProvider
+}

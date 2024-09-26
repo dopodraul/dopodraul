@@ -1,11 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { useContext } from 'react'
-import { AppContext } from '../utils/common'
+import { colorEnum, AppContext } from '../utils/common'
 import PickerComponent from '../components/PickerComponent'
 
 export default function MenuScreen() {
   const {
-    colorEnum,
     colorValue,
     setColorValue,
     getStyle

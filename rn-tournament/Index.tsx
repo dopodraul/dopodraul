@@ -1,15 +1,17 @@
+import { View, StyleSheet } from 'react-native'
 import { useContext } from 'react'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AppContext } from './utils/common'
+import { screenEnum, AppContext } from './utils/common'
 import HomeScreen from './screens/HomeScreen'
+import TournamentScreen from './screens/TournamentScreen'
 import MenuScreen from './screens/MenuScreen'
+import AddComponent from './components/AddComponent'
 import MenuComponent from './components/MenuComponent'
-
 const Stack = createNativeStackNavigator()
 
 export default function Index() {
-  const { screenEnum, getStyle } = useContext(AppContext)
+  const { getStyle } = useContext(AppContext)
   const initialRouteName = screenEnum.home
   const stylesColor = getStyle()
   const theme = {...{}, ...DefaultTheme}
@@ -25,8 +27,19 @@ export default function Index() {
           options={({ navigation }) => ({
             title: '',
             headerRight: () => (
-              <MenuComponent navigation={navigation} />
+              <View style={styles.row}>
+                <AddComponent style={styles.rowItem} navigation={navigation} />
+                <MenuComponent navigation={navigation} />
+              </View>
             )
+          })}
+        />
+        <Stack.Screen
+          name={screenEnum.tournament}
+          component={TournamentScreen}
+          options={({ navigation, route }) => ({
+            title: (route.params['id'] ? '編輯' : '添加') + '賽程',
+            headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
         />
         <Stack.Screen
@@ -38,3 +51,13 @@ export default function Index() {
     </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row'
+  },
+
+  rowItem: {
+    paddingRight: 16
+  }
+})
