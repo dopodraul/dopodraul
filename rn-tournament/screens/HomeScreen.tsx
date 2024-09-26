@@ -8,21 +8,25 @@ import {
 
 import { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { AppContext } from '../utils/common'
+import { screenEnum, AppContext } from '../utils/common'
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const { tournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }
 
   const renderItem = ({ item }) => {
+    const pressEdit = () => {
+      navigation.navigate(screenEnum.tournamentEdit, { id: item.id })
+    }
+
     return (
       <View style={[styles.item, stylesBorder]}>
         <View style={styles.itemName}>
           <Text style={stylesColor}>{item.name}</Text>
         </View>
         <View style={styles.itemIcon}>
-          <TouchableOpacity style={styles.itemIconEdit}>
+          <TouchableOpacity style={styles.itemIconEdit} onPress={pressEdit}>
             <Icon name="pencil" size={24} color={stylesColor.color} />
           </TouchableOpacity>
           <TouchableOpacity>
@@ -55,6 +59,7 @@ const styles = StyleSheet.create({
 
   item: {
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,

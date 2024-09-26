@@ -8,7 +8,7 @@ export default function MenuComponent({ navigation, style }) {
   const stylesColor = getStyle()
 
   const onPress = () => {
-    navigation.navigate(screenEnum.tournament, {})
+    navigation.navigate(screenEnum.tournamentEdit, {})
   }
 
   return (

@@ -7,7 +7,7 @@ import {
 enum screenEnum {
   home = 'home',
   menu = 'menu',
-  tournament = 'tournament'
+  tournamentEdit = 'tournamentEdit'
 }
 
 enum colorEnum {

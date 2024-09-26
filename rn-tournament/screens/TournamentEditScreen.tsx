@@ -12,10 +12,20 @@ import TextInputComponent from '../components/TextInputComponent'
 
 export default function TournamentEditScreen({ navigation }) {
   const route = useRoute()
-  const value = route.params['id'] ? '賽程名稱' : ''
+  const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
+  let value = ''
+
+  if (route.params['id']) {
+    tournamentList.some((tournament) => {
+      if (tournament.id === route.params['id']) {
+        value = tournament.name
+        return true
+      }
+    })
+  }
+
   const [name, setName] = useState(value)
   const [isDisable, setIsDisable] = useState(true)
-  const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const getName = (newName: string) => {
@@ -27,7 +37,19 @@ export default function TournamentEditScreen({ navigation }) {
   }, [name])
 
   const pressConfirmButton = () => {
-    setTournamentList([...tournamentList, { id: 0, name }])
+    setTournamentList(
+      route.params['id'] ?
+        tournamentList.map((tournament) => {
+          return tournament.id === route.params['id'] ?
+            { id: tournament.id, name } :
+            tournament
+        }) :
+        [
+          ...tournamentList,
+          { id: new Date().valueOf(), name }
+        ]
+    )
+
     navigation.navigate(screenEnum.home)
   }
 

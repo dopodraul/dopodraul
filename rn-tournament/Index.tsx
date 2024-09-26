@@ -35,7 +35,7 @@ export default function Index() {
           })}
         />
         <Stack.Screen
-          name={screenEnum.tournament}
+          name={screenEnum.tournamentEdit}
           component={TournamentEditScreen}
           options={({ navigation, route }) => ({
             title: (route.params['id'] ? '編輯' : '添加') + '賽程',
