@@ -10,7 +10,7 @@ import { useRoute } from '@react-navigation/native'
 import { screenEnum, AppContext } from '../utils/common'
 import TextInputComponent from '../components/TextInputComponent'
 
-export default function TournamentScreen({ navigation }) {
+export default function TournamentEditScreen({ navigation }) {
   const route = useRoute()
   const value = route.params['id'] ? '賽程名稱' : ''
   const [name, setName] = useState(value)

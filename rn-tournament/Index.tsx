@@ -4,7 +4,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { screenEnum, AppContext } from './utils/common'
 import HomeScreen from './screens/HomeScreen'
-import TournamentScreen from './screens/TournamentScreen'
+import TournamentEditScreen from './screens/TournamentEditScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import MenuComponent from './components/MenuComponent'
@@ -36,7 +36,7 @@ export default function Index() {
         />
         <Stack.Screen
           name={screenEnum.tournament}
-          component={TournamentScreen}
+          component={TournamentEditScreen}
           options={({ navigation, route }) => ({
             title: (route.params['id'] ? '編輯' : '添加') + '賽程',
             headerRight: () => (<MenuComponent navigation={navigation} />)
