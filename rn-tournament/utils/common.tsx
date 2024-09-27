@@ -7,7 +7,8 @@ import {
 enum screenEnum {
   home = 'home',
   menu = 'menu',
-  tournamentEdit = 'tournamentEdit'
+  tournamentEdit = 'tournamentEdit',
+  tournamentSort = 'tournamentSort'
 }
 
 enum colorEnum {
@@ -60,6 +61,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 export {
   screenEnum,
   colorEnum,
+  tournamentType,
   AppContext,
   AppProvider
 }

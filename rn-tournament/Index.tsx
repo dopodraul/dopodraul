@@ -5,13 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { screenEnum, AppContext } from './utils/common'
 import HomeScreen from './screens/HomeScreen'
 import TournamentEditScreen from './screens/TournamentEditScreen'
+import TournamentSortScreen from './screens/TournamentSortScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
+import SortComponent from './components/SortComponent'
 import MenuComponent from './components/MenuComponent'
 const Stack = createNativeStackNavigator()
 
 export default function Index() {
-  const { getStyle } = useContext(AppContext)
+  const { tournamentList, getStyle } = useContext(AppContext)
   const initialRouteName = screenEnum.home
   const stylesColor = getStyle()
   const theme = {...{}, ...DefaultTheme}
@@ -26,12 +28,19 @@ export default function Index() {
           component={HomeScreen}
           options={({ navigation }) => ({
             title: '',
-            headerRight: () => (
-              <View style={styles.row}>
-                <AddComponent style={styles.rowItem} navigation={navigation} />
-                <MenuComponent navigation={navigation} />
-              </View>
-            )
+            headerRight: () => {
+              const sortComponent = tournamentList[1] ?
+                <SortComponent style={styles.rowItem} navigation={navigation} /> :
+                <View />
+
+              return (
+                <View style={styles.row}>
+                  <AddComponent style={styles.rowItem} navigation={navigation} />
+                  {sortComponent}
+                  <MenuComponent navigation={navigation} />
+                </View>
+              )
+            }
           })}
         />
         <Stack.Screen
@@ -39,6 +48,14 @@ export default function Index() {
           component={TournamentEditScreen}
           options={({ navigation, route }) => ({
             title: (route.params['id'] ? '編輯' : '添加') + '賽程',
+            headerRight: () => (<MenuComponent navigation={navigation} />)
+          })}
+        />
+        <Stack.Screen
+          name={screenEnum.tournamentSort}
+          component={TournamentSortScreen}
+          options={({ navigation }) => ({
+            title: '排列賽程',
             headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
         />
