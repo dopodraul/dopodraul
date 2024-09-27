@@ -27,6 +27,7 @@ export default function TournamentSortItemComponent({ info }: { info: DragListRe
 const styles = StyleSheet.create({
   component: {
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,
