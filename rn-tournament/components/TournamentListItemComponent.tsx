@@ -15,6 +15,10 @@ export default function TournamentListItemComponent({ item, navigation }) {
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }
 
+  const pressItem = () => {
+    navigation.navigate(screenEnum.tournamentView, { id: item.id })
+  }
+
   const pressEdit = () => {
     navigation.navigate(screenEnum.tournamentEdit, { id: item.id })
   }
@@ -39,7 +43,9 @@ export default function TournamentListItemComponent({ item, navigation }) {
   return (
     <View style={[styles.component, stylesBorder]}>
       <View style={styles.name}>
-        <Text style={stylesColor}>{item.name}</Text>
+        <TouchableOpacity onPress={pressItem}>
+          <Text style={stylesColor}>{item.name}</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.icon}>
         <TouchableOpacity onPress={pressEdit} style={styles.iconEdit}>
@@ -72,6 +78,7 @@ const styles = StyleSheet.create({
   },
 
   iconEdit: {
+    marginLeft: 8,
     marginRight: 8
   }
 })

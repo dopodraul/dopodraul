@@ -6,6 +6,7 @@ import { screenEnum, AppContext } from './utils/common'
 import HomeScreen from './screens/HomeScreen'
 import TournamentEditScreen from './screens/TournamentEditScreen'
 import TournamentSortScreen from './screens/TournamentSortScreen'
+import TournamentViewScreen from './screens/TournamentViewScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -13,7 +14,7 @@ import MenuComponent from './components/MenuComponent'
 const Stack = createNativeStackNavigator()
 
 export default function Index() {
-  const { tournamentList, getStyle } = useContext(AppContext)
+  const { tournamentList, getTournament, getStyle } = useContext(AppContext)
   const initialRouteName = screenEnum.home
   const stylesColor = getStyle()
   const theme = {...{}, ...DefaultTheme}
@@ -58,6 +59,16 @@ export default function Index() {
             title: '排列賽程',
             headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
+        />
+        <Stack.Screen
+          name={screenEnum.tournamentView}
+          component={TournamentViewScreen}
+          options={({ navigation, route }) => {
+            return {
+              title: '賽程 ' + getTournament(route.params['id']).name,
+              headerRight: () => (<MenuComponent navigation={navigation} />)
+            }
+          }}
         />
         <Stack.Screen
           name={screenEnum.menu}

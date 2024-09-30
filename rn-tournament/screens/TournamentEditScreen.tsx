@@ -11,19 +11,15 @@ import { screenEnum, AppContext } from '../utils/common'
 import TextInputComponent from '../components/TextInputComponent'
 
 export default function TournamentEditScreen({ navigation }) {
+  const {
+    tournamentList,
+    setTournamentList,
+    getTournament,
+    getStyle
+  } = useContext(AppContext)
+
   const route = useRoute()
-  const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
-  let value = ''
-
-  if (route.params['id']) {
-    tournamentList.some((tournament) => {
-      if (tournament.id === route.params['id']) {
-        value = tournament.name
-        return true
-      }
-    })
-  }
-
+  const value = route.params['id'] ? getTournament(route.params['id']).name : ''
   const [name, setName] = useState(value)
   const [isDisable, setIsDisable] = useState(true)
   const stylesColor = getStyle()

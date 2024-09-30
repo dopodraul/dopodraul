@@ -8,7 +8,8 @@ enum screenEnum {
   home = 'home',
   menu = 'menu',
   tournamentEdit = 'tournamentEdit',
-  tournamentSort = 'tournamentSort'
+  tournamentSort = 'tournamentSort',
+  tournamentView = 'tournamentView'
 }
 
 enum colorEnum {
@@ -24,6 +25,7 @@ type tournamentType = {
 const AppContext = createContext({
   tournamentList: [] as tournamentType[],
   setTournamentList: (tournamentList: tournamentType[]) => {},
+  getTournament: (id: number) => { return {} as tournamentType },
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
   getStyle: () => { return { color: '', backgroundColor: '', card: '' } }
@@ -45,10 +47,24 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       }
   }
 
+  const getTournament = (id: number) => {
+    let result = {} as tournamentType
+
+    tournamentList.some(tournament => {
+      if (id === tournament.id) {
+        result = tournament
+        return true
+      }
+    })
+
+    return result
+  }
+
   return (
     <AppContext.Provider value={{
       tournamentList,
       setTournamentList,
+      getTournament,
       colorValue,
       setColorValue,
       getStyle
