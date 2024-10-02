@@ -1,13 +1,8 @@
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet
-} from 'react-native'
-
+import { View, Button, StyleSheet } from 'react-native'
 import { useState, useContext, useEffect } from 'react'
 import { useRoute } from '@react-navigation/native'
 import { screenEnum, AppContext } from '../utils/common'
+import TextRequireComponent from '../components/TextRequireComponent'
 import TextInputComponent from '../components/TextInputComponent'
 
 export default function TournamentEditScreen({ navigation }) {
@@ -36,13 +31,20 @@ export default function TournamentEditScreen({ navigation }) {
     setTournamentList(
       route.params['id'] ?
         tournamentList.map((tournament) => {
-          return tournament.id === route.params['id'] ?
-            { id: tournament.id, name } :
-            tournament
+          if (tournament.id === route.params['id']) {
+            tournament.name = name
+          }
+
+          return tournament
         }) :
         [
           ...tournamentList,
-          { id: new Date().valueOf(), name }
+          {
+            id: new Date().valueOf(),
+            name,
+            phaseFinalIndex: 0,
+            phaseList: []
+          }
         ]
     )
 
@@ -53,7 +55,7 @@ export default function TournamentEditScreen({ navigation }) {
     <View style={[styles.container, stylesColor]}>
       <View style={styles.row}>
         <View style={styles.rowName}>
-          <Text style={stylesColor}>名稱</Text>
+          <TextRequireComponent text="名稱" />
         </View>
         <View style={styles.rowValue}>
           <TextInputComponent
@@ -64,12 +66,13 @@ export default function TournamentEditScreen({ navigation }) {
         </View>
       </View>
       <View style={styles.row}>
-        <View style={styles.rowName}></View>
+        <View style={styles.rowName} />
         <View style={styles.rowValue}>
           <Button
             title="確認"
             disabled={isDisable}
-            onPress={pressConfirmButton} />
+            onPress={pressConfirmButton}
+          />
         </View>
       </View>
     </View>

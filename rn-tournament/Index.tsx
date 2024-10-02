@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 import TournamentEditScreen from './screens/TournamentEditScreen'
 import TournamentSortScreen from './screens/TournamentSortScreen'
 import TournamentViewScreen from './screens/TournamentViewScreen'
+import PhaseEditScreen from './screens/PhaseEditScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -36,7 +37,11 @@ export default function Index() {
 
               return (
                 <View style={styles.row}>
-                  <AddComponent style={styles.rowItem} navigation={navigation} />
+                  <AddComponent
+                    style={styles.rowItem}
+                    navigation={navigation}
+                    routeName={screenEnum.tournamentEdit}
+                  />
                   {sortComponent}
                   <MenuComponent navigation={navigation} />
                 </View>
@@ -66,9 +71,27 @@ export default function Index() {
           options={({ navigation, route }) => {
             return {
               title: '賽程 ' + getTournament(route.params['id']).name,
-              headerRight: () => (<MenuComponent navigation={navigation} />)
+              headerRight: () => (
+                <View style={styles.row}>
+                  <AddComponent
+                    style={styles.rowItem}
+                    navigation={navigation}
+                    routeName={screenEnum.phaseEdit}
+                    routeParam={{tournamentId: route.params['id']}}
+                  />
+                  <MenuComponent navigation={navigation} />
+                </View>
+              )
             }
           }}
+        />
+        <Stack.Screen
+          name={screenEnum.phaseEdit}
+          component={PhaseEditScreen}
+          options={({ navigation, route }) => ({
+            title: (route.params['index'] ? '編輯' : '添加') + '階段',
+            headerRight: () => (<MenuComponent navigation={navigation} />)
+          })}
         />
         <Stack.Screen
           name={screenEnum.menu}

@@ -9,7 +9,14 @@ enum screenEnum {
   menu = 'menu',
   tournamentEdit = 'tournamentEdit',
   tournamentSort = 'tournamentSort',
-  tournamentView = 'tournamentView'
+  tournamentView = 'tournamentView',
+  phaseEdit = 'phaseEdit'
+}
+
+enum phaseTypeEnum {
+  roundRobin = 'roundRobin',
+  singleEliminate = 'singleEleminate',
+  doubleEliminate = 'doubleEliminate'
 }
 
 enum colorEnum {
@@ -17,9 +24,32 @@ enum colorEnum {
   dark = 'dark'
 }
 
+type singleEliminateType = {}
+
+type phaseType = {
+  name: string,
+  type: phaseTypeEnum,
+  teamList: string[],
+  singleEliminate: singleEliminateType,
+
+  roundRobin: {
+    pointWin: number,
+    pointDraw: number,
+    pointLose: number,
+    scoreList: number[][][]
+  },
+
+  doubleEliminate: {
+    win: singleEliminateType,
+    lose: {}
+  }
+}
+
 type tournamentType = {
   id: number,
-  name: string
+  name: string,
+  phaseFinalIndex: number,
+  phaseList: phaseType[]
 }
 
 const AppContext = createContext({
@@ -76,8 +106,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
 export {
   screenEnum,
+  phaseTypeEnum,
   colorEnum,
   tournamentType,
+  phaseType,
   AppContext,
   AppProvider
 }
