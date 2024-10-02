@@ -89,7 +89,7 @@ export default function Index() {
           name={screenEnum.phaseEdit}
           component={PhaseEditScreen}
           options={({ navigation, route }) => ({
-            title: (route.params['index'] ? '編輯' : '添加') + '階段',
+            title: (route.params['index'] === undefined ? '添加' : '編輯') + '階段',
             headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
         />

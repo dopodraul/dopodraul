@@ -28,6 +28,7 @@ export default function TournamentViewScreen({ navigation }) {
       <PhaseListItemComponent
         tournamentId={route.params['id']}
         index={index}
+        navigation={navigation}
       />
     )
   }

@@ -1,5 +1,6 @@
 import {
   View,
+  ScrollView,
   Text,
   Button,
   StyleSheet
@@ -45,15 +46,31 @@ export default function PhaseEditScreen({ navigation, route }) {
         singleEliminate: {},
         doubleEliminate: {}
       } as phaseType :
-      tournament.phaseList[index]
+      { ...tournament.phaseList[index] }
   }, [index, tournament])
 
   const [name, setName] = useState(phase.name)
   const [isNameError, setIsNameError] = useState(false)
   const [type, setType] = useState(phase.type)
-  const [teamNumber, setTeamNumber] = useState(phase.teamList[0] ? phase.teamList.length.toString() : '')
+  const [teamNumber, setTeamNumber] = useState(phase.teamList[0] === undefined ? '' : phase.teamList.length.toString())
   const [isTeamNumberError, setIsTeamNumberError] = useState(false)
   const [isDisable, setIsDisable] = useState(true)
+  const phaseNameObj = {}
+
+  tournament.phaseList.forEach((phaseData, phaseIndex) => {
+    if (index !== phaseIndex) {
+      phaseNameObj[phaseData.name] = 1
+    }
+  })
+
+  let warningContent = phaseNameObj[name] ?
+    <View style={styles.row}>
+      <View style={styles.rowName} />
+      <View style={styles.rowValue}>
+        <Text style={styles.warning}>警告: 賽程當中有別的同名階段 </Text>
+      </View>
+    </View> :
+  <View />
 
   const typeList = [{
     label: '循環賽',
@@ -107,19 +124,11 @@ export default function PhaseEditScreen({ navigation, route }) {
     )
 
     if (phase.type === phaseTypeEnum.roundRobin) {
-      if (!phase.roundRobin.scoreList) {
-        phase.roundRobin.scoreList = []
-
-        for (let teamX = 1; teamX < teamLength; teamX++) {
-          if (!phase.roundRobin.scoreList[teamX]) {
-            phase.roundRobin.scoreList[teamX] = []
-          }
-
-          for (let teamY = 0; teamY < teamX; teamY++) {
-            phase.roundRobin.scoreList[teamX][teamY] = []
-          }
-        }
-      }
+      phase.roundRobin.scoreList = Array.from({ length: teamLength }, (_, scoreRowIndex) => (
+        Array.from({ length: scoreRowIndex }, (score: number[], scoreColumnIndex) => (
+          score ? score : []
+        ))
+      ))
     }
 
     if (index === undefined) {
@@ -144,7 +153,7 @@ export default function PhaseEditScreen({ navigation, route }) {
   }
 
   return (
-    <View style={[styles.container, stylesColor]}>
+    <ScrollView style={[styles.container, stylesColor]}>
       <View style={styles.row}>
         <View style={styles.rowName}>
           <Text style={stylesColor}>賽程名稱</Text>
@@ -165,6 +174,7 @@ export default function PhaseEditScreen({ navigation, route }) {
             getResult={getName} />
         </View>
       </View>
+      {warningContent}
       <View style={styles.row}>
         <View style={styles.rowName}>
           <TextRequireComponent text="類型" />
@@ -203,7 +213,7 @@ export default function PhaseEditScreen({ navigation, route }) {
           />
         </View>
       </View>
-      <View style={styles.row}>
+      <View style={[styles.row, styles.button]}>
         <View style={styles.rowName} />
         <View style={styles.rowValue}>
           <Button
@@ -213,14 +223,14 @@ export default function PhaseEditScreen({ navigation, route }) {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 32
+    padding: 32,
   },
 
   row: {
@@ -235,5 +245,13 @@ const styles = StyleSheet.create({
 
   rowValue: {
     flex: 3
+  },
+
+  warning: {
+    color: 'crimson'
+  },
+
+  button: {
+    marginBottom: 32
   }
 })
