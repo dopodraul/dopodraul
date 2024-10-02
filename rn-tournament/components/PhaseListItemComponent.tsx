@@ -7,24 +7,19 @@ import {
 
 import { useContext } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { phaseTypeEnum, screenEnum, AppContext } from '../utils/common'
+import { screenEnum, AppContext } from '../utils/common'
 
 export default function PhaseListItemComponent({ tournamentId, index, navigation }) {
-  let iconName = 'table-large'
-  const { getTournament, getStyle } = useContext(AppContext)
+  const { getTournament, getStyle, getPhaseIcon } = useContext(AppContext)
   const tournament = getTournament(tournamentId)
   const phase = tournament.phaseList[index]
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }
-  const finalColor = stylesColor[tournament.phaseFinalIndex === index ? 'color' : 'backgroundColor']
+  let finalContent = <View />
 
-  switch (phase.type) {
-    case phaseTypeEnum.singleEliminate:
-      iconName = 'tournament'
-      break
-
-    case phaseTypeEnum.doubleEliminate:
-      iconName = 'axis-y-arrow'
+  if (tournament.phaseList[1]) {
+    const finalColor = stylesColor[tournament.phaseFinalIndex === index ? 'color' : 'backgroundColor']
+    finalContent = <Icon name="trophy" size={24} color={finalColor} style={styles.marginRight} />
   }
 
   const pressEdit = () => {
@@ -34,8 +29,10 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
   return (
     <View style={[styles.component, stylesColor, stylesBorder]}>
       <View style={styles.name}>
-        <Icon name="trophy" size={24} color={finalColor} style={styles.marginRight} />
-        <Icon name={iconName} size={24} color={stylesColor.color} style={styles.marginRight} />
+        {finalContent}
+        <View style={styles.marginRight}>
+          {getPhaseIcon(phase.type)}
+        </View>
         <Text style={stylesColor}>{phase.name}</Text>
       </View>
       <View style={styles.icon}>

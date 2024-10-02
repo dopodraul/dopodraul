@@ -1,21 +1,19 @@
-import { View, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { screenEnum, AppContext } from '../utils/common'
+import { AppContext } from '../utils/common'
 
-export default function SortComponent({ navigation, style }) {
+export default function SortComponent({ navigation, routeName, routeParam = {} }) {
   const { getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const onPress = () => {
-    navigation.navigate(screenEnum.tournamentSort)
+    navigation.navigate(routeName, routeParam)
   }
 
   return (
-    <View style={style}>
-      <TouchableOpacity onPress={onPress}>
-        <Icon name="swap-vertical" size={32} color={stylesColor.color} />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <Icon name="swap-vertical" size={32} color={stylesColor.color} />
+    </TouchableOpacity>
   )
 }

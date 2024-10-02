@@ -1,14 +1,14 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { tournamentType, AppContext } from '../utils/common'
 import { DragListRenderItemInfo } from 'react-native-draglist'
+import { tournamentType, AppContext } from '../utils/common'
 
 export default function TournamentSortItemComponent({ info }: { info: DragListRenderItemInfo<tournamentType> }) {
   const { getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }
-  const {item, onDragStart, onDragEnd, isActive} = info;
+  const {item, onDragStart, onDragEnd, isActive} = info
   const stylesBackground = isActive ? { backgroundColor: 'aqua' } : {}
 
   return (

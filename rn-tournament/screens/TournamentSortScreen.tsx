@@ -7,13 +7,10 @@ import TournamentSortItemComponent from '../components/TournamentSortItemCompone
 export default function TournamentSortScreen({ navigation }) {
   const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
-
-  const keyExtractor = (tournament: tournamentType) => {
-    return tournament.id.toString()
-  }
+  const keyExtractor = (tournament: tournamentType) => ( tournament.id.toString() )
 
   const onReordered = (fromIndex: number, toIndex: number) => {
-    const newTournamentList = [...tournamentList]
+    const newTournamentList = [ ...tournamentList ]
     const removeTournamentList = newTournamentList.splice(fromIndex, 1)
     newTournamentList.splice(toIndex, 0, removeTournamentList[0])
     setTournamentList(newTournamentList)

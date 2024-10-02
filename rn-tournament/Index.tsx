@@ -8,6 +8,7 @@ import TournamentEditScreen from './screens/TournamentEditScreen'
 import TournamentSortScreen from './screens/TournamentSortScreen'
 import TournamentViewScreen from './screens/TournamentViewScreen'
 import PhaseEditScreen from './screens/PhaseEditScreen'
+import PhaseSortScreen from './screens/PhaseSortScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -31,18 +32,24 @@ export default function Index() {
           options={({ navigation }) => ({
             title: '',
             headerRight: () => {
-              const sortComponent = tournamentList[1] ?
-                <SortComponent style={styles.rowItem} navigation={navigation} /> :
+              const sortContent = tournamentList[1] ?
+                <View style={styles.rowItem}>
+                  <SortComponent
+                    navigation={navigation}
+                    routeName={screenEnum.tournamentSort}
+                  />
+                </View> :
                 <View />
 
               return (
                 <View style={styles.row}>
-                  <AddComponent
-                    style={styles.rowItem}
-                    navigation={navigation}
-                    routeName={screenEnum.tournamentEdit}
-                  />
-                  {sortComponent}
+                  <View style={styles.rowItem}>
+                    <AddComponent
+                      navigation={navigation}
+                      routeName={screenEnum.tournamentEdit}
+                    />
+                  </View>
+                  {sortContent}
                   <MenuComponent navigation={navigation} />
                 </View>
               )
@@ -69,19 +76,35 @@ export default function Index() {
           name={screenEnum.tournamentView}
           component={TournamentViewScreen}
           options={({ navigation, route }) => {
+            const tournament = getTournament(route.params['id'])
+
             return {
-              title: '賽程 ' + getTournament(route.params['id']).name,
-              headerRight: () => (
-                <View style={styles.row}>
-                  <AddComponent
-                    style={styles.rowItem}
-                    navigation={navigation}
-                    routeName={screenEnum.phaseEdit}
-                    routeParam={{tournamentId: route.params['id']}}
-                  />
-                  <MenuComponent navigation={navigation} />
-                </View>
-              )
+              title: '賽程 ' + tournament.name,
+              headerRight: () => {
+                const sortContent = tournament.phaseList[1] ?
+                  <View style={styles.rowItem}>
+                    <SortComponent
+                      navigation={navigation}
+                      routeName={screenEnum.phaseSort}
+                      routeParam={{ tournamentId: route.params['id'] }}
+                    />
+                  </View> :
+                  <View />
+
+                return (
+                  <View style={styles.row}>
+                    <View style={styles.rowItem}>
+                      <AddComponent
+                        navigation={navigation}
+                        routeName={screenEnum.phaseEdit}
+                        routeParam={{tournamentId: route.params['id']}}
+                      />
+                    </View>
+                    {sortContent}
+                    <MenuComponent navigation={navigation} />
+                  </View>
+                )
+              }
             }
           }}
         />
@@ -90,6 +113,14 @@ export default function Index() {
           component={PhaseEditScreen}
           options={({ navigation, route }) => ({
             title: (route.params['index'] === undefined ? '添加' : '編輯') + '階段',
+            headerRight: () => (<MenuComponent navigation={navigation} />)
+          })}
+        />
+        <Stack.Screen
+          name={screenEnum.phaseSort}
+          component={PhaseSortScreen}
+          options={({ navigation }) => ({
+            title: '排列階段',
             headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
         />

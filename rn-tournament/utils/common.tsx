@@ -4,13 +4,16 @@ import {
   useState
 } from 'react'
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 enum screenEnum {
   home = 'home',
   menu = 'menu',
   tournamentEdit = 'tournamentEdit',
   tournamentSort = 'tournamentSort',
   tournamentView = 'tournamentView',
-  phaseEdit = 'phaseEdit'
+  phaseEdit = 'phaseEdit',
+  phaseSort = 'phaseSort'
 }
 
 enum phaseTypeEnum {
@@ -58,7 +61,8 @@ const AppContext = createContext({
   getTournament: (id: number) => { return {} as tournamentType },
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
-  getStyle: () => { return { color: '', backgroundColor: '', card: '' } }
+  getStyle: () => { return { color: '', backgroundColor: '', card: '' } },
+  getPhaseIcon: (type: phaseTypeEnum) => { return <></> }
 })
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
@@ -90,6 +94,21 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     return result
   }
 
+  const getPhaseIcon = (type: phaseTypeEnum) => {
+    let name = 'table-large'
+
+    switch (type) {
+      case phaseTypeEnum.singleEliminate:
+        name = 'tournament'
+        break
+
+      case phaseTypeEnum.doubleEliminate:
+        name = 'axis-y-arrow'
+    }
+
+    return <Icon name={name} size={24} color={getStyle().color} />
+  }
+
   return (
     <AppContext.Provider value={{
       tournamentList,
@@ -97,7 +116,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       getTournament,
       colorValue,
       setColorValue,
-      getStyle
+      getStyle,
+      getPhaseIcon
     }}>
       {children}
     </AppContext.Provider>
