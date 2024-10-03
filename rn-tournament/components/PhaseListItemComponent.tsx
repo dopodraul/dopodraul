@@ -10,7 +10,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { screenEnum, AppContext } from '../utils/common'
 
 export default function PhaseListItemComponent({ tournamentId, index, navigation }) {
-  const { getTournament, getStyle, getPhaseIcon } = useContext(AppContext)
+  const {
+    getTournament,
+    getStyle,
+    getPhaseIcon,
+    tournamentList,
+    setTournamentList
+  } = useContext(AppContext)
+
   const tournament = getTournament(tournamentId)
   const phase = tournament.phaseList[index]
   const stylesColor = getStyle()
@@ -19,7 +26,22 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
 
   if (tournament.phaseList[1]) {
     const finalColor = stylesColor[tournament.phaseFinalIndex === index ? 'color' : 'backgroundColor']
-    finalContent = <Icon name="trophy" size={24} color={finalColor} style={styles.marginRight} />
+
+    const setPhaseFinal = () => {
+      const newTournamentList = [ ...tournamentList ]
+
+      setTournamentList(newTournamentList.map((tournamentData) => {
+        if (tournamentData.id === tournamentId) {
+          tournamentData.phaseFinalIndex = index
+        }
+
+        return tournamentData
+      }))
+    }
+
+    finalContent = <TouchableOpacity onPress={setPhaseFinal}>
+        <Icon name="trophy" size={24} color={finalColor} style={styles.marginRight} />
+      </TouchableOpacity>
   }
 
   const pressEdit = () => {

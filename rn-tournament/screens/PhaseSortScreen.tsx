@@ -28,6 +28,22 @@ export default function PhaseSortScreen() {
       newTournamentList.map((tournamentData) => {
         if (tournamentData.id === tournament.id) {
           tournamentData.phaseList = newPhaseList
+
+          if (fromIndex < tournamentData.phaseFinalIndex) {
+            if (toIndex >= tournamentData.phaseFinalIndex) {
+              tournamentData.phaseFinalIndex--
+            }
+          } else if (fromIndex > tournamentData.phaseFinalIndex) {
+            if (toIndex <= tournamentData.phaseFinalIndex) {
+              tournamentData.phaseFinalIndex++
+            }
+          } else {
+            tournamentData.phaseFinalIndex = toIndex
+
+            if (toIndex >= tournament.phaseList.length) {
+              tournamentData.phaseFinalIndex = newPhaseList.length - 1
+            }
+          }
         }
 
         return tournamentData
