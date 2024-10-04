@@ -38,13 +38,13 @@ export default function TournamentEditScreen({ navigation }) {
           return tournament
         }) :
         [
-          ...tournamentList,
           {
             id: new Date().valueOf(),
             name,
             phaseFinalIndex: 0,
             phaseList: []
-          }
+          },
+          ...tournamentList
         ]
     )
 
