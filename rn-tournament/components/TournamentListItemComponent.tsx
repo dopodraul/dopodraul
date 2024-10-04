@@ -25,8 +25,8 @@ export default function TournamentListItemComponent({ item, navigation }) {
 
   const pressRemove = () => {
     Alert.alert(
-      `確定要移除 ${item.name} 嗎`,
       '',
+      `確定要移除 ${item.name} 嗎`,
       [{
         text: '取消'
       }, {

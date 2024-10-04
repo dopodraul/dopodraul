@@ -2,11 +2,12 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Alert,
   StyleSheet
 } from 'react-native'
 
 import { useContext } from 'react'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/Ionicons'
 import { screenEnum, AppContext } from '../utils/common'
 
 export default function PhaseListItemComponent({ tournamentId, index, navigation }) {
@@ -30,7 +31,7 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
     const setPhaseFinal = () => {
       const newTournamentList = [ ...tournamentList ]
 
-      setTournamentList(newTournamentList.map((tournamentData) => {
+      setTournamentList(newTournamentList.map(tournamentData => {
         if (tournamentData.id === tournamentId) {
           tournamentData.phaseFinalIndex = index
         }
@@ -48,6 +49,45 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
     navigation.navigate(screenEnum.phaseEdit, { tournamentId, index })
   }
 
+  const pressRemove = () => {
+    Alert.alert(
+      '',
+      `確定要移除 ${phase.name} 嗎`,
+      [{
+        text: '取消'
+      }, {
+        text: '確定',
+        isPreferred: true,
+        onPress: () => {
+          const newPhaseList = [ ...tournament.phaseList ]
+          newPhaseList.splice(index, 1)
+          const newTournamentList = [ ...tournamentList ]
+
+          setTournamentList(
+            newTournamentList.map(tournamentData => {
+              if (tournamentData.id === tournamentId) {
+                tournamentData.phaseList = newPhaseList
+
+                if (index < tournamentData.phaseFinalIndex) {
+                  tournamentData.phaseFinalIndex--
+                }
+
+                if (tournamentData.phaseFinalIndex >= newPhaseList.length) {
+                  tournamentData.phaseFinalIndex = 0
+                }
+              }
+
+              return tournamentData
+            })
+          )
+        }
+      }],
+      {
+        cancelable: true
+      }
+    )
+  }
+
   return (
     <View style={[styles.component, stylesColor, stylesBorder]}>
       <View style={styles.name}>
@@ -60,6 +100,9 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
       <View style={styles.icon}>
         <TouchableOpacity onPress={pressEdit}>
           <Icon name="pencil" size={24} color={stylesColor.color} style={styles.iconEdit} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={pressRemove}>
+          <Icon name="trash" size={24} color={stylesColor.color} />
         </TouchableOpacity>
       </View>
     </View>
