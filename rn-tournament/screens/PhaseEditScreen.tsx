@@ -50,10 +50,10 @@ export default function PhaseEditScreen({ navigation, route }) {
   }, [index, tournament])
 
   const [name, setName] = useState(phase.name)
-  const [isNameError, setIsNameError] = useState(false)
+  const [isNameError, setIsNameError] = useState(name ? false : true)
   const [type, setType] = useState(phase.type)
   const [teamNumber, setTeamNumber] = useState(phase.teamList[0] === undefined ? '' : phase.teamList.length.toString())
-  const [isTeamNumberError, setIsTeamNumberError] = useState(false)
+  const [isTeamNumberError, setIsTeamNumberError] = useState(teamNumber ? false : true)
   const [isDisable, setIsDisable] = useState(true)
   const phaseNameObj = {}
 
