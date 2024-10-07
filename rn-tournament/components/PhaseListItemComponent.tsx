@@ -7,10 +7,11 @@ import {
 } from 'react-native'
 
 import { useContext } from 'react'
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screenEnum, AppContext } from '../utils/common'
 
-export default function PhaseListItemComponent({ tournamentId, index, navigation }) {
+export default function PhaseListItemComponent({ tournamentId, index }) {
   const {
     getTournament,
     getStyle,
@@ -19,6 +20,7 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
     setTournamentList
   } = useContext(AppContext)
 
+  const navigation = useNavigation<NavigationProp<ParamListBase>>()
   const tournament = getTournament(tournamentId)
   const phase = tournament.phaseList[index]
   const stylesColor = getStyle()

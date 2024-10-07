@@ -10,12 +10,12 @@ import { useContext } from 'react'
 import { AppContext } from '../utils/common'
 import TournamentListItemComponent from '../components/TournamentListItemComponent'
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen() {
   const { tournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const renderItem = ({ item }) => {
-    return (<TournamentListItemComponent item={item} navigation={navigation} />)
+    return (<TournamentListItemComponent item={item} />)
   }
 
   const content = tournamentList[0] ?

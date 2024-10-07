@@ -7,10 +7,12 @@ import {
 } from 'react-native'
 
 import { useContext } from 'react'
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screenEnum, AppContext } from '../utils/common'
 
-export default function TournamentListItemComponent({ item, navigation }) {
+export default function TournamentListItemComponent({ item }) {
+  const navigation = useNavigation<NavigationProp<ParamListBase>>()
   const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }

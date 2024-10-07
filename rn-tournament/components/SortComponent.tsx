@@ -1,9 +1,11 @@
 import { TouchableOpacity } from 'react-native'
 import { useContext } from 'react'
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { AppContext } from '../utils/common'
+import { screenEnum, AppContext } from '../utils/common'
 
-export default function SortComponent({ navigation, routeName, routeParam = {} }) {
+export default function SortComponent({ routeName, routeParam = {} }: { routeName: screenEnum, routeParam?: object }) {
+  const navigation = useNavigation<NavigationProp<ParamListBase>>()
   const { getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 

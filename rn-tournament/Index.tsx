@@ -30,28 +30,22 @@ export default function Index() {
         <Stack.Screen
           name={initialRouteName}
           component={HomeScreen}
-          options={({ navigation }) => ({
+          options={() => ({
             title: '',
             headerRight: () => {
               const sortContent = tournamentList[1] ?
                 <View style={styles.rowItem}>
-                  <SortComponent
-                    navigation={navigation}
-                    routeName={screenEnum.tournamentSort}
-                  />
+                  <SortComponent routeName={screenEnum.tournamentSort} />
                 </View> :
                 <View />
 
               return (
                 <View style={styles.row}>
                   <View style={styles.rowItem}>
-                    <AddComponent
-                      navigation={navigation}
-                      routeName={screenEnum.tournamentEdit}
-                    />
+                    <AddComponent routeName={screenEnum.tournamentEdit} />
                   </View>
                   {sortContent}
-                  <MenuComponent navigation={navigation} />
+                  <MenuComponent />
                 </View>
               )
             }
@@ -60,23 +54,23 @@ export default function Index() {
         <Stack.Screen
           name={screenEnum.tournamentEdit}
           component={TournamentEditScreen}
-          options={({ navigation, route }) => ({
+          options={({ route }) => ({
             title: (route.params['id'] ? '編輯' : '添加') + '賽程',
-            headerRight: () => (<MenuComponent navigation={navigation} />)
+            headerRight: () => (<MenuComponent />)
           })}
         />
         <Stack.Screen
           name={screenEnum.tournamentSort}
           component={TournamentSortScreen}
-          options={({ navigation }) => ({
+          options={() => ({
             title: '排列賽程',
-            headerRight: () => (<MenuComponent navigation={navigation} />)
+            headerRight: () => (<MenuComponent />)
           })}
         />
         <Stack.Screen
           name={screenEnum.tournamentView}
           component={TournamentViewScreen}
-          options={({ navigation, route }) => {
+          options={({ route }) => {
             const tournament = getTournament(route.params['id'])
 
             return {
@@ -85,7 +79,6 @@ export default function Index() {
                 const sortContent = tournament.phaseList[1] ?
                   <View style={styles.rowItem}>
                     <SortComponent
-                      navigation={navigation}
                       routeName={screenEnum.phaseSort}
                       routeParam={{ tournamentId: route.params['id'] }}
                     />
@@ -96,13 +89,12 @@ export default function Index() {
                   <View style={styles.row}>
                     <View style={styles.rowItem}>
                       <AddComponent
-                        navigation={navigation}
                         routeName={screenEnum.phaseEdit}
                         routeParam={{tournamentId: route.params['id']}}
                       />
                     </View>
                     {sortContent}
-                    <MenuComponent navigation={navigation} />
+                    <MenuComponent />
                   </View>
                 )
               }
@@ -112,28 +104,28 @@ export default function Index() {
         <Stack.Screen
           name={screenEnum.phaseEdit}
           component={PhaseEditScreen}
-          options={({ navigation, route }) => ({
+          options={({ route }) => ({
             title: (route.params['index'] === undefined ? '添加' : '編輯') + '階段',
-            headerRight: () => (<MenuComponent navigation={navigation} />)
+            headerRight: () => (<MenuComponent />)
           })}
         />
         <Stack.Screen
           name={screenEnum.phaseSort}
           component={PhaseSortScreen}
-          options={({ navigation }) => ({
+          options={() => ({
             title: '排列階段',
-            headerRight: () => (<MenuComponent navigation={navigation} />)
+            headerRight: () => (<MenuComponent />)
           })}
         />
         <Stack.Screen
           name={screenEnum.phaseView}
           component={PhaseViewScreen}
-          options={({ navigation, route }) => {
+          options={({ route }) => {
             const phase = getTournament(route.params['tournamentId']).phaseList[route.params['index']]
 
             return {
               title: phase.name,
-              headerRight: () => (<MenuComponent navigation={navigation} />)
+              headerRight: () => (<MenuComponent />)
             }
           }}
         />
