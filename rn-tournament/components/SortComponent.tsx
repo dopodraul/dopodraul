@@ -4,13 +4,13 @@ import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screenEnum, AppContext } from '../utils/common'
 
-export default function SortComponent({ routeName, routeParam = {} }: { routeName: screenEnum, routeParam?: object }) {
+export default function SortComponent({ screenName, screenParam = {} }: { screenName: screenEnum, screenParam?: object }) {
   const navigation = useNavigation<NavigationProp<ParamListBase>>()
   const { getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const onPress = () => {
-    navigation.navigate(routeName, routeParam)
+    navigation.navigate(screenName, screenParam)
   }
 
   return (

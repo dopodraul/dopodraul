@@ -10,6 +10,7 @@ import TournamentViewScreen from './screens/TournamentViewScreen'
 import PhaseEditScreen from './screens/PhaseEditScreen'
 import PhaseSortScreen from './screens/PhaseSortScreen'
 import PhaseViewScreen from './screens/PhaseViewScreen'
+import TeamScreen from './screens/TeamScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -35,14 +36,14 @@ export default function Index() {
             headerRight: () => {
               const sortContent = tournamentList[1] ?
                 <View style={styles.rowItem}>
-                  <SortComponent routeName={screenEnum.tournamentSort} />
+                  <SortComponent screenName={screenEnum.tournamentSort} />
                 </View> :
                 <View />
 
               return (
                 <View style={styles.row}>
                   <View style={styles.rowItem}>
-                    <AddComponent routeName={screenEnum.tournamentEdit} />
+                    <AddComponent screenName={screenEnum.tournamentEdit} />
                   </View>
                   {sortContent}
                   <MenuComponent />
@@ -79,8 +80,8 @@ export default function Index() {
                 const sortContent = tournament.phaseList[1] ?
                   <View style={styles.rowItem}>
                     <SortComponent
-                      routeName={screenEnum.phaseSort}
-                      routeParam={{ tournamentId: route.params['id'] }}
+                      screenName={screenEnum.phaseSort}
+                      screenParam={{ tournamentId: route.params['id'] }}
                     />
                   </View> :
                   <View />
@@ -89,8 +90,8 @@ export default function Index() {
                   <View style={styles.row}>
                     <View style={styles.rowItem}>
                       <AddComponent
-                        routeName={screenEnum.phaseEdit}
-                        routeParam={{tournamentId: route.params['id']}}
+                        screenName={screenEnum.phaseEdit}
+                        screenParam={{tournamentId: route.params['id']}}
                       />
                     </View>
                     {sortContent}
@@ -122,6 +123,18 @@ export default function Index() {
           component={PhaseViewScreen}
           options={({ route }) => {
             const phase = getTournament(route.params['tournamentId']).phaseList[route.params['index']]
+
+            return {
+              title: phase.name,
+              headerRight: () => (<MenuComponent />)
+            }
+          }}
+        />
+        <Stack.Screen
+          name={screenEnum.team}
+          component={TeamScreen}
+          options={({ route }) => {
+            const phase = getTournament(route.params['tournamentId']).phaseList[route.params['phaseIndex']]
 
             return {
               title: phase.name,

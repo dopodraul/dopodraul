@@ -6,13 +6,17 @@ import {
 } from 'react-native'
 
 import { useContext } from 'react'
-import { colorEnum, phaseType, AppContext } from '../utils/common'
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native'
+import { screenEnum, colorEnum, AppContext } from '../utils/common'
 import TableComponent from './TableComponent'
 
-export default function RoundRobinComponent({ phase }: { phase: phaseType }) {
+export default function RoundRobinComponent({ tournamentId, index }) {
+  const navigation = useNavigation<NavigationProp<ParamListBase>>()
+  const { getTournament, colorValue, getStyle } = useContext(AppContext)
+  const tournament = getTournament(tournamentId)
+  const phase = tournament.phaseList[index]
   const tableLength = phase.teamList.length + 1
   const teamList = phase.teamList.map((name, index) => name || `隊伍 ${index + 1}`)
-  const { colorValue, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
 
   const data = Array.from(
@@ -25,9 +29,18 @@ export default function RoundRobinComponent({ phase }: { phase: phaseType }) {
         }
 
         if (indexX === 0 || indexY === 0) {
-          const name = teamList[(indexX || indexY) - 1]
+          const teamIndex = (indexX || indexY) - 1
+          const name = teamList[teamIndex]
 
-          return <TouchableOpacity style={styles.col}>
+          const editTeam = () => {
+            navigation.navigate(screenEnum.team, {
+              tournamentId,
+              phaseIndex: index,
+              index: teamIndex
+            })
+          }
+
+          return <TouchableOpacity style={styles.col} onPress={editTeam}>
             <Text style={[styles.text, stylesColor]}>{name}</Text>
           </TouchableOpacity>
         }

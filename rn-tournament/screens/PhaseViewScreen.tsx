@@ -9,13 +9,13 @@ import { useContext } from 'react'
 import { phaseTypeEnum, AppContext } from '../utils/common'
 import RoundRobinComponent from '../components/RoundRobinComponent'
 
-export default function PhaseViewScreen({ navigation, route }) {
+export default function PhaseViewScreen({ route }) {
   const { tournamentId, index }: { tournamentId: number, index : number } = route.params
   const { getTournament, getStyle } = useContext(AppContext)
   const tournament = getTournament(tournamentId)
   const phase = tournament.phaseList[index]
   const stylesColor = getStyle()
-  let content = <RoundRobinComponent phase={phase} />
+  let content = <RoundRobinComponent tournamentId={tournamentId} index={index} />
 
   switch (phase.type) {
     case phaseTypeEnum.singleEliminate:

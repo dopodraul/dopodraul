@@ -4,7 +4,7 @@ import DragList, { DragListRenderItemInfo } from 'react-native-draglist'
 import { tournamentType, AppContext } from '../utils/common'
 import TournamentSortItemComponent from '../components/TournamentSortItemComponent'
 
-export default function TournamentSortScreen({ navigation }) {
+export default function TournamentSortScreen() {
   const { tournamentList, setTournamentList, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
   const keyExtractor = (tournament: tournamentType) => ( tournament.id.toString() )
