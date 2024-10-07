@@ -9,6 +9,7 @@ import TournamentSortScreen from './screens/TournamentSortScreen'
 import TournamentViewScreen from './screens/TournamentViewScreen'
 import PhaseEditScreen from './screens/PhaseEditScreen'
 import PhaseSortScreen from './screens/PhaseSortScreen'
+import PhaseViewScreen from './screens/PhaseViewScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -79,7 +80,7 @@ export default function Index() {
             const tournament = getTournament(route.params['id'])
 
             return {
-              title: '賽程 ' + tournament.name,
+              title: tournament.name,
               headerRight: () => {
                 const sortContent = tournament.phaseList[1] ?
                   <View style={styles.rowItem}>
@@ -123,6 +124,18 @@ export default function Index() {
             title: '排列階段',
             headerRight: () => (<MenuComponent navigation={navigation} />)
           })}
+        />
+        <Stack.Screen
+          name={screenEnum.phaseView}
+          component={PhaseViewScreen}
+          options={({ navigation, route }) => {
+            const phase = getTournament(route.params['tournamentId']).phaseList[route.params['index']]
+
+            return {
+              title: phase.name,
+              headerRight: () => (<MenuComponent navigation={navigation} />)
+            }
+          }}
         />
         <Stack.Screen
           name={screenEnum.menu}

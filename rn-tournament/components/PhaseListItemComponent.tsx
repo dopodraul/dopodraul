@@ -45,6 +45,10 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
       </TouchableOpacity>
   }
 
+  const pressItem = () => {
+    navigation.navigate(screenEnum.phaseView, { tournamentId, index })
+  }
+
   const pressEdit = () => {
     navigation.navigate(screenEnum.phaseEdit, { tournamentId, index })
   }
@@ -95,7 +99,9 @@ export default function PhaseListItemComponent({ tournamentId, index, navigation
         <View style={styles.marginRight}>
           {getPhaseIcon(phase.type)}
         </View>
-        <Text style={stylesColor}>{phase.name}</Text>
+        <TouchableOpacity style={styles.nameText} onPress={pressItem}>
+          <Text style={stylesColor}>{phase.name}</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.icon}>
         <TouchableOpacity onPress={pressEdit}>
@@ -122,6 +128,10 @@ const styles = StyleSheet.create({
   name: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1
+  },
+
+  nameText: {
     flex: 1
   },
 

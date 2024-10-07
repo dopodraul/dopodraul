@@ -1,11 +1,10 @@
 import { View, Button, StyleSheet } from 'react-native'
 import { useState, useContext, useEffect } from 'react'
-import { useRoute } from '@react-navigation/native'
 import { screenEnum, AppContext } from '../utils/common'
 import TextRequireComponent from '../components/TextRequireComponent'
 import TextInputComponent from '../components/TextInputComponent'
 
-export default function TournamentEditScreen({ navigation }) {
+export default function TournamentEditScreen({ navigation, route }) {
   const {
     tournamentList,
     setTournamentList,
@@ -13,7 +12,6 @@ export default function TournamentEditScreen({ navigation }) {
     getStyle
   } = useContext(AppContext)
 
-  const route = useRoute()
   const value = route.params['id'] ? getTournament(route.params['id']).name : ''
   const [name, setName] = useState(value)
   const [isDisable, setIsDisable] = useState(true)

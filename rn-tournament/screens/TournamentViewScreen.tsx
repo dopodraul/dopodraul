@@ -8,13 +8,11 @@ import {
 } from 'react-native'
 
 import { useContext } from 'react'
-import { useRoute } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screenEnum, AppContext } from '../utils/common'
 import PhaseListItemComponent from '../components/PhaseListItemComponent'
 
-export default function TournamentViewScreen({ navigation }) {
-  const route = useRoute()
+export default function TournamentViewScreen({ navigation, route }) {
   const { getTournament, getStyle } = useContext(AppContext)
   const tournament = getTournament(route.params['id'])
   const stylesColor = getStyle()

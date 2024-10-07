@@ -1,11 +1,10 @@
 import {ScrollView, StyleSheet } from 'react-native'
 import { useContext } from 'react'
-import { useRoute } from '@react-navigation/native'
 import DragList, { DragListRenderItemInfo } from 'react-native-draglist'
 import { phaseType, AppContext } from '../utils/common'
 import PhaseSortItemComponent from '../components/PhaseSortItemComponent'
 
-export default function PhaseSortScreen() {
+export default function PhaseSortScreen({ route }) {
   const {
     tournamentList,
     setTournamentList,
@@ -13,7 +12,6 @@ export default function PhaseSortScreen() {
     getStyle
   } = useContext(AppContext)
 
-  const route = useRoute()
   const tournament = getTournament(route.params['tournamentId'])
   const stylesColor = getStyle()
   const keyExtractor = (_: phaseType, index: number) => ( index.toString() )

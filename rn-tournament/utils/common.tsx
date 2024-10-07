@@ -13,7 +13,8 @@ enum screenEnum {
   tournamentSort = 'tournamentSort',
   tournamentView = 'tournamentView',
   phaseEdit = 'phaseEdit',
-  phaseSort = 'phaseSort'
+  phaseSort = 'phaseSort',
+  phaseView = 'phaseView'
 }
 
 enum phaseTypeEnum {
