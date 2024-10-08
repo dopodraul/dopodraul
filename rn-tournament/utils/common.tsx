@@ -15,7 +15,8 @@ enum screenEnum {
   phaseEdit = 'phaseEdit',
   phaseSort = 'phaseSort',
   phaseView = 'phaseView',
-  team = 'team'
+  team = 'team',
+  score = 'score'
 }
 
 enum phaseTypeEnum {
@@ -61,6 +62,7 @@ const AppContext = createContext({
   tournamentList: [] as tournamentType[],
   setTournamentList: (tournamentList: tournamentType[]) => {},
   getTournament: (id: number) => { return {} as tournamentType },
+  setPhase: (tournamentId: number, index: number, phase: phaseType) => {},
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
   getStyle: () => { return { color: '', backgroundColor: '', card: '' } },
@@ -96,6 +98,20 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     return result
   }
 
+  const setPhase = (tournamentId: number, index: number, phase: phaseType) => {
+    setTournamentList(
+      tournamentList.map(tournament => {
+        if (tournamentId === tournament.id) {
+          tournament.phaseList = tournament.phaseList.map((phaseData, phaseIndex) => {
+            return index === phaseIndex ? phase : phaseData
+          })
+        }
+
+        return tournament
+      })
+    )
+  }
+
   const getPhaseIcon = (type: phaseTypeEnum) => {
     let name = 'table-large'
 
@@ -116,6 +132,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       tournamentList,
       setTournamentList,
       getTournament,
+      setPhase,
       colorValue,
       setColorValue,
       getStyle,

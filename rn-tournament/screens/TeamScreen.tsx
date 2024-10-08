@@ -13,9 +13,8 @@ export default function TeamScreen({ navigation, route }) {
   const { tournamentId, phaseIndex, index } = route.params
 
   const {
-    tournamentList,
-    setTournamentList,
     getTournament,
+    setPhase,
     getStyle
   } = useContext(AppContext)
 
@@ -49,22 +48,15 @@ export default function TeamScreen({ navigation, route }) {
   }
 
   const pressConfirmButton = () => {
-    setTournamentList(
-      tournamentList.map(tournamentData => {
-        if (tournamentData.id === tournamentId) {
-          tournamentData.phaseList.map((phaseData, phaseNum) => {
-            if (phaseNum === phaseIndex) {
-              phaseData.teamList = phaseData.teamList.map((team, teamNum) => {
-                return teamNum === index ? name : team
-              })
-            }
-
-            return phaseData
-          })
-        }
-
-        return tournamentData
-      })
+    setPhase(
+      tournamentId,
+      phaseIndex,
+      {
+        ...phase,
+        teamList: phase.teamList.map(
+          (team, teamIndex) => { return index === teamIndex ? name : team }
+        )
+      }
     )
 
     navigation.navigate(screenEnum.phaseView, { tournamentId, index: phaseIndex })

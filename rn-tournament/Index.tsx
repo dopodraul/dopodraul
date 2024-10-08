@@ -11,6 +11,7 @@ import PhaseEditScreen from './screens/PhaseEditScreen'
 import PhaseSortScreen from './screens/PhaseSortScreen'
 import PhaseViewScreen from './screens/PhaseViewScreen'
 import TeamScreen from './screens/TeamScreen'
+import ScoreScreen from './screens/ScoreScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
 import SortComponent from './components/SortComponent'
@@ -121,26 +122,26 @@ export default function Index() {
         <Stack.Screen
           name={screenEnum.phaseView}
           component={PhaseViewScreen}
-          options={({ route }) => {
-            const phase = getTournament(route.params['tournamentId']).phaseList[route.params['index']]
-
-            return {
-              title: phase.name,
-              headerRight: () => (<MenuComponent />)
-            }
-          }}
+          options={({ route }) => ({
+            title: getTournament(route.params['tournamentId']).phaseList[route.params['index']].name,
+            headerRight: () => (<MenuComponent />)
+          })}
         />
         <Stack.Screen
           name={screenEnum.team}
           component={TeamScreen}
-          options={({ route }) => {
-            const phase = getTournament(route.params['tournamentId']).phaseList[route.params['phaseIndex']]
-
-            return {
-              title: phase.name,
-              headerRight: () => (<MenuComponent />)
-            }
-          }}
+          options={({ route }) => ({
+            title: getTournament(route.params['tournamentId']).phaseList[route.params['phaseIndex']].name,
+            headerRight: () => (<MenuComponent />)
+          })}
+        />
+        <Stack.Screen
+          name={screenEnum.score}
+          component={ScoreScreen}
+          options={({ route }) => ({
+            title: getTournament(route.params['tournamentId']).phaseList[route.params['phaseIndex']].name,
+            headerRight: () => (<MenuComponent />)
+          })}
         />
         <Stack.Screen
           name={screenEnum.menu}

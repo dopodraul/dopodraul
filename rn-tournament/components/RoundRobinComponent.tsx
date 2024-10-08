@@ -53,17 +53,24 @@ export default function RoundRobinComponent({ tournamentId, index }) {
           scoreList = [ ...phase.roundRobin.scoreList[indexY - 1][indexX - 1] ].reverse()
         }
 
-        const isComplete = scoreList[0] !== undefined && scoreList[1] !== undefined
         let text = '尚未比賽'
         let stylesMatch = {}
 
-        if (isComplete) {
+        if (scoreList[0] !== undefined && scoreList[1] !== undefined) {
           text = `${scoreList[0]} : ${scoreList[1]}`
         } else {
           stylesMatch = { backgroundColor: colorValue === colorEnum.dark ? 'red' : 'pink' }
         }
 
-        return <TouchableOpacity style={[styles.col, stylesMatch]}>
+        const editScore = () => {
+          navigation.navigate(screenEnum.score, {
+            tournamentId,
+            phaseIndex: index,
+            indexList: [indexX - 1, indexY - 1]
+          })
+        }
+
+        return <TouchableOpacity style={[styles.col, stylesMatch]} onPress={editScore}>
           <Text style={[styles.text, stylesColor, stylesMatch]}>{text}</Text>
         </TouchableOpacity>
       }

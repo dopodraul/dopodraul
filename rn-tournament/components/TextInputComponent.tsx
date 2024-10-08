@@ -1,20 +1,24 @@
 import { TextInput, StyleSheet, InputModeOptions } from 'react-native'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../utils/common'
 
 export default function TextInputComponent({
   value,
-  placeholder,
+  placeholder = '',
   inputMode = 'text',
+  textAlign = 'left',
   multiline = false,
   isError = false,
+  isEffect = false,
   getResult
 }: {
   value: string,
-  placeholder: string,
+  placeholder?: string,
   inputMode?: InputModeOptions,
+  textAlign?: 'left' | 'center',
   multiline?: boolean,
   isError?: boolean,
+  isEffect?: boolean,
   getResult: (result: string) => void
 }) {
   const [result, setResult] = useState(value)
@@ -28,9 +32,16 @@ export default function TextInputComponent({
     getResult(newResult)
   }
 
+  useEffect(() => {
+    if (isEffect) {
+      setResult(value)
+    }
+  }, [isEffect, value])
+
   return (
     <TextInput
       inputMode={inputMode}
+      textAlign={textAlign}
       placeholder={placeholder}
       placeholderTextColor="gray"
       multiline={multiline}
