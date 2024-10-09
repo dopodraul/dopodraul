@@ -56,7 +56,7 @@ export default function RoundRobinComponent({ tournamentId, index }) {
         let text = '尚未比賽'
         let stylesMatch = {}
 
-        if (scoreList[0] !== undefined && scoreList[1] !== undefined) {
+        if (scoreList[0] !== undefined) {
           text = `${scoreList[0]} : ${scoreList[1]}`
         } else {
           stylesMatch = { backgroundColor: colorValue === colorEnum.dark ? 'red' : 'pink' }

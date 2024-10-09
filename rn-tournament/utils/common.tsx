@@ -62,6 +62,7 @@ const AppContext = createContext({
   tournamentList: [] as tournamentType[],
   setTournamentList: (tournamentList: tournamentType[]) => {},
   getTournament: (id: number) => { return {} as tournamentType },
+  countPhaseMatch: (tournamentId: number, index: number) => { return { count: 0, total: 0 } },
   setPhase: (tournamentId: number, index: number, phase: phaseType) => {},
   colorValue: colorEnum.light,
   setColorValue: (colorValue: colorEnum) => {},
@@ -94,6 +95,33 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         return true
       }
     })
+
+    return result
+  }
+
+  const countPhaseMatch = (tournamentId: number, index: number) => {
+    const result = { count: 0, total: 0 }
+    const phase = getTournament(tournamentId).phaseList[index]
+
+    switch (phase.type) {
+      case phaseTypeEnum.singleEliminate:
+        break
+
+      case phaseTypeEnum.doubleEliminate:
+        break
+
+      default:
+        const factorial = (n: number) => n > 1 ? n * factorial(n - 1) : 1
+        result.total = factorial(phase.teamList.length) / (factorial(2) * factorial(phase.teamList.length - 2))
+
+        phase.roundRobin.scoreList.forEach(rowList =>
+          rowList.forEach(columnList => {
+            if (columnList[0] !== undefined) {
+              result.count++
+            }
+          })
+        )
+    }
 
     return result
   }
@@ -132,6 +160,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       tournamentList,
       setTournamentList,
       getTournament,
+      countPhaseMatch,
       setPhase,
       colorValue,
       setColorValue,

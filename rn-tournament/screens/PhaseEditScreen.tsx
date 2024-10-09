@@ -124,11 +124,15 @@ export default function PhaseEditScreen({ navigation, route }) {
     )
 
     if (phase.type === phaseTypeEnum.roundRobin) {
-      phase.roundRobin.scoreList = Array.from({ length: teamLength }, (_, scoreRowIndex) => (
-        Array.from({ length: scoreRowIndex }, (score: number[], scoreColumnIndex) => (
-          score ? score : []
-        ))
-      ))
+      phase.roundRobin.scoreList = Array.from({ length: teamLength }, (_r, scoreRowIndex) =>
+        Array.from({ length: scoreRowIndex }, (_c, scoreColumnIndex) =>
+          (
+            phase.roundRobin.scoreList && phase.roundRobin.scoreList[scoreRowIndex] ?
+              phase.roundRobin.scoreList[scoreRowIndex][scoreColumnIndex] :
+              []
+          ) || []
+        )
+      )
     }
 
     if (index === undefined) {
