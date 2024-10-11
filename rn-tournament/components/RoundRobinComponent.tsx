@@ -11,12 +11,14 @@ import { screenEnum, colorEnum, AppContext } from '../utils/common'
 import TableComponent from './TableComponent'
 
 export default function RoundRobinComponent({ tournamentId, index }) {
+  const tableWidth = 48
   const navigation = useNavigation<NavigationProp<ParamListBase>>()
   const { getTournament, colorValue, getStyle } = useContext(AppContext)
   const tournament = getTournament(tournamentId)
   const phase = tournament.phaseList[index]
   const tableLength = phase.teamList.length + 1
   const teamList = phase.teamList.map((name, index) => name || `隊伍 ${index + 1}`)
+  const widthArr: number[] = new Array(phase.teamList.length).fill(tableWidth)
   const stylesColor = getStyle()
 
   const data = Array.from(
@@ -79,15 +81,21 @@ export default function RoundRobinComponent({ tournamentId, index }) {
 
   return (
     <View style={styles.container}>
-      <TableComponent data={data}/>
+      <TableComponent
+        data={data}
+        width={tableWidth}
+        height={tableWidth}
+        widthArr={widthArr}
+        heightArr={widthArr}
+        isBorder={true}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginBottom: 64
+    flex: 1
   },
 
   col: {

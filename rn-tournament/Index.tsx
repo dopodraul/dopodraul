@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native'
 import { useContext } from 'react'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { screenEnum, AppContext } from './utils/common'
+import { screenEnum, phaseTypeEnum, AppContext } from './utils/common'
 import HomeScreen from './screens/HomeScreen'
 import TournamentEditScreen from './screens/TournamentEditScreen'
 import TournamentSortScreen from './screens/TournamentSortScreen'
@@ -12,8 +12,10 @@ import PhaseSortScreen from './screens/PhaseSortScreen'
 import PhaseViewScreen from './screens/PhaseViewScreen'
 import TeamScreen from './screens/TeamScreen'
 import ScoreScreen from './screens/ScoreScreen'
+import RankScreen from './screens/RankScreen'
 import MenuScreen from './screens/MenuScreen'
 import AddComponent from './components/AddComponent'
+import RankComponent from './components/RankComponent'
 import SortComponent from './components/SortComponent'
 import MenuComponent from './components/MenuComponent'
 const Stack = createNativeStackNavigator()
@@ -122,10 +124,40 @@ export default function Index() {
         <Stack.Screen
           name={screenEnum.phaseView}
           component={PhaseViewScreen}
-          options={({ route }) => ({
-            title: getTournament(route.params['tournamentId']).phaseList[route.params['index']].name,
-            headerRight: () => (<MenuComponent />)
-          })}
+          options={({ route }) => {
+            const phase = getTournament(route.params['tournamentId']).phaseList[route.params['index']]
+            let isMatch = false
+
+            switch (phase.type) {
+              case phaseTypeEnum.singleEliminate:
+                break
+
+              case phaseTypeEnum.doubleEliminate:
+                break
+
+              default:
+                isMatch = phase.roundRobin.scoreList.some(rowList => rowList.some(columnList => columnList[0] !== undefined))
+            }
+
+            const content = isMatch ?
+              <View style={styles.rowItem}>
+                <RankComponent
+                  tournamentId={route.params['tournamentId']}
+                  index={route.params['index']}
+                />
+              </View> :
+              <View />
+
+            return {
+              title: phase.name,
+              headerRight: () => (
+                <View style={styles.row}>
+                  {content}
+                  <MenuComponent />
+                </View>
+              )
+            }
+          }}
         />
         <Stack.Screen
           name={screenEnum.team}
@@ -140,6 +172,14 @@ export default function Index() {
           component={ScoreScreen}
           options={({ route }) => ({
             title: getTournament(route.params['tournamentId']).phaseList[route.params['phaseIndex']].name,
+            headerRight: () => (<MenuComponent />)
+          })}
+        />
+        <Stack.Screen
+          name={screenEnum.rank}
+          component={RankScreen}
+          options={({ route }) => ({
+            title: getTournament(route.params['tournamentId']).phaseList[route.params['index']].name,
             headerRight: () => (<MenuComponent />)
           })}
         />

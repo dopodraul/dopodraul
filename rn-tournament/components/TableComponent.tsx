@@ -23,9 +23,21 @@ import {
 
 import { AppContext } from '../utils/common'
 
-export default function TableComponent({ data }: { data: (string | ReactNode)[][] }) {
-  const tableWidth = 48
-  const widthArr = new Array(data.length - 1).fill(tableWidth)
+export default function TableComponent({
+  data,
+  width = 32,
+  height = 32,
+  widthArr = [],
+  heightArr = [],
+  isBorder = false
+}: {
+  data: (string | ReactNode)[][],
+  width?: number,
+  height?: number,
+  widthArr?: number[],
+  heightArr?: number[],
+  isBorder?: boolean
+}) {
   const [scrollX, setScrollX] = useState(0)
   const scrollViewRefHeadX = useRef<ScrollView>(null)
   const scrollViewRefBodyX = useRef<ScrollView>(null)
@@ -34,7 +46,7 @@ export default function TableComponent({ data }: { data: (string | ReactNode)[][
   const scrollViewRefBodyY = useRef<ScrollView>(null)
   const { getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
-  const stylesBorder = { borderWidth: 1, borderColor: stylesColor.color }
+  const stylesBorder = isBorder ? { borderWidth: 1, borderColor: stylesColor.color } : {}
 
   const onScrollX = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     setScrollX(event.nativeEvent.contentOffset.x)
@@ -74,8 +86,8 @@ export default function TableComponent({ data }: { data: (string | ReactNode)[][
         <Table borderStyle={stylesBorder}>
           <Row
             data={[data[0][0]]}
-            widthArr={[tableWidth]}
-            height={tableWidth}
+            widthArr={[width]}
+            height={height}
           />
         </Table>
         <ScrollView
@@ -87,13 +99,13 @@ export default function TableComponent({ data }: { data: (string | ReactNode)[][
             <Row
               data={data[0].slice(1)}
               widthArr={widthArr}
-              height={tableWidth}
+              height={height}
             />
           </Table>
         </ScrollView>
       </View>
       <View style={styles.row}>
-        <View style={{ width: tableWidth + 1 }}>
+        <View style={{ width: width + 1 }}>
           <ScrollView
             ref={scrollViewRefHeadY}
             onScrollEndDrag={onScrollY}
@@ -101,8 +113,8 @@ export default function TableComponent({ data }: { data: (string | ReactNode)[][
             <Table borderStyle={stylesBorder}>
               <Col
                 data={data.map(list => list[0]).slice(1)}
-                width={tableWidth}
-                heightArr={widthArr}
+                width={width}
+                heightArr={heightArr}
               />
             </Table>
           </ScrollView>
@@ -120,7 +132,7 @@ export default function TableComponent({ data }: { data: (string | ReactNode)[][
               <Rows
                 data={data.slice(1).map(list => list.slice(1))}
                 widthArr={widthArr}
-                heightArr={widthArr}
+                heightArr={heightArr}
               />
             </Table>
           </ScrollView>

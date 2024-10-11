@@ -140,6 +140,9 @@ export default function PhaseEditScreen({ navigation, route }) {
         tournament.phaseFinalIndex++
       }
 
+      phase.roundRobin.pointWin = 1
+      phase.roundRobin.pointDraw = 0
+      phase.roundRobin.pointLose = -1
       tournament.phaseList.unshift(phase)
     } else {
       tournament.phaseList[index] = phase
