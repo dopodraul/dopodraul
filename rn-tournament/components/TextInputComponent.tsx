@@ -1,6 +1,6 @@
 import { TextInput, StyleSheet, InputModeOptions } from 'react-native'
 import { useState, useContext, useEffect } from 'react'
-import { AppContext } from '../utils/common'
+import { colorEnum, AppContext } from '../utils/common'
 
 export default function TextInputComponent({
   value,
@@ -22,10 +22,16 @@ export default function TextInputComponent({
   getResult: (result: string) => void
 }) {
   const [result, setResult] = useState(value)
-  const { getStyle } = useContext(AppContext)
+  const { colorValue, getStyle } = useContext(AppContext)
   const stylesColor = getStyle()
   const stylesBorder = { borderColor: stylesColor.color }
-  const stylesError = isError ? { backgroundColor: 'pink' } : {}
+  const isDarkColor = colorValue === colorEnum.dark
+  const placeholderTextColor = isDarkColor ? 'lightgray' : 'gray'
+  let stylesError = {}
+
+  if (isError) {
+    stylesError = { backgroundColor: isDarkColor ? 'red' : 'pink' }
+  }
 
   const onChangeText = (newResult: string) => {
     setResult(newResult)
@@ -43,7 +49,7 @@ export default function TextInputComponent({
       inputMode={inputMode}
       textAlign={textAlign}
       placeholder={placeholder}
-      placeholderTextColor="gray"
+      placeholderTextColor={placeholderTextColor}
       multiline={multiline}
       style={[styles.component, stylesColor, stylesBorder, stylesError]}
       value={result}
